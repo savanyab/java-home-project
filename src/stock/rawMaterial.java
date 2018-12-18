@@ -1,5 +1,5 @@
 package stock;
 
-public class rawMaterial extends Stock {
+public abstract class rawMaterial extends Stock {
 
 }

@@ -16,6 +16,8 @@ public class Company {
     public int getProductsPerMonth() {
         return productsPerMonth;
     }
+
+    public int getRoundCount() {return roundCount;}
     // endregion
 
     // region Setters
