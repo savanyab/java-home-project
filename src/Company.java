@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 public class Company {
-    protected static int capital;
-    protected static int employeeCount;
-    protected static int productsPerMonth;
-    protected static int income;
-    protected static int expenses;
-    protected static int round = 1;
+    protected int capital;
+    protected int employeeCount;
+    private int productsPerMonth;
+    private int income;
+    private int expenses;
+    private static int round = 1;
 
 
     // region Getters
@@ -21,6 +21,10 @@ public class Company {
     public int getProductsPerMonth() {
         return productsPerMonth;
     }
+
+    public int getExpenses() {return expenses; }
+
+    public int getRound() {return round;}
     // endregion
 
     // region Setters
@@ -32,14 +36,16 @@ public class Company {
         this.employeeCount = employeeCount;
     }
 
-    public void setProductsPerMonth(int productsPerMonth) {
-        this.productsPerMonth = productsPerMonth;
+    public void setProductsPerMonth(int employeeCount) {
+        this.productsPerMonth = employeeCount * 30;
     }
+
+    public void setExpenses(int expenses) { this.expenses = expenses;}
     // endregion
 
     public Company() {
         capital = 1000000;
-        productsPerMonth = employeeCount * 30;
+
     }
 
     public void nextRound() {
@@ -52,6 +58,10 @@ public class Company {
     }
 
     public String toString() {
-        return round + ". round. " + "capital: " + capital + ", employeeCount: " + employeeCount + ", productsPerMonth: " + productsPerMonth + ", income: " + income + ", expenses: " + expenses;
+        return "capital: " + capital
+                + ", employeeCount: " + employeeCount
+                + ", productsPerMonth: " + productsPerMonth
+                + ", income: " + income
+                + ", expenses: " + expenses;
     }
 }

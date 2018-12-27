@@ -3,21 +3,26 @@ public class Main {
 
     public static void main(String[] args) {
         Company company = new Company();
-        System.out.println(company);
 
         FurniturePanels panels = new FurniturePanels();
         Glass glass = new Glass();
         Employees employees = new Employees();
 
-        while(Company.capital > 800000) {
+
+        while(company.getCapital() > 0) {
+            System.out.println(company.getRound() + ". hónap eleje: " + company);
             panels.purchaseRawMaterial();
             glass.purchaseRawMaterial();
-            employees.hire();
+            employees.changeEmployeeCount();
             employees.payWages();
+            company.setExpenses(panels.getExpenses() + glass.getExpenses() + employees.getExpenses());
+            System.out.println(company.getRound() + ". hónap vége: " + company);
             company.nextRound();
-            System.out.println(company);
+
         }
 
 
     }
+
+
 }
