@@ -32,17 +32,6 @@ public class Company {
     // endregion
 
     // region Setters
-    /*public void setCapital(int capital) {
-        this.capital = capital;
-    }*/
-/*
-    public void setEmployeeCount(int employeeCount) {
-        this.employeeCount = employeeCount;
-    }*/
-/*
-    public void setProductsPerMonth(int employeeCount) {
-        this.productsPerMonth = employeeCount * 30;
-    }*/
 
     public void setExpenses(int expenses) { this.expenses = expenses;}
 

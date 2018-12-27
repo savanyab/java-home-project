@@ -15,8 +15,7 @@ public class Main {
             System.out.println(company.getRound() + ". hónap eleje: " + company);
             panels.purchaseRawMaterial();
             glass.purchaseRawMaterial();
-            employees.hire();
-            employees.dismiss();
+            employees.changeEmployeeCount();
             employees.payWages();
             company.setExpenses(panels.getExpenses() + glass.getExpenses() + employees.getExpenses());
             System.out.println(company.getRound() + ". hónap vége: " + company);
