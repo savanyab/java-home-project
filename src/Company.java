@@ -18,14 +18,6 @@ public class Company {
         return capital;
     }
 
-    public int getEmployeeCount() {
-        return employeeCount;
-    }
-
-    public int getProductsPerMonth() {
-        return productsPerMonth;
-    }
-
     public int getExpenses() {return expenses; }
 
     public int getRound() {return round;}
@@ -35,13 +27,11 @@ public class Company {
 
     public void setExpenses(int expenses) { this.expenses = expenses;}
 
-    // endregion
-
     public void setRound() {
 
         round++;
     }
-
+    // endregion
 
     public void nextRound() {
         Scanner sc = new Scanner(System.in);

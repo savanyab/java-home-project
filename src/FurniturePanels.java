@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class FurniturePanels extends RawMaterial{
 
-    public FurniturePanels() {super(100, 0);}
+    public FurniturePanels() {super(3500, 0);}
 
     public void purchaseRawMaterial() {
         Scanner sc = new Scanner(System.in);

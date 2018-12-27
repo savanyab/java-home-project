@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Glass extends RawMaterial {
 
-    public Glass(){super(85, 0);}
+    public Glass(){super(4000, 0);}
 
     public void purchaseRawMaterial() {
         Scanner sc = new Scanner(System.in);
