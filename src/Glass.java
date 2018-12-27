@@ -22,7 +22,7 @@ public class Glass extends RawMaterial {
                         a + " egység üveg beszerzése " + a * purchasePrice + " összegbe kerülne. Kevesebb üveget rendelj!");
                 purchaseRawMaterial();
             } else {
-                System.out.println("Pozitív egész számot vagy nullát adj meg!");
+                System.out.println("A mennyiség nem lehet negatív");
                 purchaseRawMaterial();
             }
         } catch (InputMismatchException | NumberFormatException e) {

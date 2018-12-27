@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public abstract class RawMaterial extends Company{
     protected int purchasePrice;
     protected int quantity;
