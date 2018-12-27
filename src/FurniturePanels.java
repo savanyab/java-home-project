@@ -8,8 +8,8 @@ public class FurniturePanels extends RawMaterial{
         Scanner sc = new Scanner(System.in);
         System.out.println("Mennyi bútorlapot vegyünk?");
         int a = sc.nextInt();
-        //capital -= a * purchasePrice;
-        setCapital(getCapital() - a * purchasePrice);
+        capital -= a * purchasePrice;
+        //setCapital(getCapital() - a * purchasePrice);
         quantity += a;
         System.out.println("bútorlap mennyiség: " + quantity);
         // expenses += a * purchasePrice;

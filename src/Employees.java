@@ -3,21 +3,13 @@ import java.util.Scanner;
 public class Employees extends Company{
     private final int WAGE = 50000;
 
-    public void changeEmployeeCount() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Változtassunk-e az alkalmazottak létszámán?");
-        if (sc.next() == "y") {
-            hire();
-            dismiss();
-        }
-    }
 
     public void hire() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Hány alkalmazottat vegyünk fel?");
         int a = sc.nextInt();
         employeeCount += a;
-        setProductsPerMonth(employeeCount);
+        productsPerMonth = employeeCount * 30;
         System.out.println("alkalmazottak: " + employeeCount);
         setExpenses(employeeCount * WAGE);
         System.out.println("alkalmazottak expenses: " + getExpenses());
@@ -28,7 +20,7 @@ public class Employees extends Company{
         System.out.println("Hány alkalmazottat bocsássunk el?");
         int a = sc.nextInt();
         employeeCount -= a;
-        setProductsPerMonth(employeeCount);
+        productsPerMonth = employeeCount * 30;
     }
 
     public void payWages() {
