@@ -4,7 +4,6 @@ public class Company {
     protected static int capital;
     protected static int employeeCount;
     protected static int maxProductsByEmployees;
-    //protected static int goodsStock;
     private int income;
     private int expenses;
     private static int round = 1;
@@ -52,7 +51,9 @@ public class Company {
                 + ", maxProductsByEmployees: " + maxProductsByEmployees
                 + ", income: " + income
                 + ", expenses: " + expenses
-                + ", cupboardStock: " + Cupboards.cupboardStock;
+                + ", cupboardStock: " + Cupboards.getCupboardStock()
+                + ", glassStock: " + Glass.getGlassStock()
+                + ", panelStock: " + FurniturePanels.getPanelStock();
     }
 
 

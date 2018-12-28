@@ -1,8 +1,12 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Glass extends RawMaterial {
+public class Glass  extends RawMaterial{
     public static int glassStock;
+
+    public static int getGlassStock() {
+        return glassStock;
+    }
 
     public Glass(){super(4000);}
 
@@ -14,7 +18,6 @@ public class Glass extends RawMaterial {
             int a = Integer.parseInt(sc.next());
             if (a >= 0 && a * purchasePrice <= capital) {
                 capital -= a * purchasePrice;
-                //rawMaterialStock += a;
                 glassStock += a;
                 System.out.println("üveg mennyiség: " + glassStock);
                 setExpenses(a * purchasePrice);
@@ -36,8 +39,4 @@ public class Glass extends RawMaterial {
 
     }
 
-    @Override
-    public void useRawMaterial() {
-
-    }
 }

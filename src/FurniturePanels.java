@@ -4,6 +4,10 @@ import java.util.Scanner;
 public class FurniturePanels extends RawMaterial{
     public static int panelStock;
 
+    public static int getPanelStock() {
+        return panelStock;
+    }
+
     public FurniturePanels() {super(3500);}
 
     public void purchaseRawMaterial() {
@@ -22,7 +26,6 @@ public class FurniturePanels extends RawMaterial{
     public void purchasePanels(int a) {
         if (a >= 0 && a * purchasePrice <= capital) {
             capital -= a * purchasePrice;
-            //rawMaterialStock += a;
             panelStock += a;
             System.out.println("bútorlap mennyiség: " + panelStock);
             setExpenses(a * purchasePrice);
@@ -37,12 +40,5 @@ public class FurniturePanels extends RawMaterial{
         }
     }
 
-
-
-
-    @Override
-    public void useRawMaterial() {
-
-    }
 
 }
