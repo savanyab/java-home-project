@@ -9,15 +9,18 @@ public class Main {
         FurniturePanels panels = new FurniturePanels();
         Glass glass = new Glass();
         Employees employees = new Employees();
-
+        Cupboards cupboards = new Cupboards();
 
         while(company.getCapital() > 0) {
             System.out.println(company.getRound() + ". hónap eleje: " + company);
+            employees.decideEmployeeCount();
             panels.purchaseRawMaterial();
             glass.purchaseRawMaterial();
-            employees.decideEmployeeCount();
+            cupboards.produceGoods();
+            cupboards.sellCupboards();
             employees.payWages();
             company.setExpenses(panels.getExpenses() + glass.getExpenses() + employees.getExpenses());
+            company.setIncome(cupboards.getIncome());
             System.out.println(company.getRound() + ". hónap vége: " + company);
             company.nextRound();
 

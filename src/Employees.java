@@ -22,7 +22,7 @@ public class Employees extends Company{
             }
 
         } catch(InputMismatchException | NumberFormatException e) {
-            System.out.println("Pozitív egész számot vagy nullát írj be!");
+            System.out.println("Egész számot vagy nullát írj be!");
             decideEmployeeCount();
         }
     }
@@ -32,7 +32,7 @@ public class Employees extends Company{
         int b = a * 50000;
         if (capital - b >= 0) {
             employeeCount += i;
-            productsPerMonth = employeeCount * 30;
+            maxProductsByEmployees = employeeCount * 30;
             System.out.println("alkalmazottak száma: " + employeeCount);
         } else {
             System.out.println("A rendelkezésre álló tőke " + capital + ". "
@@ -47,7 +47,6 @@ public class Employees extends Company{
     public void payWages() {
         capital -= employeeCount * WAGE;
         setExpenses(employeeCount * WAGE);
-        System.out.println("bérfizetés: " + employeeCount * WAGE + " tőke: " + capital);
         System.out.println("alkalmazottak expenses: " + getExpenses());
     }
 }

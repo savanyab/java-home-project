@@ -3,10 +3,12 @@ import java.util.Scanner;
 public class Company {
     protected static int capital;
     protected static int employeeCount;
-    protected static int productsPerMonth;
+    protected static int maxProductsByEmployees;
+    //protected static int goodsStock;
     private int income;
     private int expenses;
     private static int round = 1;
+
 
     public Company() {
         capital = 1000000;
@@ -21,16 +23,18 @@ public class Company {
     public int getExpenses() {return expenses; }
 
     public int getRound() {return round;}
+
+    public int getIncome() {return income;}
     // endregion
 
     // region Setters
 
     public void setExpenses(int expenses) { this.expenses = expenses;}
 
-    public void setRound() {
-
-        round++;
+    public void setIncome(int income) {
+        this.income = income;
     }
+
     // endregion
 
     public void nextRound() {
@@ -45,8 +49,11 @@ public class Company {
     public String toString() {
         return "capital: " + capital
                 + ", employeeCount: " + employeeCount
-                + ", productsPerMonth: " + productsPerMonth
+                + ", maxProductsByEmployees: " + maxProductsByEmployees
                 + ", income: " + income
-                + ", expenses: " + expenses;
+                + ", expenses: " + expenses
+                + ", cupboardStock: " + Cupboards.cupboardStock;
     }
+
+
 }

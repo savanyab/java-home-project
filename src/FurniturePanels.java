@@ -2,8 +2,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FurniturePanels extends RawMaterial{
+    public static int panelStock;
 
-    public FurniturePanels() {super(3500, 0);}
+    public FurniturePanels() {super(3500);}
 
     public void purchaseRawMaterial() {
         Scanner sc = new Scanner(System.in);
@@ -21,8 +22,9 @@ public class FurniturePanels extends RawMaterial{
     public void purchasePanels(int a) {
         if (a >= 0 && a * purchasePrice <= capital) {
             capital -= a * purchasePrice;
-            quantity += a;
-            System.out.println("bútorlap mennyiség: " + quantity);
+            //rawMaterialStock += a;
+            panelStock += a;
+            System.out.println("bútorlap mennyiség: " + panelStock);
             setExpenses(a * purchasePrice);
             System.out.println("bútorlap expenses: " + getExpenses());
         } else if (a * purchasePrice > capital) {
@@ -34,6 +36,7 @@ public class FurniturePanels extends RawMaterial{
             purchaseRawMaterial();
         }
     }
+
 
 
 

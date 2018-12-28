@@ -1,11 +1,13 @@
 public abstract class RawMaterial extends Company{
     protected int purchasePrice;
-    protected int quantity;
+    //protected int rawMaterialStock;
 
-    public RawMaterial(int purchasePrice, int quantity) {
+
+    public RawMaterial(int purchasePrice) {
         this.purchasePrice = purchasePrice;
-        this.quantity = quantity;
+
     }
+
 
     public abstract void purchaseRawMaterial();
     public abstract void useRawMaterial();
