@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Cupboards extends Goods {
     private static int cupboardStock;
+    private double sellingRate;
 
     public static int getCupboardStock() {return cupboardStock;}
 
@@ -33,14 +34,25 @@ public class Cupboards extends Goods {
         Scanner sc = new Scanner(System.in);
         System.out.println("Hány szekrényt próbáljunk meg eladni?");
         int a = sc.nextInt();
-        int b = (int) (a * Math.random()); // 5%-os növekedést még belerakni!!!
-        System.out.println(Advertisement.getAdCount());
-        cupboardStock -= b;
-        setIncome(b * sellingPrice);
+        double b = Math.random();
+        sellingRate = setSellingRate(b);
+        cupboardStock -= (int)(sellingRate * a);
+        setIncome((int) (sellingRate * a) * sellingPrice);
         capital += getIncome();
-        System.out.println("b: " + b);
+        System.out.println("randomszám: " + b);
+        System.out.println("sellingrate: " + sellingRate);
         System.out.println("cupboardstock: " + cupboardStock);
         System.out.println("cupboard sellingprice: " + sellingPrice);
         System.out.println("cupboard income: " + getIncome());
+    }
+
+    private double setSellingRate(double b){
+        double c = b + Advertisement.getAdCount() * 0.05;
+        if (c < 1) {
+            sellingRate = c;
+        } else {
+            sellingRate = 1;
+        }
+        return sellingRate;
     }
 }
