@@ -6,20 +6,22 @@ public class Main {
     public static void main(String[] args) {
 
         Company company = new Company();
-        FurniturePanels panels = new FurniturePanels();
-        Glass glass = new Glass();
+        RawMaterial rawMaterial = new RawMaterial();
         Employees employees = new Employees();
         Cupboards cupboards = new Cupboards();
+        Advertisement ad = new Advertisement();
 
         while(company.getCapital() > 0) {
+            company.setExpenses(0);
             System.out.println(company.getRound() + ". hónap eleje: " + company);
             employees.decideEmployeeCount();
-            panels.purchaseRawMaterial();
-            glass.purchaseRawMaterial();
+            rawMaterial.purchasePanels();
+            rawMaterial.purchaseGlass();
+            //ad.changeAdCount();
             cupboards.produceGoods();
             cupboards.sellCupboards();
             employees.payWages();
-            company.setExpenses(panels.getExpenses() + glass.getExpenses() + employees.getExpenses());
+            company.setExpenses(employees.getExpenses() + rawMaterial.getExpenses());
             company.setIncome(cupboards.getIncome());
             System.out.println(company.getRound() + ". hónap vége: " + company);
             company.nextRound();

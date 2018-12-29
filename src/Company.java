@@ -52,8 +52,8 @@ public class Company {
                 + ", income: " + income
                 + ", expenses: " + expenses
                 + ", cupboardStock: " + Cupboards.getCupboardStock()
-                + ", glassStock: " + Glass.getGlassStock()
-                + ", panelStock: " + FurniturePanels.getPanelStock();
+                + ", glassStock: " + RawMaterial.getGlassStock()
+                + ", panelStock: " + RawMaterial.getPanelStock();
     }
 
 
