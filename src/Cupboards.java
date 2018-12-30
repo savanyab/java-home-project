@@ -48,11 +48,6 @@ public class Cupboards extends Goods {
 
     private double setSellingRate(double b){
         double c = b + Advertisement.getAdCount() * 0.05;
-        if (c < 1) {
-            sellingRate = c;
-        } else {
-            sellingRate = 1;
-        }
-        return sellingRate;
+        return sellingRate = c < 1 ? c : 1;
     }
 }

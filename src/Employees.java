@@ -3,7 +3,11 @@ import java.util.Scanner;
 
 public class Employees extends Company{
     private final int WAGE = 50000;
+    private static int employeeCount;
 
+    public static int getEmployeeCount() {
+        return employeeCount;
+    }
 
     public void decideEmployeeCount() {
         Scanner sc = new Scanner(System.in);

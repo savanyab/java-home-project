@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Company {
     protected static int capital;
-    protected static int employeeCount;
     protected static int maxProductsByEmployees;
     private int income;
     private int expenses;
@@ -15,7 +14,7 @@ public class Company {
 
 
     // region Getters
-    public int getCapital() {
+    public static int getCapital() {
         return capital;
     }
 
@@ -47,7 +46,7 @@ public class Company {
 
     public String toString() {
         return "capital: " + capital
-                + ", employeeCount: " + employeeCount
+                + ", employeeCount: " + Employees.getEmployeeCount()
                 + ", maxProductsByEmployees: " + maxProductsByEmployees
                 + ", income: " + income
                 + ", expenses: " + expenses
