@@ -40,11 +40,13 @@ public class Cupboards extends Goods {
         int a = sc.nextInt();
         double b = Math.random();
         sellingRate = setSellingRate(b);
+        soldGoodsPerMonth = (int) (sellingRate * a);
         cupboardStock -= (int)(sellingRate * a);
         setIncome((int) (sellingRate * a) * sellingPrice);
         capital += getIncome();
         System.out.println("randomszám: " + b);
         System.out.println("sellingrate: " + sellingRate);
+        System.out.println("soldcupboards: " + soldGoodsPerMonth);
         System.out.println("cupboardstock: " + cupboardStock);
         System.out.println("cupboard sellingprice: " + sellingPrice);
         System.out.println("cupboard income: " + getIncome());

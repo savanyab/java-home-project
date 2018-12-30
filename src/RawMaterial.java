@@ -6,8 +6,8 @@ public class RawMaterial extends Company{
     private static int panelStock;
     private static int glassPurchasePrice = 3000;
     private static int panelPurchasePrice = 4000;
-
-
+    private Scanner sc = new Scanner(System.in);
+    // region Getters
     public static int getGlassStock() {
         return glassStock;
     }
@@ -17,14 +17,15 @@ public class RawMaterial extends Company{
     public static int getGlassPurchasePrice() {return glassPurchasePrice;}
 
     public static int getPanelPurchasePrice() {return panelPurchasePrice;}
-
+    // endregion
+    // region Setters
     public static void setPanelStock(int a) {panelStock += a;}
 
     public static void setGlassStock(int a) {glassStock += a;}
-
+    // endregion
 
     public void purchaseGlass() {
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
         System.out.println("Mennyi üveget vegyünk?");
 
         try {
@@ -50,7 +51,7 @@ public class RawMaterial extends Company{
     }
 
     public void purchasePanels() {
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
         System.out.println("Mennyi bútorlapot vegyünk?");
 
         try {
@@ -74,7 +75,6 @@ public class RawMaterial extends Company{
             System.out.println("Pozitív egész számot vagy nullát írj be!");
         }
     }
-
 
 
 }
