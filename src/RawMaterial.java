@@ -4,13 +4,8 @@ import java.util.Scanner;
 public class RawMaterial extends Company{
     private static int glassStock;
     private static int panelStock;
-    private int glassPurchasePrice;
-    private int panelPurchasePrice;
-
-    public RawMaterial() {
-        glassPurchasePrice = 3000;
-        panelPurchasePrice = 4000;
-    }
+    private static int glassPurchasePrice = 3000;
+    private static int panelPurchasePrice = 4000;
 
 
     public static int getGlassStock() {
@@ -18,6 +13,10 @@ public class RawMaterial extends Company{
     }
 
     public static int getPanelStock() {return panelStock;}
+
+    public static int getGlassPurchasePrice() {return glassPurchasePrice;}
+
+    public static int getPanelPurchasePrice() {return panelPurchasePrice;}
 
     public static void setPanelStock(int a) {panelStock += a;}
 

@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class Advertisement extends Company {
-    private int price;
+    private int adPrice;
     private static int adCount;
 
     public Advertisement() {
-        price = 5000;
+        adPrice = 5000;
     }
 
     public static int getAdCount() {
@@ -17,8 +17,9 @@ public class Advertisement extends Company {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         adCount += a;
-        capital -= adCount * price;
+        capital -= adCount * adPrice;
+        setExpenses(adCount * adPrice);
         System.out.println("capital: " + capital);
-        System.out.println("ad * price: " + adCount * price);
+        System.out.println("ad * price: " + adCount * adPrice);
     }
 }

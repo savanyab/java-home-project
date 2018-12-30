@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Main {
     private static final int TARGET_CAPITAL = 2000000;
 
@@ -11,7 +9,7 @@ public class Main {
         Cupboards cupboards = new Cupboards();
         Advertisement ad = new Advertisement();
 
-        while(company.getCapital() > 0) {
+        while(Company.getCapital() > 0) {
             company.setExpenses(0);
             System.out.println(company.getRound() + ". hónap eleje: " + company);
             employees.decideEmployeeCount();
@@ -21,7 +19,7 @@ public class Main {
             cupboards.produceGoods();
             cupboards.sellCupboards();
             employees.payWages();
-            company.setExpenses(employees.getExpenses() + rawMaterial.getExpenses());
+            company.setExpenses(employees.getExpenses() + rawMaterial.getExpenses() + ad.getExpenses());
             company.setIncome(cupboards.getIncome());
             System.out.println(company.getRound() + ". hónap vége: " + company);
             company.nextRound();

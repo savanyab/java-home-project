@@ -3,12 +3,16 @@ import java.util.Scanner;
 public class Cupboards extends Goods {
     private static int cupboardStock;
     private double sellingRate;
+    private int glassPerCupboard = 1;
+    private int panelPerCupboard = 2;
 
-    public static int getCupboardStock() {return cupboardStock;}
 
     public Cupboards() {
-        super();
+        productionCost = RawMaterial.getGlassPurchasePrice() * glassPerCupboard + RawMaterial.getPanelPurchasePrice() * panelPerCupboard;
+        sellingPrice = (int) (productionCost * 2.5);
     }
+
+    public static int getCupboardStock() {return cupboardStock;}
 
 
     @Override
@@ -16,11 +20,11 @@ public class Cupboards extends Goods {
         Scanner sc = new Scanner(System.in);
         System.out.println("Mennyi szekrényt állítsunk elő?");
         int a = sc.nextInt();
-        if (a <= maxProductsByEmployees && a * 4 <= RawMaterial.getPanelStock() && a * 2 <= RawMaterial.getGlassStock()) {
+        if (a <= maxProductsByEmployees && a * panelPerCupboard <= RawMaterial.getPanelStock() && a * glassPerCupboard <= RawMaterial.getGlassStock()) {
             cupboardStock += a;
             producedGoodsPerMonth = a;
-            RawMaterial.setPanelStock(- (a * 4));
-            RawMaterial.setGlassStock(- (a * 2));
+            RawMaterial.setPanelStock(- (a * panelPerCupboard));
+            RawMaterial.setGlassStock(- (a * glassPerCupboard));
             System.out.println("prodcost: " + productionCost);
             System.out.println("producedCupboards: " + producedGoodsPerMonth);
             System.out.println("panelStock: " + RawMaterial.getPanelStock());
