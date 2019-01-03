@@ -22,8 +22,8 @@ public class Main {
                 employees.payWages();
                 company.setExpenses(employees.getExpenses() + rawMaterial.getExpenses() + ad.getExpenses());
                 company.setIncome(cupboards.getIncome());
-            company.nextRound();
-            System.out.println(company.getRound() + ". hónap eleje: " + company);
+                company.nextRound();
+                System.out.println(company.getRound()-1 + ". hónap vége: " + company);
         }
 
 

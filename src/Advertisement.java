@@ -17,9 +17,7 @@ public class Advertisement extends Company {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         adCount += a;
-        capital -= adCount * adPrice;
         setExpenses(adCount * adPrice);
-        System.out.println("capital: " + capital);
         System.out.println("ad * price: " + adCount * adPrice);
     }
 }

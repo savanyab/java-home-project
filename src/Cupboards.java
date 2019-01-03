@@ -10,7 +10,6 @@ public class Cupboards extends Goods {
     public Cupboards() {
         productionCost = RawMaterial.getGlassPurchasePrice() * glassPerCupboard + RawMaterial.getPanelPurchasePrice() * panelPerCupboard;
         sellingPrice = (int) (productionCost * 2.5);
-        maxProductsByEmployees = Employees.getEmployeeCount() * 30;
     }
 
     public static int getCupboardStock() {return cupboardStock;}
@@ -21,15 +20,22 @@ public class Cupboards extends Goods {
         Scanner sc = new Scanner(System.in);
         System.out.println("Mennyi szekrényt állítsunk elő?");
         int a = sc.nextInt();
+        maxProductsByEmployees = Employees.getEmployeeCount() * 30;
         if (a <= maxProductsByEmployees && a * panelPerCupboard <= RawMaterial.getPanelStock() && a * glassPerCupboard <= RawMaterial.getGlassStock()) {
             cupboardStock += a;
             producedGoodsPerMonth = a;
-            RawMaterial.setPanelStock(- (a * panelPerCupboard));
-            RawMaterial.setGlassStock(- (a * glassPerCupboard));
+            RawMaterial.setPanelStock(RawMaterial.getPanelStock() - (a * panelPerCupboard));
+            RawMaterial.setGlassStock(RawMaterial.getGlassStock() - (a * glassPerCupboard));
             System.out.println("prodcost: " + productionCost);
             System.out.println("producedCupboards: " + producedGoodsPerMonth);
             System.out.println("panelStock: " + RawMaterial.getPanelStock());
             System.out.println("glassStock: " + RawMaterial.getGlassStock());
+        } else {
+            System.out.println("Nincs elég erőforrás ennyihez");
+            System.out.println("glassStock: " + RawMaterial.getGlassStock());
+            System.out.println("panelStock: " + RawMaterial.getPanelStock());
+            System.out.println("maxProductsByEmployees" + maxProductsByEmployees);
+            produceGoods();
         }
     }
 

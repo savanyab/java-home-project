@@ -19,9 +19,9 @@ public class RawMaterial extends Company{
     public static int getPanelPurchasePrice() {return panelPurchasePrice;}
     // endregion
     // region Setters
-    public static void setPanelStock(int a) {panelStock += a;}
+    public static void setPanelStock(int a) {panelStock = a;}
 
-    public static void setGlassStock(int a) {glassStock += a;}
+    public static void setGlassStock(int a) {glassStock = a;}
     // endregion
 
     public void purchaseGlass() {
@@ -64,6 +64,6 @@ public class RawMaterial extends Company{
 
 
     public String toString() {
-        return "glassStock: " + glassStock;
+        return "glassStock: " + glassStock + "panelStock: " + panelStock;
     }
 }
