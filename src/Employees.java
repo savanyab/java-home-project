@@ -11,10 +11,7 @@ public class Employees extends Company{
 
     public void decideEmployeeCount() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Hogyan változzon az alkalmazottak létszáma? " + '\n' +
-                "Pozitív szám: munkaerő felvétel. " + '\n' +
-                "Nulla: nem változik a létszám." + '\n' +
-                "Negatív szám: elbocsátás.");
+        System.out.println("Hogyan változzon az alkalmazottak létszáma? ");
 
         try {
             int i = Integer.parseInt(sc.next());
@@ -34,16 +31,10 @@ public class Employees extends Company{
     public void changeEmployeeCount(int i) {
         int a = employeeCount + i;
         int b = a * 50000;
-        if (capital - b >= 0) {
-            employeeCount += i;
-            maxProductsByEmployees = employeeCount * 30;
-            System.out.println("alkalmazottak száma: " + employeeCount);
-        } else {
-            System.out.println("A rendelkezésre álló tőke " + capital + ". "
-                    + i + " alkalmazott felvétele után " + b + " összeget kellene bérként fizetni hónap végén. " +
-                    "Kevesebb alkalmazottat vegyél fel!");
-            decideEmployeeCount();
-        }
+        employeeCount += i;
+        maxProductsByEmployees = employeeCount * 30;
+        System.out.println("alkalmazottak száma: " + employeeCount);
+
     }
 
 

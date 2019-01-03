@@ -52,7 +52,8 @@ public class Company {
                 + ", expenses: " + expenses
                 + ", cupboardStock: " + Cupboards.getCupboardStock()
                 + ", glassStock: " + RawMaterial.getGlassStock()
-                + ", panelStock: " + RawMaterial.getPanelStock();
+                + ", panelStock: " + RawMaterial.getPanelStock()
+                + ", adCount: " + Advertisement.getAdCount();
     }
 
 
