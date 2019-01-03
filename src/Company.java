@@ -1,12 +1,10 @@
 import java.util.Scanner;
 
 public class Company {
-    protected static int capital;
-    protected static int maxProductsByEmployees;
+    private static int capital;
     private int income;
     private int expenses;
     private static int round = 1;
-
 
     public Company() {
         capital = 1000000;
@@ -40,6 +38,7 @@ public class Company {
         System.out.println("Léphetünk a következő körre?");
         String a = sc.next();
         if (a.equals("y")) {
+            capital += income - expenses;
             round++;
         }
     }
@@ -47,7 +46,6 @@ public class Company {
     public String toString() {
         return "capital: " + capital
                 + ", employeeCount: " + Employees.getEmployeeCount()
-                + ", maxProductsByEmployees: " + maxProductsByEmployees
                 + ", income: " + income
                 + ", expenses: " + expenses
                 + ", cupboardStock: " + Cupboards.getCupboardStock()

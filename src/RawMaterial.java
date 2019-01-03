@@ -25,23 +25,16 @@ public class RawMaterial extends Company{
     // endregion
 
     public void purchaseGlass() {
-        //Scanner sc = new Scanner(System.in);
         System.out.println("Mennyi üveget vegyünk?");
-
         try {
             int a = Integer.parseInt(sc.next());
-            if (a >= 0 && a * glassPurchasePrice <= capital) {
-                capital -= a * glassPurchasePrice;
+            if (a >= 0) {
                 glassStock += a;
-                System.out.println("üveg mennyiség: " + glassStock);
                 setExpenses(getExpenses() + a * glassPurchasePrice);
+                System.out.println("üveg mennyiség: " + glassStock);
                 System.out.println("nyersanyag sumexpenses: " + getExpenses());
-            } else if (a * glassPurchasePrice > capital) {
-                System.out.println("A rendelkezésre álló tőke " + capital + ". " +
-                        a + " egység üveg beszerzése " + a * glassPurchasePrice + " összegbe kerülne. Kevesebb üveget rendelj!");
-                purchaseGlass();
             } else {
-                System.out.println("A mennyiség nem lehet negatív");
+                System.out.println("A vásárolt mennyiség nem lehet negatív");
                 purchaseGlass();
             }
         } catch (InputMismatchException | NumberFormatException e) {
@@ -51,24 +44,17 @@ public class RawMaterial extends Company{
     }
 
     public void purchasePanels() {
-        //Scanner sc = new Scanner(System.in);
         System.out.println("Mennyi bútorlapot vegyünk?");
-
         try {
             int a = Integer.parseInt(sc.next());
 
-            if (a >= 0 && a * panelPurchasePrice <= capital) {
-                capital -= a * panelPurchasePrice;
+            if (a >= 0) {
                 panelStock += a;
-                System.out.println("bútorlap mennyiség: " + panelStock);
                 setExpenses(a * panelPurchasePrice);
+                System.out.println("bútorlap mennyiség: " + panelStock);
                 System.out.println("nyersanyag sumexpenses: " + getExpenses());
-            } else if (a * panelPurchasePrice > capital) {
-                System.out.println("A rendelkezésre álló tőke " + capital + ". " +
-                        a + " egység bútorlap beszerzése " + a * panelPurchasePrice + " összegbe kerülne. Kevesebb bútorlapot rendelj!");
-                purchasePanels();
             } else {
-                System.out.println("A mennyiség nem lehet negatív");
+                System.out.println("A vásárolt mennyiség nem lehet negatív");
                 purchasePanels();
             }
         } catch (InputMismatchException | NumberFormatException e) {
@@ -77,4 +63,7 @@ public class RawMaterial extends Company{
     }
 
 
+    public String toString() {
+        return "glassStock: " + glassStock;
+    }
 }

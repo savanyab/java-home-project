@@ -9,7 +9,7 @@ public class Main {
         Cupboards cupboards = new Cupboards();
         Advertisement ad = new Advertisement();
 
-        while(Company.capital < TARGET_CAPITAL ) {
+        while(Company.getCapital() < TARGET_CAPITAL ) {
                 company.setIncome(0);
                 company.setExpenses(0);
                 System.out.println(company.getRound() + ". hónap eleje: " + company);
@@ -22,8 +22,8 @@ public class Main {
                 employees.payWages();
                 company.setExpenses(employees.getExpenses() + rawMaterial.getExpenses() + ad.getExpenses());
                 company.setIncome(cupboards.getIncome());
-                System.out.println(company.getRound() + ". hónap vége: " + company);
-                company.nextRound();
+            company.nextRound();
+            System.out.println(company.getRound() + ". hónap eleje: " + company);
         }
 
 

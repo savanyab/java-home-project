@@ -10,6 +10,7 @@ public class Cupboards extends Goods {
     public Cupboards() {
         productionCost = RawMaterial.getGlassPurchasePrice() * glassPerCupboard + RawMaterial.getPanelPurchasePrice() * panelPerCupboard;
         sellingPrice = (int) (productionCost * 2.5);
+        maxProductsByEmployees = Employees.getEmployeeCount() * 30;
     }
 
     public static int getCupboardStock() {return cupboardStock;}
@@ -43,7 +44,6 @@ public class Cupboards extends Goods {
         soldGoodsPerMonth = (int) (sellingRate * a);
         cupboardStock -= (int)(sellingRate * a);
         setIncome((int) (sellingRate * a) * sellingPrice);
-        capital += getIncome();
         System.out.println("randomszám: " + b);
         System.out.println("sellingrate: " + sellingRate);
         System.out.println("soldcupboards: " + soldGoodsPerMonth);

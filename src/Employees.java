@@ -5,6 +5,7 @@ public class Employees extends Company{
     private final int WAGE = 50000;
     private static int employeeCount;
 
+
     public static int getEmployeeCount() {
         return employeeCount;
     }
@@ -28,19 +29,14 @@ public class Employees extends Company{
         }
     }
 
-    public void changeEmployeeCount(int i) {
-        int a = employeeCount + i;
-        int b = a * 50000;
+    private void changeEmployeeCount(int i) {
         employeeCount += i;
-        maxProductsByEmployees = employeeCount * 30;
         System.out.println("alkalmazottak száma: " + employeeCount);
-
     }
 
 
 
     public void payWages() {
-        capital -= employeeCount * WAGE;
         setExpenses(employeeCount * WAGE);
         System.out.println("alkalmazottak expenses: " + getExpenses());
     }
