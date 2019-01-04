@@ -43,15 +43,15 @@ public class Company {
         }
     }
 
-    public String toString() {
+    public String toString(Employees e, Cupboards c, RawMaterial r, Advertisement a) {  // nya absztrakt lehet, leszármazzon  kettő
         return "capital: " + capital
-                + ", employeeCount: " + Employees.getEmployeeCount()
+                + ", employeeCount: " + e.getEmployeeCount()
                 + ", income: " + income
                 + ", expenses: " + expenses
-                + ", cupboardStock: " + Cupboards.getCupboardStock()
-                + ", glassStock: " + RawMaterial.getGlassStock()
-                + ", panelStock: " + RawMaterial.getPanelStock()
-                + ", adCount: " + Advertisement.getAdCount();
+                + ", cupboardStock: " + c.getCupboardStock()
+                + ", glassStock: " + r.getGlassStock()
+                + ", panelStock: " + r.getPanelStock()
+                + ", adCount: " + a.getAdCount();
     }
 
 

@@ -2,26 +2,26 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RawMaterial extends Company{
-    private static int glassStock;
-    private static int panelStock;
-    private static int glassPurchasePrice = 3000;
-    private static int panelPurchasePrice = 4000;
+    private int glassStock;
+    private int panelStock;
+    private int glassPurchasePrice = 3000;
+    private int panelPurchasePrice = 4000;
     private Scanner sc = new Scanner(System.in);
     // region Getters
-    public static int getGlassStock() {
+    public int getGlassStock() {
         return glassStock;
     }
 
-    public static int getPanelStock() {return panelStock;}
+    public int getPanelStock() {return panelStock;}
 
-    public static int getGlassPurchasePrice() {return glassPurchasePrice;}
+    public int getGlassPurchasePrice() {return glassPurchasePrice;}
 
-    public static int getPanelPurchasePrice() {return panelPurchasePrice;}
+    public int getPanelPurchasePrice() {return panelPurchasePrice;}
     // endregion
     // region Setters
-    public static void setPanelStock(int a) {panelStock = a;}
+    public void setPanelStock(int a) {panelStock = a;}
 
-    public static void setGlassStock(int a) {glassStock = a;}
+    public void setGlassStock(int a) {glassStock = a;}
     // endregion
 
     public void purchaseGlass() {

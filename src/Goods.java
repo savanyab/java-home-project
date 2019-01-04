@@ -5,5 +5,5 @@ public abstract class Goods extends Company {
     protected int soldGoodsPerMonth;
     protected int maxProductsByEmployees;
 
-    public abstract void produce();
+    public abstract void produce(RawMaterial r, Employees e);
 }

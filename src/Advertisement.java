@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class Advertisement extends Company {
     private int adPrice;
-    private static int adCount;
+    private int adCount;
 
     public Advertisement() {
         adPrice = 5000;
     }
 
-    public static int getAdCount() {
+    public int getAdCount() {
         return adCount;
     }
 

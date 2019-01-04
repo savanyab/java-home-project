@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 public class Employees extends Company{
     private final int WAGE = 50000;
-    private static int employeeCount;
+    private int employeeCount;
 
 
-    public static int getEmployeeCount() {
+    public int getEmployeeCount() {
         return employeeCount;
     }
 
