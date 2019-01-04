@@ -17,7 +17,7 @@ public class Main {
                 rawMaterial.purchasePanels();
                 rawMaterial.purchaseGlass();
                 ad.changeAdCount();
-                cupboards.produceGoods();
+                cupboards.produce();
                 cupboards.sellCupboards();
                 employees.payWages();
                 company.setExpenses(employees.getExpenses() + rawMaterial.getExpenses() + ad.getExpenses());

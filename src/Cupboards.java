@@ -16,7 +16,7 @@ public class Cupboards extends Goods {
 
 
     @Override
-    public void produceGoods() {
+    public void produce() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Mennyi szekrényt állítsunk elő?");
         int a = sc.nextInt();
@@ -35,7 +35,7 @@ public class Cupboards extends Goods {
             System.out.println("glassStock: " + RawMaterial.getGlassStock());
             System.out.println("panelStock: " + RawMaterial.getPanelStock());
             System.out.println("maxProductsByEmployees" + maxProductsByEmployees);
-            produceGoods();
+            produce();
         }
     }
 
@@ -48,7 +48,7 @@ public class Cupboards extends Goods {
         double b = Math.random();
         sellingRate = setSellingRate(b);
         soldGoodsPerMonth = (int) (sellingRate * a);
-        cupboardStock -= (int)(sellingRate * a);
+        cupboardStock -= soldGoodsPerMonth;
         setIncome((int) (sellingRate * a) * sellingPrice);
         System.out.println("randomszám: " + b);
         System.out.println("sellingrate: " + sellingRate);
