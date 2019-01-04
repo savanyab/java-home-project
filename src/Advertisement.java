@@ -17,7 +17,7 @@ public class Advertisement {
     public int getExpenses() { return adExpenses; }
 
     public void changeAdCount(){
-        System.out.println("Hogyan változzon a reklámok száma?");
+        System.out.println("Jelenleg " + adCount + " reklámunk van. Hogyan változzon a számuk?");
         Scanner sc = new Scanner(System.in);
         try {
             int i = Integer.parseInt(sc.next());
@@ -27,10 +27,10 @@ public class Advertisement {
             }else  {
                 adCount += i;
                 adExpenses = adCount * adPrice;
-                System.out.println("ad expenses: " + adExpenses);
+                System.out.println("Havi reklámköltség: " + adExpenses);
             }
         } catch(InputMismatchException | NumberFormatException e) {
-            System.out.println("Egész számot vagy nullát írj be!");
+            System.out.println("Egész számot írj be!");
             changeAdCount();
         }
 

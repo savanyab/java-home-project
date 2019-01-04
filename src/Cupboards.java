@@ -9,7 +9,10 @@ public class Cupboards extends Goods {
 
 
     public Cupboards(FurniturePanels p, Glass g) {
-        productionCost = g.getPurchasePrice() * glassPerCupboard + p.getPurchasePrice() * panelPerCupboard;
+        int costOfGlass = g.getPurchasePrice() * glassPerCupboard;
+        int costOfPanels = p.getPurchasePrice() * panelPerCupboard;
+
+        productionCost =  costOfGlass + costOfPanels;
         sellingPrice = (int) (productionCost * 2.5);
     }
 
@@ -19,26 +22,30 @@ public class Cupboards extends Goods {
 
 
     @Override
-    public void produce(FurniturePanels p, Glass g, Employees e) {
+    public void produce(FurniturePanels panels, Glass glass, Employees employees) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Mennyi szekrényt állítsunk elő?");
         int a = sc.nextInt();
-        if (a <= e.getMaxProductsByEmployees() && a * panelPerCupboard <= p.getStock() && a * glassPerCupboard <= g.getStock()) {
+        if (canBeProduced(a, panels, glass, employees)) {
             cupboardStock += a;
             producedPerMonth = a;
-            p.setStock(p.getStock() - (a * panelPerCupboard));
-            g.setStock(g.getStock() - (a * glassPerCupboard));
+            panels.setStock(panels.getStock() - (a * panelPerCupboard));
+            glass.setStock(glass.getStock() - (a * glassPerCupboard));
             System.out.println("prodcost: " + productionCost);
             System.out.println("producedCupboards: " + producedPerMonth);
-            System.out.println("panelStock: " + p.getStock());
-            System.out.println("glassStock: " + g.getStock());
+            System.out.println("panelStock: " + panels.getStock());
+            System.out.println("glassStock: " + glass.getStock());
         } else {
             System.out.println("Nincs elég erőforrás ennyihez");
-            System.out.println("glassStock: " + g.getStock());
-            System.out.println("panelStock: " + p.getStock());
-            System.out.println("maxProductsByEmployees" + e.getMaxProductsByEmployees());
-            produce(p, g, e);
+            System.out.println("glassStock: " + glass.getStock());
+            System.out.println("panelStock: " + panels.getStock());
+            System.out.println("maxProductsByEmployees: " + employees.getMaxProductsByEmployees());
+            produce(panels, glass, employees);
         }
+    }
+
+    public boolean canBeProduced(int a, FurniturePanels panels, Glass glass, Employees employees) {
+     return a <= employees.getMaxProductsByEmployees() && a * panelPerCupboard <= panels.getStock() && a * glassPerCupboard <= glass.getStock();
     }
 
 
