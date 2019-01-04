@@ -11,7 +11,6 @@ public class Employees {
 
     public int getMaxProductsByEmployees() { return maxProductsByEmployees; }
 
-
     public int getEmployeeCount() {
         return employeeCount;
     }

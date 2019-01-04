@@ -25,11 +25,11 @@ public class Cupboards extends Goods {
         int a = sc.nextInt();
         if (a <= e.getMaxProductsByEmployees() && a * panelPerCupboard <= p.getStock() && a * glassPerCupboard <= g.getStock()) {
             cupboardStock += a;
-            producedGoodsPerMonth = a;
+            producedPerMonth = a;
             p.setStock(p.getStock() - (a * panelPerCupboard));
             g.setStock(g.getStock() - (a * glassPerCupboard));
             System.out.println("prodcost: " + productionCost);
-            System.out.println("producedCupboards: " + producedGoodsPerMonth);
+            System.out.println("producedCupboards: " + producedPerMonth);
             System.out.println("panelStock: " + p.getStock());
             System.out.println("glassStock: " + g.getStock());
         } else {
@@ -49,12 +49,12 @@ public class Cupboards extends Goods {
         int a = sc.nextInt();
         double b = Math.random();
         sellingRate = setSellingRate(b, ad);
-        soldGoodsPerMonth = (int) (sellingRate * a);
-        cupboardStock -= soldGoodsPerMonth;
+        soldPerMonth = (int) (sellingRate * a);
+        cupboardStock -= soldPerMonth;
         income = ((int) (sellingRate * a) * sellingPrice);
         System.out.println("randomszám: " + b);
         System.out.println("sellingrate: " + sellingRate);
-        System.out.println("soldcupboards: " + soldGoodsPerMonth);
+        System.out.println("soldcupboards: " + soldPerMonth);
         System.out.println("cupboardstock: " + cupboardStock);
         System.out.println("cupboard sellingprice: " + sellingPrice);
         System.out.println("cupboard income: " + income);
