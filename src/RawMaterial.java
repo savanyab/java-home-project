@@ -1,11 +1,12 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class RawMaterial extends Company{
+public class RawMaterial {
     private int glassStock;
     private int panelStock;
     private int glassPurchasePrice = 3000;
     private int panelPurchasePrice = 4000;
+    private int expenses;
     private Scanner sc = new Scanner(System.in);
     // region Getters
     public int getGlassStock() {
@@ -17,6 +18,8 @@ public class RawMaterial extends Company{
     public int getGlassPurchasePrice() {return glassPurchasePrice;}
 
     public int getPanelPurchasePrice() {return panelPurchasePrice;}
+
+    public int getExpenses() { return expenses; }
     // endregion
     // region Setters
     public void setPanelStock(int a) {panelStock = a;}
@@ -30,9 +33,9 @@ public class RawMaterial extends Company{
             int a = Integer.parseInt(sc.next());
             if (a >= 0) {
                 glassStock += a;
-                setExpenses(getExpenses() + a * glassPurchasePrice);
+                expenses += a * glassPurchasePrice;
                 System.out.println("üveg mennyiség: " + glassStock);
-                System.out.println("nyersanyag sumexpenses: " + getExpenses());
+                System.out.println("nyersanyag sumexpenses: " + expenses);
             } else {
                 System.out.println("A vásárolt mennyiség nem lehet negatív");
                 purchaseGlass();
@@ -50,9 +53,9 @@ public class RawMaterial extends Company{
 
             if (a >= 0) {
                 panelStock += a;
-                setExpenses(a * panelPurchasePrice);
+                expenses += a * panelPurchasePrice;
                 System.out.println("bútorlap mennyiség: " + panelStock);
-                System.out.println("nyersanyag sumexpenses: " + getExpenses());
+                System.out.println("nyersanyag sumexpenses: " + expenses);
             } else {
                 System.out.println("A vásárolt mennyiség nem lehet negatív");
                 purchasePanels();

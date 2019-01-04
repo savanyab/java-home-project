@@ -1,9 +1,12 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Employees extends Company{
+public class Employees {
     private final int WAGE = 50000;
     private int employeeCount;
+    private int employeeExpenses;
+
+    public int getExpenses() { return employeeExpenses; }
 
 
     public int getEmployeeCount() {
@@ -37,7 +40,7 @@ public class Employees extends Company{
 
 
     public void payWages() {
-        setExpenses(employeeCount * WAGE);
-        System.out.println("alkalmazottak expenses: " + getExpenses());
+        employeeExpenses = employeeCount * WAGE;
+        System.out.println("alkalmazottak expenses: " + employeeExpenses);
     }
 }

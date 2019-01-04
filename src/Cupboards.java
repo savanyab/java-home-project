@@ -5,6 +5,7 @@ public class Cupboards extends Goods {
     private double sellingRate;
     private int glassPerCupboard = 1;
     private int panelPerCupboard = 2;
+    private int income;
 
 
     public Cupboards(RawMaterial r) {
@@ -13,6 +14,8 @@ public class Cupboards extends Goods {
     }
 
     public int getCupboardStock() {return cupboardStock;}
+
+    public int getIncome() { return income; }
 
 
     @Override
@@ -49,13 +52,13 @@ public class Cupboards extends Goods {
         sellingRate = setSellingRate(b, ad);
         soldGoodsPerMonth = (int) (sellingRate * a);
         cupboardStock -= soldGoodsPerMonth;
-        setIncome((int) (sellingRate * a) * sellingPrice);
+        income = ((int) (sellingRate * a) * sellingPrice);
         System.out.println("randomszám: " + b);
         System.out.println("sellingrate: " + sellingRate);
         System.out.println("soldcupboards: " + soldGoodsPerMonth);
         System.out.println("cupboardstock: " + cupboardStock);
         System.out.println("cupboard sellingprice: " + sellingPrice);
-        System.out.println("cupboard income: " + getIncome());
+        System.out.println("cupboard income: " + income);
     }
 
     private double setSellingRate(double b, Advertisement a){

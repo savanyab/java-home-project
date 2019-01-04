@@ -1,4 +1,4 @@
-public abstract class Goods extends Company {
+public abstract class Goods {
     protected int productionCost;
     protected int sellingPrice;
     protected int producedGoodsPerMonth;

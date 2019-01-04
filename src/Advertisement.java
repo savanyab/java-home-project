@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
-public class Advertisement extends Company {
+public class Advertisement {
     private int adPrice;
     private int adCount;
+    private int adExpenses;
 
     public Advertisement() {
         adPrice = 5000;
@@ -12,12 +13,14 @@ public class Advertisement extends Company {
         return adCount;
     }
 
+    public int getExpenses() { return adExpenses; }
+
     public void changeAdCount(){
         System.out.println("Hogyan változzon a reklámok száma?");
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         adCount += a;
-        setExpenses(adCount * adPrice);
+        adExpenses = adCount * adPrice;
         System.out.println("ad * price: " + adCount * adPrice);
     }
 }
