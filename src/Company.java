@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Company {
-    private static int capital;
+    private int capital;
     private int income;
     private int expenses;
     private static int round = 1;
@@ -12,11 +12,10 @@ public class Company {
 
 
     // region Getters
-    public static int getCapital() {
+    public int getCapital() {
         return capital;
     }
 
-    public int getExpenses() {return expenses; }
 
     public int getRound() {return round;}
 
@@ -43,14 +42,14 @@ public class Company {
         }
     }
 
-    public String toString(Employees e, Cupboards c, RawMaterial r, Advertisement a) {  // nya absztrakt lehet, leszármazzon  kettő
+    public String toString(Employees e, Cupboards c, FurniturePanels p, Glass g, Advertisement a) {
         return "capital: " + capital
                 + ", employeeCount: " + e.getEmployeeCount()
                 + ", income: " + income
                 + ", expenses: " + expenses
                 + ", cupboardStock: " + c.getCupboardStock()
-                + ", glassStock: " + r.getGlassStock()
-                + ", panelStock: " + r.getPanelStock()
+                + ", glassStock: " + g.getStock()
+                + ", panelStock: " + p.getStock()
                 + ", adCount: " + a.getAdCount();
     }
 

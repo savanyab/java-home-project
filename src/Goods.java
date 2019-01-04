@@ -3,7 +3,6 @@ public abstract class Goods {
     protected int sellingPrice;
     protected int producedGoodsPerMonth;
     protected int soldGoodsPerMonth;
-    protected int maxProductsByEmployees;
 
-    public abstract void produce(RawMaterial r, Employees e);
+    public abstract void produce(FurniturePanels p, Glass g, Employees e);
 }

@@ -4,26 +4,24 @@ public class Main {
     public static void main(String[] args) {
 
         Company company = new Company();
-        RawMaterial rawMaterial = new RawMaterial();
+        FurniturePanels panels = new FurniturePanels();
+        Glass glass = new Glass();
         Employees employees = new Employees();
-        Cupboards cupboards = new Cupboards(rawMaterial);
+        Cupboards cupboards = new Cupboards(panels, glass);
         Advertisement ad = new Advertisement();
 
-        while(Company.getCapital() < TARGET_CAPITAL ) {
-                company.setIncome(0);
-                company.setExpenses(0);
-                System.out.println(company.getRound() + ". hónap eleje: " + company.toString(employees, cupboards, rawMaterial, ad));
+        while(company.getCapital() < TARGET_CAPITAL ) {
                 employees.decideEmployeeCount();
-                rawMaterial.purchasePanels();
-                rawMaterial.purchaseGlass();
+                panels.purchase();
+                glass.purchase();
                 ad.changeAdCount();
-                cupboards.produce(rawMaterial, employees);
+                cupboards.produce(panels, glass, employees);
                 cupboards.sellCupboards(ad);
                 employees.payWages();
-                company.setExpenses(employees.getExpenses() + rawMaterial.getExpenses() + ad.getExpenses());
+                company.setExpenses(employees.getExpenses() + panels.getExpenses() + glass.getExpenses() + ad.getExpenses());
                 company.setIncome(cupboards.getIncome());
                 company.nextRound();
-                System.out.println(company.getRound()-1 + ". hónap vége: " + company.toString(employees, cupboards, rawMaterial, ad));
+                System.out.println(company.getRound()-1 + ". hónap vége: " + company.toString(employees, cupboards, panels, glass, ad));
         }
 
 

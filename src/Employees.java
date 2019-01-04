@@ -5,8 +5,11 @@ public class Employees {
     private final int WAGE = 50000;
     private int employeeCount;
     private int employeeExpenses;
+    private int maxProductsByEmployees;
 
     public int getExpenses() { return employeeExpenses; }
+
+    public int getMaxProductsByEmployees() { return maxProductsByEmployees; }
 
 
     public int getEmployeeCount() {
@@ -24,6 +27,7 @@ public class Employees {
                 decideEmployeeCount();
             }else  {
                 changeEmployeeCount(i);
+                setMaxProductByEmployees();
             }
 
         } catch(InputMismatchException | NumberFormatException e) {
@@ -37,7 +41,9 @@ public class Employees {
         System.out.println("alkalmazottak száma: " + employeeCount);
     }
 
-
+    private void setMaxProductByEmployees() {
+        maxProductsByEmployees = employeeCount * 30;
+    }
 
     public void payWages() {
         employeeExpenses = employeeCount * WAGE;
