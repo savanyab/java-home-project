@@ -40,7 +40,7 @@ public class Advertisement {
         double b = Math.random();
         double sellingRate = b + adCount * 0.05;
         System.out.println("randomszám: " + b);
-        System.out.println("sellingrate: " + sellingRate);
+        System.out.println("Eladási arány: " + sellingRate);
         return sellingRate < 1 ? sellingRate : 1;
     }
 }

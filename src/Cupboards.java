@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Cupboards extends Goods {
@@ -7,6 +8,7 @@ public class Cupboards extends Goods {
     private int income;
     private int maxSellingPrice;
     private Scanner sc = new Scanner(System.in);
+
 
     public int getCupboardStock() {return cupboardStock;}
 
@@ -39,25 +41,49 @@ public class Cupboards extends Goods {
     }
 
     public void sellCupboards(Advertisement ad, FurniturePanels p, Glass g){
-        System.out.println("Hány szekrényt próbáljunk meg eladni? ( " + cupboardStock + " van raktáron).");
-        int a = sc.nextInt();
+        sc.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        decideQuantityToSell(ad);
         decideSellingPrice(p, g);
-        soldPerMonth = (int) (ad.setSellingRate() * a);
         cupboardStock -= soldPerMonth;
         System.out.println("Eladott szekrények: " + soldPerMonth);
         receiveIncomeOfSoldGoods(p, g);
         System.out.println("Raktáron lévő, később eladható szekrények: " + cupboardStock);
+
+    }
+
+    private void decideQuantityToSell(Advertisement ad) {
+        System.out.println("Hány szekrényt próbáljunk meg eladni? (" + cupboardStock + " van raktáron).");
+        try {
+            int a = Integer.parseInt(sc.nextLine());
+            if (a >= 0 && a <= cupboardStock) {
+                soldPerMonth = (int) (a * ad.setSellingRate());
+            } else if (a > 0){
+                System.out.println("Több szekrényt nem tudunk eladni, mint a raktáron lévő mennyiség!");
+                decideQuantityToSell(ad);
+            } else {
+                System.out.println("Negatív mennyiséget nem lehet eladni!");
+                decideQuantityToSell(ad);
+            }
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println("Pozitív egész számot írj be!");
+            decideQuantityToSell(ad);
+        }
     }
 
 
     private void decideSellingPrice(FurniturePanels p, Glass g) {
-        System.out.println("Mennyi legyen a szekrények eladási ára?\n " +
-                "Maximum " + setMaxSellingPrice(p, g) + " Ft. Ez az előállítási költség (" + productionCost + ") 250%-a.");
-        int a = sc.nextInt();
-        if (a > maxSellingPrice) {
-            sellingPrice = maxSellingPrice;
-        } else {
-            sellingPrice = a;
+        System.out.println("Mennyi legyen a szekrények eladási ára? Maximum " + setMaxSellingPrice(p, g) + " Ft lehet. Ez az előállítási költség (" + productionCost + ") 250%-a.");
+        try {
+            int a = Integer.parseInt(sc.next());
+            if (a >= 0) {
+                sellingPrice = (a > maxSellingPrice ? maxSellingPrice : a);
+            } else {
+                System.out.println("Az eladási ár nem lehet negatív!");
+                decideSellingPrice(p, g);
+            }
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println("Egész számot írj be!");
+            decideSellingPrice(p, g);
         }
 
     }
