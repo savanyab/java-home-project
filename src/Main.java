@@ -13,7 +13,7 @@ public class Main {
         FurniturePanels panels = new FurniturePanels();
         Glass glass = new Glass();
         Employees employees = new Employees();
-        Cupboards cupboards = new Cupboards(panels, glass);
+        Cupboards cupboards = new Cupboards();
         Advertisement ad = new Advertisement();
 
         while(company.getCapital() < TARGET_CAPITAL && company.getCapital() > 0) {
@@ -22,7 +22,7 @@ public class Main {
             glass.purchase();
             ad.changeAdCount();
             cupboards.produce(panels, glass, employees);
-            cupboards.sellCupboards(ad);
+            cupboards.sellCupboards(ad, panels, glass);
             employees.payWages();
             company.setExpenses(employees.getExpenses() + panels.getExpenses() + glass.getExpenses() + ad.getExpenses());
             company.setIncome(cupboards.getIncome());

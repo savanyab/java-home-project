@@ -35,4 +35,12 @@ public class Advertisement {
         }
 
     }
+
+    public double setSellingRate(){
+        double b = Math.random();
+        double sellingRate = b + adCount * 0.05;
+        System.out.println("randomszám: " + b);
+        System.out.println("sellingrate: " + sellingRate);
+        return sellingRate < 1 ? sellingRate : 1;
+    }
 }
