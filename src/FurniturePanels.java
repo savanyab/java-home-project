@@ -7,7 +7,7 @@ public class FurniturePanels extends RawMaterial {
     public int getPurchasePrice() {return panelPurchasePrice;}
 
     public void purchase() {
-        System.out.println("Mennyi bútorlapot vegyünk?");
+        System.out.println("Mennyi bútorlapot vegyünk? (" + stock + " van raktáron. Egy egység szekrényhez 2 egység bútorlap szükséges.)");
         Scanner sc = new Scanner(System.in);
         try {
             int a = Integer.parseInt(sc.next());

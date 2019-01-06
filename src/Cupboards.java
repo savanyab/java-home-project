@@ -17,33 +17,55 @@ public class Cupboards extends Goods {
 
     @Override
     public void produce(FurniturePanels panels, Glass glass, Employees employees) {
-        System.out.println("Mennyi szekrényt állítsunk elő?");
-        int a = sc.nextInt();
-        if (canBeProduced(a, panels, glass, employees)) {
-            cupboardStock += a;
-            producedPerMonth = a;
-            panels.setStock(panels.getStock() - (a * panelPerCupboard));
-            glass.setStock(glass.getStock() - (a * glassPerCupboard));
-            System.out.println("producedCupboards: " + producedPerMonth);
-            System.out.println("panelStock: " + panels.getStock());
-            System.out.println("glassStock: " + glass.getStock());
-        } else {
-            System.out.println("Nincs elég erőforrás ennyihez");
-            System.out.println("glassStock: " + glass.getStock());
-            System.out.println("panelStock: " + panels.getStock());
-            System.out.println("maxProductsByEmployees: " + employees.getMaxProductsByEmployees());
-            produce(panels, glass, employees);
-        }
+        int a = decideQuantityToProduce(panels, glass, employees);
+        cupboardStock += a;
+        producedPerMonth = a;
+        System.out.println("Előállított szekrények: " + producedPerMonth);
+        System.out.println("Szekrény raktárkészlet: " + cupboardStock);
+        reducePanelStock(a, panels);
+        reduceGlassStock(a, glass);
     }
 
     private boolean canBeProduced(int a, FurniturePanels panels, Glass glass, Employees employees) {
-     return a <= employees.getMaxProductsByEmployees() && a * panelPerCupboard <= panels.getStock() && a * glassPerCupboard <= glass.getStock();
+     return a <= employees.getMaxProductsByEmployees() &&
+             a * panelPerCupboard <= panels.getStock() &&
+             a * glassPerCupboard <= glass.getStock();
+    }
+
+    private int decideQuantityToProduce(FurniturePanels panels, Glass glass, Employees employees) {
+        System.out.println("Mennyi szekrényt állítsunk elő? Az üvegkészletből maximum " +
+                (glass.getStock() / glassPerCupboard)
+                + ", a bútorlapkészletből maximum " + (panels.getStock() / panelPerCupboard)
+                + " egység állítható elő. Az alkalmazottak maximum " + employees.getMaxProductsByEmployees()
+                + "egység előállítására képesek.");
+        try {
+            int a = Integer.parseInt(sc.next());
+            if (canBeProduced(a, panels, glass, employees)) {
+                return a;
+            } else {
+                System.out.println("Nincs elég erőforrás ennyihez");
+                produce(panels, glass, employees);
+            }
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println("Pozitív egész számot írj be!");
+            decideQuantityToProduce(panels, glass, employees);
+        }
+        return 1;
+    }
+
+    private void reducePanelStock(int a, FurniturePanels panels) {
+        panels.setStock(panels.getStock() - (a * panelPerCupboard));
+        System.out.println("Bútorlap készlet: " + panels.getStock());
+    }
+
+    private void reduceGlassStock(int a, Glass glass) {
+        glass.setStock(glass.getStock() - (a * glassPerCupboard));
+        System.out.println("Üveg készlet: " + glass.getStock());
     }
 
     public void sellCupboards(Advertisement ad, FurniturePanels p, Glass g){
         decideSellingPrice(p, g);
         int a = decideQuantityToSell();
-        sc.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
         setSoldQuantity(a, ad);
         cupboardStock -= soldPerMonth;
         System.out.println("Eladott szekrények: " + soldPerMonth);
@@ -94,8 +116,7 @@ public class Cupboards extends Goods {
             } else if (a > maxSellingPrice) {
                 System.out.println("Túl magas árrés!");
                 decideSellingPrice(p, g);
-            }
-            else {
+            } else {
                 System.out.println("Az eladási ár nem lehet negatív!");
                 decideSellingPrice(p, g);
             }
