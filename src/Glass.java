@@ -7,7 +7,7 @@ public class Glass extends RawMaterial {
     public int getPurchasePrice() {return glassPurchasePrice;}
 
     public void purchase() {
-        System.out.println("Mennyi üveget vegyünk? (" + stock + " van raktáron. Egy egség szekrényhez 1 egység üveg szükséges.)" );
+        System.out.println("Mennyi üveget vegyünk? (" + stock + " van raktáron. Egy egység ára " + glassPurchasePrice+ " .Egy egység szekrényhez 1 egység üveg szükséges.)" );
         Scanner sc = new Scanner(System.in);
         try {
             int a = Integer.parseInt(sc.next());

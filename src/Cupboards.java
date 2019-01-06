@@ -37,7 +37,7 @@ public class Cupboards extends Goods {
                 (glass.getStock() / glassPerCupboard)
                 + ", a bútorlapkészletből maximum " + (panels.getStock() / panelPerCupboard)
                 + " egység állítható elő. Az alkalmazottak maximum " + employees.getMaxProductsByEmployees()
-                + "egység előállítására képesek.");
+                + " egység előállítására képesek.");
         try {
             int a = Integer.parseInt(sc.next());
             if (canBeProduced(a, panels, glass, employees)) {
