@@ -41,9 +41,10 @@ public class Cupboards extends Goods {
     }
 
     public void sellCupboards(Advertisement ad, FurniturePanels p, Glass g){
-        sc.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-        decideQuantityToSell(ad);
         decideSellingPrice(p, g);
+        int a = decideQuantityToSell();
+        sc.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        setSoldQuantity(a, ad);
         cupboardStock -= soldPerMonth;
         System.out.println("Eladott szekrények: " + soldPerMonth);
         receiveIncomeOfSoldGoods(p, g);
@@ -51,33 +52,50 @@ public class Cupboards extends Goods {
 
     }
 
-    private void decideQuantityToSell(Advertisement ad) {
+    private int decideQuantityToSell() {
         System.out.println("Hány szekrényt próbáljunk meg eladni? (" + cupboardStock + " van raktáron).");
         try {
-            int a = Integer.parseInt(sc.nextLine());
+            int a = Integer.parseInt(sc.next());
             if (a >= 0 && a <= cupboardStock) {
-                soldPerMonth = (int) (a * ad.setSellingRate());
+                return a;
             } else if (a > 0){
                 System.out.println("Több szekrényt nem tudunk eladni, mint a raktáron lévő mennyiség!");
-                decideQuantityToSell(ad);
+                decideQuantityToSell();
             } else {
                 System.out.println("Negatív mennyiséget nem lehet eladni!");
-                decideQuantityToSell(ad);
+                decideQuantityToSell();
             }
         } catch (InputMismatchException | NumberFormatException e) {
             System.out.println("Pozitív egész számot írj be!");
-            decideQuantityToSell(ad);
+            decideQuantityToSell();
         }
+        return 1;
     }
 
+    private double setSellingRate(Advertisement ad){
+        double b = Math.random();
+        double rate = b + ad.getAdCount() * 0.05;
+        double sellingRate = (rate < 1 ? rate : 1);
+        System.out.println("randomszám: " + b);
+        System.out.println("Eladási arány: " + sellingRate);
+        return sellingRate;
+    }
+
+    private void setSoldQuantity(int a, Advertisement ad) {
+        soldPerMonth = (int) (a * setSellingRate(ad));
+    }
 
     private void decideSellingPrice(FurniturePanels p, Glass g) {
         System.out.println("Mennyi legyen a szekrények eladási ára? Maximum " + setMaxSellingPrice(p, g) + " Ft lehet. Ez az előállítási költség (" + productionCost + ") 250%-a.");
         try {
             int a = Integer.parseInt(sc.next());
-            if (a >= 0) {
-                sellingPrice = (a > maxSellingPrice ? maxSellingPrice : a);
-            } else {
+            if (a >= 0 && a <= maxSellingPrice) {
+                sellingPrice = a;
+            } else if (a > maxSellingPrice) {
+                System.out.println("Túl magas árrés!");
+                decideSellingPrice(p, g);
+            }
+            else {
                 System.out.println("Az eladási ár nem lehet negatív!");
                 decideSellingPrice(p, g);
             }

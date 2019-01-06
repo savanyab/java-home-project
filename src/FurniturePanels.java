@@ -15,8 +15,8 @@ public class FurniturePanels extends RawMaterial {
             if (a >= 0) {
                 stock += a;
                 expenses += a * panelPurchasePrice;
-                System.out.println("bútorlap mennyiség: " + stock);
-                System.out.println("panel expenses: " + expenses);
+                System.out.println("Bútorlap mennyiség: " + stock);
+                System.out.println("Bútorlap vásárlás költsége: " + expenses);
             } else {
                 System.out.println("A vásárolt mennyiség nem lehet negatív");
                 purchase();
