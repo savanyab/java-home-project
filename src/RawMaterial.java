@@ -9,8 +9,6 @@ public abstract class RawMaterial {
 
     public int getExpenses() { return expenses; }
 
-    public void setStock(int a) {stock = a;}
-
     public abstract void purchase();
 
 
