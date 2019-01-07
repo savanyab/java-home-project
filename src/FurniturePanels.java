@@ -25,4 +25,9 @@ public class FurniturePanels extends RawMaterial {
             System.out.println("Pozitív egész számot vagy nullát írj be!");
         }
     }
+
+    public void reducePanelStock(int productQuantity, int panelPerProduct) {
+        stock -= (productQuantity * panelPerProduct);
+        System.out.println("Bútorlap készlet: " + stock);
+    }
 }

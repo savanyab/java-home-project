@@ -22,8 +22,8 @@ public class Cupboards extends Goods {
         producedPerMonth = a;
         System.out.println("Előállított szekrények: " + producedPerMonth);
         System.out.println("Szekrény raktárkészlet: " + cupboardStock);
-        reducePanelStock(a, panels);
-        reduceGlassStock(a, glass);
+        panels.reducePanelStock(a, panelPerCupboard);
+        glass.reduceGlassStock(a, glassPerCupboard);
     }
 
     private boolean canBeProduced(int a, FurniturePanels panels, Glass glass, Employees employees) {
@@ -53,15 +53,7 @@ public class Cupboards extends Goods {
         return 1;
     }
 
-    private void reducePanelStock(int a, FurniturePanels panels) {
-        panels.setStock(panels.getStock() - (a * panelPerCupboard));
-        System.out.println("Bútorlap készlet: " + panels.getStock());
-    }
 
-    private void reduceGlassStock(int a, Glass glass) {
-        glass.setStock(glass.getStock() - (a * glassPerCupboard));
-        System.out.println("Üveg készlet: " + glass.getStock());
-    }
 
     public void sellCupboards(Advertisement ad, FurniturePanels p, Glass g){
         decideSellingPrice(p, g);

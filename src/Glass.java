@@ -26,4 +26,9 @@ public class Glass extends RawMaterial {
         }
     }
 
+    public void reduceGlassStock(int productQuantity, int glassPerProduct) {
+        stock -= (productQuantity * glassPerProduct);
+        System.out.println("Üveg készlet: " + stock);
+    }
+
 }
