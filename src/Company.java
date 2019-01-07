@@ -36,21 +36,21 @@ public class Company {
         Scanner sc = new Scanner(System.in);
         System.out.println("Léphetünk a következő körre?");
         String a = sc.next();
-        if (a.equals("y")) {
+        if (!a.equals("nem")) {
             capital += income - expenses;
             round++;
         }
     }
 
     public String toString(Employees e, Cupboards c, FurniturePanels p, Glass g, Advertisement a) {
-        return "capital: " + capital
-                + ", employeeCount: " + e.getEmployeeCount()
-                + ", income: " + income
-                + ", expenses: " + expenses
-                + ", cupboardStock: " + c.getCupboardStock()
-                + ", glassStock: " + g.getStock()
-                + ", panelStock: " + p.getStock()
-                + ", adCount: " + a.getAdCount();
+        return "Tőke: " + capital
+                + ", alkalmazottak száma: " + e.getEmployeeCount()
+                + ", havi bevétel: " + income
+                + ", havi kiadások: " + expenses
+                + ", szekrény készlet: " + c.getCupboardStock()
+                + ", üveg készlet: " + g.getStock()
+                + ", bútorlap készlet: " + p.getStock()
+                + ", reklámok száma: " + a.getAdCount();
     }
 
 
