@@ -2,13 +2,30 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FurniturePanels extends RawMaterial {
-    private int panelPurchasePrice = 4000;
+    private int panelPurchasePrice;
+    private Scanner sc = new Scanner(System.in);
 
     public int getPurchasePrice() {return panelPurchasePrice;}
 
+    private void decidePanelPurchasePrice() {
+        System.out.println("Milyen áron vegyünk bútorlapot? A piacon 3000 és 6000 Ft között árulják.");
+        try {
+            int a = Integer.parseInt(sc.next());
+            if (a >= 3000 && a <= 6000) {
+                panelPurchasePrice = a;
+            } else {
+                System.out.println("3000 és 6000 Ft közti összeget adj meg!");
+                decidePanelPurchasePrice();
+            }
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println("Pozitív egész számot vagy nullát írj be!");
+            decidePanelPurchasePrice();
+        }
+    }
+
     public void purchase() {
+        decidePanelPurchasePrice();
         System.out.println("Mennyi bútorlapot vegyünk? (" + stock + " van raktáron. Ára " + panelPurchasePrice + " Ft/egység. Egy egység szekrényhez 2 egység bútorlap szükséges.)");
-        Scanner sc = new Scanner(System.in);
         try {
             int a = Integer.parseInt(sc.next());
 
