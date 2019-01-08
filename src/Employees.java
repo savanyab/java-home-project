@@ -19,7 +19,7 @@ public class Employees {
 
     public void decideEmployeeCount() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Jelenleg " + employeeCount + " fő alkalmazottunk van. Hogyan változzon a létszám?");
+        System.out.println("\nJelenleg " + employeeCount + " fő alkalmazottunk van. Hogyan változzon a létszám?");
 
         try {
             int i = Integer.parseInt(sc.next());

@@ -4,6 +4,10 @@ public class Main {
     private static final int TARGET_CAPITAL = 2000000;
 
     public static void main(String[] args) {
+        System.out.println("Kedves Cégvezető!\nGratulálok szekrénygyárad bejegyzéséhez! A cég kezdő tőkéje 1.000.000 Ft, ennek megduplázása a cél a következő hónapokban." +
+                "\nEgy hónap során változtathatod az alkalmazottak létszámát, eldöntheted, mennyi nyersanyagot vásárolsz a gyártáshoz és milyen áron. " +
+                "\nAz alkalmazottak számától és a nyersanyagok mennyiségétől függően elrendelheted, mennyi terméket állítsunk elő, ezekből mennyit próbáljunk eladni. " +
+                "\nReklámokat is rendelhetsz, ezek az eladási arányt növelik (minden darab 5%-kal).\nSok sikert a cég vezetéséhez! ");
         game();
         exitOrRestart();
     }
@@ -24,8 +28,9 @@ public class Main {
             cupboards.produce(panels, glass, employees);
             cupboards.sellCupboards(ad, panels, glass);
             employees.payWages();
-            company.setExpenses(employees.getExpenses() + panels.getExpenses() + glass.getExpenses() + ad.getExpenses());
-            company.setIncome(cupboards.getIncome());
+            company.setExpenses(employees, panels, glass, ad);
+            company.setIncome(cupboards);
+            company.changeCapital();
             company.nextRound();
             System.out.println(company.getRound()-1 + ". hónap vége: " + company.toString(employees, cupboards, panels, glass, ad));
         }
@@ -41,7 +46,7 @@ public class Main {
         System.out.println("Szeretnél újra játszani?");
         Scanner sc = new Scanner(System.in);
         String a = sc.next();
-        if (a.equals("y")) {
+        if (!a.equals("nem")) {
             game();
         } else {
             System.exit(0);

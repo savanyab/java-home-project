@@ -24,10 +24,12 @@ public class Company {
 
     // region Setters
 
-    public void setExpenses(int expenses) { this.expenses = expenses;}
+    public void setExpenses(Employees e, FurniturePanels p, Glass g, Advertisement a) {
+        expenses = e.getExpenses() + p.getExpenses() + g.getExpenses() + a.getExpenses();
+    }
 
-    public void setIncome(int income) {
-        this.income = income;
+    public void setIncome(Cupboards c) {
+        income = c.getIncome();
     }
 
     // endregion
@@ -37,9 +39,12 @@ public class Company {
         System.out.println("Léphetünk a következő körre?");
         String a = sc.next();
         if (!a.equals("nem")) {
-            capital += income - expenses;
             round++;
         }
+    }
+
+    public void changeCapital() {
+        capital += income - expenses;
     }
 
     public String toString(Employees e, Cupboards c, FurniturePanels p, Glass g, Advertisement a) {
