@@ -8,7 +8,7 @@ public class Glass extends RawMaterial {
     public int getPurchasePrice() {return glassPurchasePrice;}
 
     private void decideGlassPurchasePrice() {
-        System.out.println("Milyen áron vegyünk üveget? A piacon 2500 és 5000 Ft között árulják.");
+        System.out.println("Milyen áron vegyünk üveget? A piacon 2500 és 5000 Ft között érhető el.");
         try {
             int a = Integer.parseInt(sc.next());
             if (a >= 2500 && a <= 5000) {
@@ -30,7 +30,7 @@ public class Glass extends RawMaterial {
             int a = Integer.parseInt(sc.next());
             if (a >= 0) {
                 stock += a;
-                expenses += a * glassPurchasePrice;
+                expenses = a * glassPurchasePrice;
                 System.out.println("Üveg mennyiség: " + stock);
                 System.out.println("Üveg vásárlás költsége: " + expenses);
             } else {

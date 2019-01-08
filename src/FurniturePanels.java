@@ -8,7 +8,7 @@ public class FurniturePanels extends RawMaterial {
     public int getPurchasePrice() {return panelPurchasePrice;}
 
     private void decidePanelPurchasePrice() {
-        System.out.println("Milyen áron vegyünk bútorlapot? A piacon 3000 és 6000 Ft között árulják.");
+        System.out.println("Milyen áron vegyünk bútorlapot? A piacon 3000 és 6000 Ft között érhető el.");
         try {
             int a = Integer.parseInt(sc.next());
             if (a >= 3000 && a <= 6000) {
@@ -31,7 +31,7 @@ public class FurniturePanels extends RawMaterial {
 
             if (a >= 0) {
                 stock += a;
-                expenses += a * panelPurchasePrice;
+                expenses = a * panelPurchasePrice;
                 System.out.println("Bútorlap mennyiség: " + stock);
                 System.out.println("Bútorlap vásárlás költsége: " + expenses);
             } else {
