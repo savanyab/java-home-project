@@ -1,11 +1,17 @@
+import java.awt.*;
 import java.util.Scanner;
 
 public class Main {
     private static final int TARGET_CAPITAL = 2000000;
 
     public static void main(String[] args) {
-        game();
-        exitOrRestart();
+        //game();
+        //exitOrRestart();
+
+        EventQueue.invokeLater(() -> {
+            Window window = new Window();
+            window.setVisible(true);
+        });
     }
 
     private static void game() {
@@ -41,7 +47,7 @@ public class Main {
         System.out.println("Szeretnél újra játszani?");
         Scanner sc = new Scanner(System.in);
         String a = sc.next();
-        if (a.equals("y")) {
+        if (!a.equals("nem")) {
             game();
         } else {
             System.exit(0);
