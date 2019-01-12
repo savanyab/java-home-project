@@ -23,10 +23,9 @@ public class Main {
         Advertisement ad = new Advertisement();
 
         while(company.getCapital() < TARGET_CAPITAL && company.getCapital() > 0) {
-            employees.decideEmployeeCount();
             panels.purchase();
             glass.purchase();
-            ad.changeAdCount();
+            //ad.changeAdCount();
             cupboards.produce(panels, glass, employees);
             cupboards.sellCupboards(ad, panels, glass);
             employees.payWages();

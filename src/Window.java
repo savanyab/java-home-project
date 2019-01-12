@@ -9,7 +9,6 @@ public class Window extends JFrame {
     Glass glass = new Glass();
 
     Cupboards cupboards = new Cupboards();
-    Advertisement ad = new Advertisement();
 
     public Window() {
         setTitle("FurnitureFactory");
@@ -18,15 +17,7 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new GridLayout(7, 1));
 
-        JPanel adPanel = new JPanel();
-        adPanel.setLayout(new GridLayout(1, 2));
-        JLabel askAdCount = new JLabel();
-        askAdCount.setText("Hogyan változzon a reklámok száma?");
-        JSlider adCountChange = new JSlider(-ad.getAdCount(), 20);
-        adCountChange.setMinorTickSpacing(1);
-        adCountChange.setMajorTickSpacing(5);
-        adCountChange.setPaintTicks(true);
-        adCountChange.setPaintLabels(true);
+
 
         JPanel furniturePanels = new JPanel();
         furniturePanels.setLayout(new GridLayout(2,2));
@@ -86,15 +77,14 @@ public class Window extends JFrame {
 
         EmployeeGUI employeeGUI = new EmployeeGUI();
         add(employeeGUI);
-        add(adPanel);
+
+        AdvertisementGUI advertisementGUI = new AdvertisementGUI();
+        add(advertisementGUI);
+
+
         add(furniturePanels);
         add(glassPanel);
         add(cupboardPanel);
-
-
-
-        adPanel.add(askAdCount);
-        adPanel.add(adCountChange);
 
         furniturePanels.add(askPanelPurchasePrice);
         furniturePanels.add(changePanelPurchasePrice);

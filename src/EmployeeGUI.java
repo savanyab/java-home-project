@@ -10,8 +10,8 @@ public class EmployeeGUI extends JPanel{
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
         JLabel askEmployeeCount = new JLabel();
-        JTextArea employeeInfo = new JTextArea();
         JSlider changeEmployeeCount = new JSlider(0, 20);
+        JTextArea employeeInfo = new JTextArea();
 
         askEmployeeCount.setText("Hány alkalmazottat foglalkoztassunk a hónapban?");
         askEmployeeCount.setBounds(10, 10, 300, 20);
