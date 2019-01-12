@@ -16,7 +16,7 @@ public class EmployeeGUI extends JPanel{
         askEmployeeCount.setText("Hány alkalmazottat foglalkoztassunk a hónapban?");
         askEmployeeCount.setBounds(10, 10, 300, 20);
 
-        employeeInfo.setBounds(350, 10, 250, 80);
+        employeeInfo.setBounds(350, 10, 270, 80);
         employeeInfo.setEditable(false);
         employeeInfo.setText("Jelenleg alkalmazottak száma: " + employees.getEmployeeCount() + "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() + "\nMaximum termelékenység: " + employees.getMaxProductsByEmployees());
 

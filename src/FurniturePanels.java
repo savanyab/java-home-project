@@ -7,6 +7,8 @@ public class FurniturePanels extends RawMaterial {
 
     public int getPurchasePrice() {return panelPurchasePrice;}
 
+    public void setPanelPurchasePrice(int a) { panelPurchasePrice = a; }
+
     private void decidePanelPurchasePrice() {
         System.out.println("Milyen áron vegyünk bútorlapot? A piacon 3000 és 6000 Ft között árulják.");
         try {
