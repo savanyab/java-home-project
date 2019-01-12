@@ -15,34 +15,16 @@ public class Employees {
     public int getEmployeeCount() {
         return employeeCount;
     }
+
+    public int getWAGE() {return WAGE;}
     // endregion
 
-    public void decideEmployeeCount() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Jelenleg " + employeeCount + " fő alkalmazottunk van. Hogyan változzon a létszám?");
-
-        try {
-            int i = Integer.parseInt(sc.next());
-            if (employeeCount + i < 0){
-                System.out.println("Alkalmazottak száma: " + employeeCount + ". Többet nem lehet elbocsátani.");
-                decideEmployeeCount();
-            }else  {
-                changeEmployeeCount(i);
-                setMaxProductByEmployees();
-            }
-
-        } catch(InputMismatchException | NumberFormatException e) {
-            System.out.println("Egész számot írj be!");
-            decideEmployeeCount();
-        }
-    }
-
-    private void changeEmployeeCount(int i) {
-        employeeCount += i;
+    public void changeEmployeeCount(int i) {
+        employeeCount = i;
         System.out.println("Alkalmazottak száma: " + employeeCount);
     }
 
-    private void setMaxProductByEmployees() {
+    public void setMaxProductByEmployees() {
         maxProductsByEmployees = employeeCount * 30;
         System.out.println("Maximum " + maxProductsByEmployees + " egység terméket tudnak előállítani a hónapban.");
     }

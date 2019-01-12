@@ -7,7 +7,7 @@ public class Window extends JFrame {
     Company company = new Company();
     FurniturePanels panels = new FurniturePanels();
     Glass glass = new Glass();
-    Employees employees = new Employees();
+
     Cupboards cupboards = new Cupboards();
     Advertisement ad = new Advertisement();
 
@@ -18,24 +18,8 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new GridLayout(7, 1));
 
-        JLabel companyInfo = new JLabel();
-        companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
-
-        JPanel employeePanel = new JPanel();
-        employeePanel.setLayout(new GridLayout(2, 2));
-
-        JLabel askEmployeeCount = new JLabel();
-        askEmployeeCount.setText("Hogyan változzon a létszám?");
-        JSlider employeeCount = new JSlider(-employees.getEmployeeCount(), 20);
-        employeeCount.setMinorTickSpacing(1);
-        employeeCount.setMajorTickSpacing(5);
-        employeeCount.setPaintTicks(true);
-        employeeCount.setPaintLabels(true);
-        employeeCount.setLabelTable(employeeCount.createStandardLabels(1));
-        JButton confirmChange = new JButton("Jóváhagyás");
-
         JPanel adPanel = new JPanel();
-        adPanel.setLayout(new GridLayout(2, 2));
+        adPanel.setLayout(new GridLayout(1, 2));
         JLabel askAdCount = new JLabel();
         askAdCount.setText("Hogyan változzon a reklámok száma?");
         JSlider adCountChange = new JSlider(-ad.getAdCount(), 20);
@@ -43,8 +27,6 @@ public class Window extends JFrame {
         adCountChange.setMajorTickSpacing(5);
         adCountChange.setPaintTicks(true);
         adCountChange.setPaintLabels(true);
-        adCountChange.setLabelTable(employeeCount.createStandardLabels(1));
-        JButton confirmAdChange = new JButton("Jóváhagyás");
 
         JPanel furniturePanels = new JPanel();
         furniturePanels.setLayout(new GridLayout(2,2));
@@ -57,7 +39,6 @@ public class Window extends JFrame {
         changePanelPurchasePrice.setPaintTicks(true);
         changePanelPurchasePrice.setPaintLabels(true);
         changePanelPurchasePrice.setLabelTable(changePanelPurchasePrice.createStandardLabels(1000));
-        JButton confirmPanelPurchasePrice = new JButton("Jóváhagyás");
 
         JLabel askPanelsToBuy = new JLabel("Mennyi bútorlapot vegyünk?");
         JSlider setPanelQuantity = new JSlider(0, 100);
@@ -66,8 +47,6 @@ public class Window extends JFrame {
         setPanelQuantity.setPaintTicks(true);
         setPanelQuantity.setPaintLabels(true);
         setPanelQuantity.setLabelTable(setPanelQuantity.createStandardLabels(10));
-        JButton confirmPanelQuantity = new JButton("Jóváhagyás");
-
 
         JPanel glassPanel = new JPanel();
         glassPanel.setLayout(new GridLayout(2, 2));
@@ -78,35 +57,63 @@ public class Window extends JFrame {
         changeGlassPurchasePrice.setPaintTicks(true);
         changeGlassPurchasePrice.setPaintLabels(true);
         changeGlassPurchasePrice.setLabelTable(changePanelPurchasePrice.createStandardLabels(1000));
-        JButton confirmGlassPurchasePrice = new JButton("Jóváhagyás");
+
+        JLabel askGlassToBuy = new JLabel("Mennyi üveget vegyünk?");
+        JSlider setGlassQuantity = new JSlider(0, 100);
+        setGlassQuantity.setMinorTickSpacing(5);
+        setGlassQuantity.setMajorTickSpacing(10);
+        setGlassQuantity.setPaintTicks(true);
+        setGlassQuantity.setPaintLabels(true);
+        setGlassQuantity.setLabelTable(setPanelQuantity.createStandardLabels(10));
 
         JPanel cupboardPanel = new JPanel();
+        cupboardPanel.setLayout(new GridLayout(2, 2));
+        JLabel askCupboardsToProduce = new JLabel("Mennyi szekrényt állítsunk elő?");
+        JSlider setCupboardQuantity = new JSlider(0, 100);
+        setCupboardQuantity.setMinorTickSpacing(5);
+        setCupboardQuantity.setMajorTickSpacing(10);
+        setCupboardQuantity.setPaintTicks(true);
+        setCupboardQuantity.setPaintLabels(true);
+        setCupboardQuantity.setLabelTable(setPanelQuantity.createStandardLabels(10));
 
-        add(companyInfo);
-        add(employeePanel);
+        JLabel askSellingPrice = new JLabel("Mennyi szekrényt próbáljunk eladni?");
+        JSlider setSellingPrice = new JSlider(0, 100);
+        setSellingPrice.setMinorTickSpacing(5);
+        setSellingPrice.setMajorTickSpacing(10);
+        setSellingPrice.setPaintTicks(true);
+        setSellingPrice.setPaintLabels(true);
+        setSellingPrice.setLabelTable(setPanelQuantity.createStandardLabels(10));
+
+        EmployeeGUI employeeGUI = new EmployeeGUI();
+        add(employeeGUI);
         add(adPanel);
         add(furniturePanels);
         add(glassPanel);
         add(cupboardPanel);
 
-        employeePanel.add(askEmployeeCount);
-        employeePanel.add(employeeCount);
-        employeePanel.add(confirmChange);
+
 
         adPanel.add(askAdCount);
         adPanel.add(adCountChange);
-        adPanel.add(confirmAdChange);
 
         furniturePanels.add(askPanelPurchasePrice);
         furniturePanels.add(changePanelPurchasePrice);
-        furniturePanels.add(confirmPanelPurchasePrice);
         furniturePanels.add(askPanelsToBuy);
         furniturePanels.add(setPanelQuantity);
-        furniturePanels.add(confirmPanelQuantity);
 
         glassPanel.add(askGlassPurchasePrice);
         glassPanel.add(changeGlassPurchasePrice);
-        glassPanel.add(confirmGlassPurchasePrice);
+        glassPanel.add(askGlassToBuy);
+        glassPanel.add(setGlassQuantity);
+
+        cupboardPanel.add(askCupboardsToProduce);
+        cupboardPanel.add(setCupboardQuantity);
+        cupboardPanel.add(askSellingPrice);
+        cupboardPanel.add(setSellingPrice);
+
+        JButton accept = new JButton("Jóváhagyás");
+        add(accept);
+
     }
 
 
