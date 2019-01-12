@@ -12,7 +12,7 @@ public class Window extends JFrame {
 
     public Window() {
         setTitle("FurnitureFactory");
-        setSize(650, 800);
+        setSize(700, 800);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -65,7 +65,7 @@ public class Window extends JFrame {
 
         employeeGUI.setBounds(0, 0, 800, 100);
         advertisementGUI.setBounds(0, 100, 800, 100);
-        tabbedPane.setBounds(0, 200, 800, 200);
+        tabbedPane.setBounds(0, 200, 800, 300);
         add(employeeGUI);
         add(advertisementGUI);
         //add(furniturePanelsGUI);
