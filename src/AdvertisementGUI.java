@@ -16,6 +16,11 @@ public class AdvertisementGUI extends JPanel {
         askAdCount.setText("Mennyi reklámot kérjünk a hónapban?");
         askAdCount.setBounds(10, 10, 300, 20);
 
+        adInfo.setBounds(350, 10, 250, 80);
+        adInfo.setEditable(false);
+        adInfo.setText("Jelenleg a reklámok száma: " + ad.getAdCount() + "\nHavi reklámköltség: " + ad.getAdCount() * ad.getAdPrice() + "\nAz eladási arányt maximum " + ad.getAdCount() * 5 + "%-kal növeli.");
+
+
         adCountSlide.setMinorTickSpacing(1);
         adCountSlide.setMajorTickSpacing(5);
         adCountSlide.setPaintTicks(true);
@@ -26,8 +31,6 @@ public class AdvertisementGUI extends JPanel {
             adInfo.setText("Reklámok száma: " + ad.getAdCount() + "\nHavi reklámköltség: " + ad.getAdCount() * ad.getAdPrice() + "\nAz eladási arányt maximum " + ad.getAdCount() * 5 + "%-kal növeli.");
         });
 
-        adInfo.setBounds(350, 10, 250, 80);
-        adInfo.setEditable(false);
 
         add(askAdCount);
         add(adCountSlide);

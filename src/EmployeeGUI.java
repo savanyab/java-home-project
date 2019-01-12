@@ -10,31 +10,35 @@ public class EmployeeGUI extends JPanel{
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
         JLabel askEmployeeCount = new JLabel();
-        JSlider changeEmployeeCount = new JSlider(0, 20);
+        JSlider employeeSlide = new JSlider(0, 20);
         JTextArea employeeInfo = new JTextArea();
 
         askEmployeeCount.setText("Hány alkalmazottat foglalkoztassunk a hónapban?");
         askEmployeeCount.setBounds(10, 10, 300, 20);
 
-        changeEmployeeCount.setMinorTickSpacing(1);
-        changeEmployeeCount.setMajorTickSpacing(5);
-        changeEmployeeCount.setPaintTicks(true);
-        changeEmployeeCount.setPaintLabels(true);
-        changeEmployeeCount.setLabelTable(changeEmployeeCount.createStandardLabels(5));
-        changeEmployeeCount.setBounds(10, 50, 300, 40);
-        changeEmployeeCount.setValue(employees.getEmployeeCount());
-        changeEmployeeCount.addChangeListener((e) -> {
-            employees.changeEmployeeCount(changeEmployeeCount.getValue());
+        employeeInfo.setBounds(350, 10, 250, 80);
+        employeeInfo.setEditable(false);
+        employeeInfo.setText("Jelenleg alkalmazottak száma: " + employees.getEmployeeCount() + "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() + "\nMaximum termelékenység: " + employees.getMaxProductsByEmployees());
+
+
+        employeeSlide.setMinorTickSpacing(1);
+        employeeSlide.setMajorTickSpacing(5);
+        employeeSlide.setPaintTicks(true);
+        employeeSlide.setPaintLabels(true);
+        employeeSlide.setLabelTable(employeeSlide.createStandardLabels(5));
+        employeeSlide.setBounds(10, 50, 300, 40);
+        employeeSlide.setValue(employees.getEmployeeCount());
+
+        employeeSlide.addChangeListener((e) -> {
+            employees.changeEmployeeCount(employeeSlide.getValue());
             employees.setMaxProductByEmployees();
             employeeInfo.setText("Alkalmazottak száma: " + employees.getEmployeeCount() + "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() + "\nMaximum termelékenység: " + employees.getMaxProductsByEmployees());
         });
 
-        employeeInfo.setBounds(350, 10, 250, 80);
-        employeeInfo.setEditable(false);
 
         add(employeeInfo);
         add(askEmployeeCount);
-        add(changeEmployeeCount);
+        add(employeeSlide);
 
 
     }
