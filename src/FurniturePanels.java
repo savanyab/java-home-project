@@ -1,6 +1,6 @@
 public class FurniturePanels extends RawMaterial {
     private int panelPurchasePrice;
-    private int purchasedQuantity;
+
 
     public FurniturePanels(int panelPurchasePrice) {
         this.panelPurchasePrice = panelPurchasePrice;
@@ -14,8 +14,6 @@ public class FurniturePanels extends RawMaterial {
         expenses = a * panelPurchasePrice;
         System.out.println("Bútorlap vásárlás költsége: " + expenses);
     }
-
-    public int getPurchasedQuantity() { return purchasedQuantity; }
 
     public int getExpenses() { return expenses; }
 

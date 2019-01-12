@@ -6,8 +6,6 @@ public class Window extends JFrame {
 
     Company company = new Company();
 
-    Glass glass = new Glass();
-
     Cupboards cupboards = new Cupboards();
 
     public Window() {
@@ -17,25 +15,6 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
 
-
-
-        JPanel glassPanel = new JPanel();
-        glassPanel.setLayout(new GridLayout(2, 2));
-        JLabel askGlassPurchasePrice = new JLabel("Milyen áron szerezzünk be üveget?");
-        JSlider changeGlassPurchasePrice = new JSlider(2500, 5000);
-        changeGlassPurchasePrice.setMinorTickSpacing(100);
-        changeGlassPurchasePrice.setMajorTickSpacing(1000);
-        changeGlassPurchasePrice.setPaintTicks(true);
-        changeGlassPurchasePrice.setPaintLabels(true);
-        changeGlassPurchasePrice.setLabelTable(changeGlassPurchasePrice.createStandardLabels(1000));
-
-        JLabel askGlassToBuy = new JLabel("Mennyi üveget vegyünk?");
-        JSlider setGlassQuantity = new JSlider(0, 100);
-        setGlassQuantity.setMinorTickSpacing(5);
-        setGlassQuantity.setMajorTickSpacing(10);
-        setGlassQuantity.setPaintTicks(true);
-        setGlassQuantity.setPaintLabels(true);
-        setGlassQuantity.setLabelTable(setGlassQuantity.createStandardLabels(10));
 
         JPanel cupboardPanel = new JPanel();
         cupboardPanel.setLayout(new GridLayout(2, 2));
@@ -58,29 +37,20 @@ public class Window extends JFrame {
         EmployeeGUI employeeGUI = new EmployeeGUI();
         AdvertisementGUI advertisementGUI = new AdvertisementGUI();
         FurniturePanelsGUI furniturePanelsGUI = new FurniturePanelsGUI();
+        GlassGUI glassGUI = new GlassGUI();
 
 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Bútorlapok", furniturePanelsGUI);
+        tabbedPane.addTab("Üveg", glassGUI);
+
 
         employeeGUI.setBounds(0, 0, 800, 100);
         advertisementGUI.setBounds(0, 100, 800, 100);
         tabbedPane.setBounds(0, 200, 800, 300);
         add(employeeGUI);
         add(advertisementGUI);
-        //add(furniturePanelsGUI);
         add(tabbedPane);
-
-
-        //add(glassPanel);
-        //add(cupboardPanel);
-
-
-
-        glassPanel.add(askGlassPurchasePrice);
-        glassPanel.add(changeGlassPurchasePrice);
-        glassPanel.add(askGlassToBuy);
-        glassPanel.add(setGlassQuantity);
 
         cupboardPanel.add(askCupboardsToProduce);
         cupboardPanel.add(setCupboardQuantity);

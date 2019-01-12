@@ -18,6 +18,7 @@ public class FurniturePanelsGUI extends JPanel {
         FurniturePanels panels = new FurniturePanels(panelsPriceSlide.getValue());
 
 
+
         askPanelPurchasePrice.setText("Milyen áron szerezzük be a bútorlapokat?");
         askPanelPurchasePrice.setBounds(10, 10, 300, 20);
 
@@ -32,6 +33,7 @@ public class FurniturePanelsGUI extends JPanel {
         panelsPriceSlide.setPaintLabels(true);
         panelsPriceSlide.setLabelTable(panelsPriceSlide.createStandardLabels(1000));
         panelsPriceSlide.setBounds(10, 50, 300, 40);
+
         panelsPriceSlide.addChangeListener((e) -> {
             panels.setPanelPurchasePrice(panelsPriceSlide.getValue());
             purchaseInfo.setText("Jelenlegi bútorlapkészlet: " + panels.getStock() + "\nBeszerzési ár: " + panels.getPurchasePrice());

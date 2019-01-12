@@ -1,46 +1,26 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Glass extends RawMaterial {
     private int glassPurchasePrice;
-    private Scanner sc = new Scanner(System.in);
+
+    public Glass(int glassPurchasePrice) {
+        this.glassPurchasePrice = glassPurchasePrice;
+    }
 
     public int getPurchasePrice() {return glassPurchasePrice;}
 
-    private void decideGlassPurchasePrice() {
-        System.out.println("Milyen áron vegyünk üveget? A piacon 2500 és 5000 Ft között árulják.");
-        try {
-            int a = Integer.parseInt(sc.next());
-            if (a >= 2500 && a <= 5000) {
-               glassPurchasePrice = a;
-            } else {
-                System.out.println("2500 és 5000 Ft közti összeget adj meg!");
-                decideGlassPurchasePrice();
-            }
-        } catch (InputMismatchException | NumberFormatException e) {
-            System.out.println("Pozitív egész számot vagy nullát írj be!");
-            decideGlassPurchasePrice();
-        }
+    public void setExpenses(int a) {
+        expenses = a * glassPurchasePrice;
+        System.out.println("Üveg vásárlás költsége: " + expenses);
     }
 
-    public void purchase() {
-        decideGlassPurchasePrice();
-        System.out.println("Mennyi üveget vegyünk? (" + stock + " van raktáron. Egy egység ára " + glassPurchasePrice+ " .Egy egység szekrényhez 1 egység üveg szükséges.)" );
-        try {
-            int a = Integer.parseInt(sc.next());
-            if (a >= 0) {
-                stock += a;
-                expenses += a * glassPurchasePrice;
-                System.out.println("Üveg mennyiség: " + stock);
-                System.out.println("Üveg vásárlás költsége: " + expenses);
-            } else {
-                System.out.println("A vásárolt mennyiség nem lehet negatív");
-                purchase();
-            }
-        } catch (InputMismatchException | NumberFormatException e) {
-            System.out.println("Pozitív egész számot vagy nullát írj be!");
-            purchase();
-        }
+    public void setGlassPurchasePrice(int a) { glassPurchasePrice = a; }
+
+    public void setStock() {
+        stock += purchasedQuantity;
+        System.out.println("Üveg mennyiség: " + stock);
+    }
+
+    public void purchase(int a) {
+        purchasedQuantity = a;
     }
 
     public void reduceGlassStock(int productQuantity, int glassPerProduct) {
