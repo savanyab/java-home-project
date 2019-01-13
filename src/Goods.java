@@ -4,5 +4,5 @@ public abstract class Goods {
     protected int producedPerMonth;
     protected int soldPerMonth;
 
-    public abstract void produce(FurniturePanels p, Glass g, Employees e);
+    //public abstract void produce(FurniturePanels p, Glass g, Employees e);
 }

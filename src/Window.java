@@ -26,19 +26,20 @@ public class Window extends JFrame {
         tabbedPane.addTab("Üveg", glassGUI);
         tabbedPane.addTab("Szekrények", cupboardsGUI);
 
+        JButton acceptChanges = new JButton("Jóváhagyás");
 
         employeeGUI.setBounds(0, 0, 800, 100);
         advertisementGUI.setBounds(0, 100, 800, 100);
         tabbedPane.setBounds(0, 200, 800, 400);
+        acceptChanges.setBounds(280, 630, 110, 25);
 
         add(employeeGUI);
         add(advertisementGUI);
         add(tabbedPane);
+        add(acceptChanges);
 
 
 
-        JButton accept = new JButton("Jóváhagyás");
-        //add(accept);
 
     }
 

@@ -38,7 +38,7 @@ public class GlassGUI extends JPanel {
                 "\nVásárolni kívánt mennyiség: " + glassQuantitySlide.getValue() +
                 "\nVásárlás költsége: " + (glass.getExpenses()));
         purchaseInfo.setEditable(false);
-        purchaseInfo.setBounds(350, 10, 270, 80);
+        purchaseInfo.setBounds(390, 10, 270, 80);
 
         glassPriceSlide.setMinorTickSpacing(100);
         glassPriceSlide.setMajorTickSpacing(1000);

@@ -27,7 +27,7 @@ public class FurniturePanelsGUI extends JPanel {
                 "\nVásárolni kívánt mennyiség: " + panelsQuantitySlide.getValue() +
                 "\nVásárlás költsége: " + (panels.getExpenses()));
         purchaseInfo.setEditable(false);
-        purchaseInfo.setBounds(350, 10, 270, 80);
+        purchaseInfo.setBounds(390, 10, 270, 80);
         
         changeListener = e -> {
             panels.purchase(panelsQuantitySlide.getValue());

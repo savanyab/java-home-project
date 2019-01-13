@@ -14,8 +14,6 @@ public class Cupboards extends Goods {
 
     public int getIncome() { return income; }
 
-
-    @Override
     public void produce(FurniturePanels panels, Glass glass, Employees employees) {
         int a = decideQuantityToProduce(panels, glass, employees);
         cupboardStock += a;
