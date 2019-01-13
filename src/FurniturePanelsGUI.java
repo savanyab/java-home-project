@@ -23,7 +23,7 @@ public class FurniturePanelsGUI extends JPanel {
         panelsQuantitySlide.setValue(0);
 
         purchaseInfo.setText("Jelenlegi bútorlapkészlet: " + panels.getStock() +
-                "\n Beszerzési ár: " + panelsPriceSlide.getValue() +
+                "\nBeszerzési ár: " + panelsPriceSlide.getValue() +
                 "\nVásárolni kívánt mennyiség: " + panelsQuantitySlide.getValue() +
                 "\nVásárlás költsége: " + (panels.getExpenses()));
         purchaseInfo.setEditable(false);

@@ -8,7 +8,7 @@ public class Glass extends RawMaterial {
     public int getPurchasePrice() {return glassPurchasePrice;}
 
     public void setExpenses(int a) {
-        expenses = a * glassPurchasePrice;
+        expenses = a;
         System.out.println("Üveg vásárlás költsége: " + expenses);
     }
 
