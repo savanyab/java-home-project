@@ -11,7 +11,7 @@ public class FurniturePanels extends RawMaterial {
     public void setPanelPurchasePrice(int a) { panelPurchasePrice = a; }
 
     public void setExpenses(int a) {
-        expenses = a * panelPurchasePrice;
+        expenses = a;
         System.out.println("Bútorlap vásárlás költsége: " + expenses);
     }
 
@@ -19,7 +19,7 @@ public class FurniturePanels extends RawMaterial {
 
     public void purchase(int a) {
         purchasedQuantity = a;
-        System.out.println("Bútorlap mennyiség: " + (stock + purchasedQuantity));
+        System.out.println("Bútorlap vásárolt mennyiség: " + purchasedQuantity);
     }
 
     public void setStock() {
