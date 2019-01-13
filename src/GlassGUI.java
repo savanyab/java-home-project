@@ -58,7 +58,7 @@ public class GlassGUI extends JPanel {
 
         glassQuantitySlide.addChangeListener(changeListener);
 
-        acceptPurchase.setBounds(380, 200, 200, 30);
+        acceptPurchase.setBounds(390, 200, 200, 30);
         acceptPurchase.addActionListener((e) -> {
             glassQuantitySlide.setEnabled(false);
             glassPriceSlide.setEnabled(false);

@@ -62,7 +62,7 @@ public class FurniturePanelsGUI extends JPanel {
 
         panelsQuantitySlide.addChangeListener(changeListener);
 
-        acceptPurchase.setBounds(380, 200, 200, 30);
+        acceptPurchase.setBounds(390, 200, 200, 30);
         acceptPurchase.addActionListener((e) -> {
             panelsQuantitySlide.setEnabled(false);
             panelsPriceSlide.setEnabled(false);

@@ -40,6 +40,11 @@ public class CupboardsGUI extends JPanel {
         acceptSellingPrice.setBounds(320, 220, 60, 25);
 
         cupboardInfo.setBounds(390, 40, 270, 200);
+        cupboardInfo.setEditable(false);
+
+        acceptSellingPrice.setEnabled(false);
+        cupboardSellSlide.setEnabled(false);
+        acceptSellingQuantity.setEnabled(false);
 
         cupboardProductionSlide.setValue(0);
         cupboardSellSlide.setValue(0);
@@ -62,6 +67,8 @@ public class CupboardsGUI extends JPanel {
         cupboardSellingPrice.setPaintTicks(true);
         cupboardSellingPrice.setPaintLabels(true);
         cupboardSellingPrice.setLabelTable(cupboardSellingPrice.createStandardLabels(10));
+        cupboardSellingPrice.setEnabled(false);
+
 
         add(askCupboardsToProduce);
         add(cupboardProductionSlide);
