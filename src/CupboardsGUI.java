@@ -42,6 +42,8 @@ public class CupboardsGUI extends JPanel {
         cupboardInfo.setBounds(390, 40, 270, 200);
         cupboardInfo.setEditable(false);
 
+        cupboardSellingPrice.setValue(0);
+
         acceptSellingPrice.setEnabled(false);
         cupboardSellSlide.setEnabled(false);
         acceptSellingQuantity.setEnabled(false);

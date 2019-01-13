@@ -10,7 +10,7 @@ public class Window extends JFrame {
 
     public Window() {
         setTitle("FurnitureFactory");
-        setSize(700, 800);
+        setSize(700, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -22,19 +22,18 @@ public class Window extends JFrame {
         CupboardsGUI cupboardsGUI = new CupboardsGUI();
 
         JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.add("Reklám", advertisementGUI);
+        tabbedPane.add("Alkalmazottak", employeeGUI);
         tabbedPane.addTab("Bútorlapok", furniturePanelsGUI);
         tabbedPane.addTab("Üveg", glassGUI);
         tabbedPane.addTab("Szekrények", cupboardsGUI);
 
         JButton acceptChanges = new JButton("Jóváhagyás");
+        acceptChanges.setEnabled(false);
 
-        employeeGUI.setBounds(0, 0, 700, 100);
-        advertisementGUI.setBounds(0, 100, 700, 100);
-        tabbedPane.setBounds(0, 200, 700, 400);
-        acceptChanges.setBounds(280, 630, 110, 25);
+        tabbedPane.setBounds(0, 20, 700, 320);
+        acceptChanges.setBounds(280, 420, 110, 25);
 
-        add(employeeGUI);
-        add(advertisementGUI);
         add(tabbedPane);
         add(acceptChanges);
     }
