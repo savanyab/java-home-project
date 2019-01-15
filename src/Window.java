@@ -4,8 +4,12 @@ import java.awt.*;
 
 public class Window extends JFrame {
 
-    Company company = new Company();
-
+    private Company company = new Company();
+    private Advertisement ad = new Advertisement();
+    private Glass glass = new Glass();
+    private Employees employees = new Employees();
+    private FurniturePanels panels = new FurniturePanels();
+    private Cupboards cupboards = new Cupboards();
 
 
     public Window() {
@@ -15,11 +19,11 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
 
-        EmployeeGUI employeeGUI = new EmployeeGUI();
-        AdvertisementGUI advertisementGUI = new AdvertisementGUI();
-        FurniturePanelsGUI furniturePanelsGUI = new FurniturePanelsGUI();
-        GlassGUI glassGUI = new GlassGUI();
-        CupboardsGUI cupboardsGUI = new CupboardsGUI();
+        EmployeeGUI employeeGUI = new EmployeeGUI(employees);
+        AdvertisementGUI advertisementGUI = new AdvertisementGUI(ad);
+        FurniturePanelsGUI furniturePanelsGUI = new FurniturePanelsGUI(panels);
+        GlassGUI glassGUI = new GlassGUI(glass);
+        CupboardsGUI cupboardsGUI = new CupboardsGUI(cupboards);
 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.add("Reklám", advertisementGUI);

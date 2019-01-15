@@ -5,12 +5,10 @@ import java.awt.*;
 
 public class CupboardsGUI extends JPanel {
 
-    public CupboardsGUI() {
+    public CupboardsGUI(Cupboards cupboards) {
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
-
-        Cupboards cupboards = new Cupboards();
 
         JLabel askCupboardsToProduce = new JLabel("Mennyi szekrényt állítsunk elő?");
         JLabel askSellingQuantity = new JLabel("Mennyi szekrényt próbáljunk eladni?");

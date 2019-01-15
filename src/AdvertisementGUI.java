@@ -3,8 +3,7 @@ import java.awt.*;
 
 public class AdvertisementGUI extends JPanel {
 
-    public AdvertisementGUI() {
-        Advertisement ad = new Advertisement();
+    public AdvertisementGUI(Advertisement ad) {
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -38,7 +37,9 @@ public class AdvertisementGUI extends JPanel {
         adCountSlide.setValue(ad.getAdCount());
         adCountSlide.addChangeListener((e) -> {
             ad.changeAdCount(adCountSlide.getValue());
-            adInfo.setText("Reklámok száma: " + ad.getAdCount() + "\nHavi reklámköltség: " + ad.getAdCount() * ad.getAdPrice() + "\nAz eladási arányt maximum " + ad.getAdCount() * 5 + "%-kal növeli.");
+            adInfo.setText("Reklámok száma: " + ad.getAdCount() +
+                    "\nHavi reklámköltség: " + ad.getAdCount() * ad.getAdPrice() +
+                    "\nAz eladási arányt maximum " + ad.getAdCount() * 5 + "%-kal növeli.");
         });
 
 

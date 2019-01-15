@@ -5,7 +5,7 @@ import java.awt.*;
 public class GlassGUI extends JPanel {
     private ChangeListener changeListener;
 
-    public GlassGUI() {
+    public GlassGUI(Glass glass) {
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -17,7 +17,7 @@ public class GlassGUI extends JPanel {
         JTextArea purchaseInfo = new JTextArea();
         JButton acceptPurchase = new JButton("Vásárlás jóváhagyása");
 
-        Glass glass = new Glass(glassPriceSlide.getValue());
+        glass.setPurchasePrice(glassPriceSlide.getValue());
 
         changeListener = e -> {
             glass.purchase(glassQuantitySlide.getValue());

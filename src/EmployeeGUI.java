@@ -3,9 +3,7 @@ import java.awt.*;
 
 public class EmployeeGUI extends JPanel{
 
-    private Employees employees = new Employees();
-
-    public EmployeeGUI() {
+    public EmployeeGUI(Employees employees) {
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
         JLabel askEmployeeCount = new JLabel();
@@ -43,7 +41,6 @@ public class EmployeeGUI extends JPanel{
                     "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() +
                     "\nMaximum termelékenység: " + employees.getMaxProductsByEmployees());
         });
-
 
         add(employeeInfo);
         add(askEmployeeCount);

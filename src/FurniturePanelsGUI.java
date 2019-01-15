@@ -5,7 +5,7 @@ import java.awt.*;
 public class FurniturePanelsGUI extends JPanel {
     private ChangeListener changeListener;
 
-    public FurniturePanelsGUI() {
+    public FurniturePanelsGUI(FurniturePanels panels) {
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
@@ -15,7 +15,9 @@ public class FurniturePanelsGUI extends JPanel {
         JSlider panelsQuantitySlide = new JSlider(0, 100);
         JTextArea purchaseInfo = new JTextArea();
         JButton acceptPurchase = new JButton("Vásárlás jóváhagyása");
-        FurniturePanels panels = new FurniturePanels(panelsPriceSlide.getValue());
+
+        panels.setPurchasePrice(panelsPriceSlide.getValue());
+
 
         askPanelPurchasePrice.setText("Milyen áron szerezzük be a bútorlapokat?");
         askPanelPurchasePrice.setBounds(10, 10, 300, 20);
@@ -31,7 +33,7 @@ public class FurniturePanelsGUI extends JPanel {
         
         changeListener = e -> {
             panels.purchase(panelsQuantitySlide.getValue());
-            panels.setPanelPurchasePrice(panelsPriceSlide.getValue());
+            panels.setPurchasePrice(panelsPriceSlide.getValue());
             panels.setExpenses(panelsPriceSlide.getValue() * panelsQuantitySlide.getValue());
             purchaseInfo.setText("Jelenlegi bútorlapkészlet: " + panels.getStock() +
                     "\nBeszerzési ár: " + panels.getPurchasePrice() +

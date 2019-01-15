@@ -1,14 +1,9 @@
 public class FurniturePanels extends RawMaterial {
     private int panelPurchasePrice;
 
-
-    public FurniturePanels(int panelPurchasePrice) {
-        this.panelPurchasePrice = panelPurchasePrice;
-    }
-
     public int getPurchasePrice() {return panelPurchasePrice;}
 
-    public void setPanelPurchasePrice(int a) { panelPurchasePrice = a; }
+    public void setPurchasePrice(int purchasePrice) { panelPurchasePrice = purchasePrice; }
 
     public void setExpenses(int a) {
         expenses = a;

@@ -1,11 +1,9 @@
 public class Glass extends RawMaterial {
     private int glassPurchasePrice;
 
-    public Glass(int glassPurchasePrice) {
-        this.glassPurchasePrice = glassPurchasePrice;
-    }
-
     public int getPurchasePrice() {return glassPurchasePrice;}
+
+    public void setPurchasePrice(int purchasePrice) { glassPurchasePrice = purchasePrice; }
 
     public void setExpenses(int a) {
         expenses = a;
