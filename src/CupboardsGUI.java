@@ -1,11 +1,9 @@
-import com.sun.scenario.effect.impl.sw.java.JSWBlend_COLOR_BURNPeer;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class CupboardsGUI extends JPanel {
 
-    public CupboardsGUI(Cupboards cupboards) {
+    public CupboardsGUI(Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));

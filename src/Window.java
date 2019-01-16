@@ -1,7 +1,5 @@
 import javax.swing.*;
 
-import java.awt.*;
-
 public class Window extends JFrame {
 
     private Company company = new Company();
@@ -23,7 +21,7 @@ public class Window extends JFrame {
         AdvertisementGUI advertisementGUI = new AdvertisementGUI(ad);
         FurniturePanelsGUI furniturePanelsGUI = new FurniturePanelsGUI(panels);
         GlassGUI glassGUI = new GlassGUI(glass);
-        CupboardsGUI cupboardsGUI = new CupboardsGUI(cupboards);
+        CupboardsGUI cupboardsGUI = new CupboardsGUI(cupboards, employees, glass, panels);
 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.add("Reklám", advertisementGUI);

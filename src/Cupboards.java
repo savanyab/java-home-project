@@ -7,6 +7,7 @@ public class Cupboards extends Goods {
     private int panelPerCupboard = 2;
     private int income;
     private int maxSellingPrice;
+    private int maxProducts;
     private Scanner sc = new Scanner(System.in);
 
 
@@ -14,8 +15,7 @@ public class Cupboards extends Goods {
 
     public int getIncome() { return income; }
 
-    public void produce(FurniturePanels panels, Glass glass, Employees employees) {
-        int a = decideQuantityToProduce(panels, glass, employees);
+    public void produce(int a, FurniturePanels panels, Glass glass, Employees employees) {
         cupboardStock += a;
         producedPerMonth = a;
         System.out.println("Előállított szekrények: " + producedPerMonth);
@@ -24,31 +24,21 @@ public class Cupboards extends Goods {
         glass.reduceGlassStock(a, glassPerCupboard);
     }
 
-    private boolean canBeProduced(int a, FurniturePanels panels, Glass glass, Employees employees) {
-     return a <= employees.getMaxProductsByEmployees() &&
-             a * panelPerCupboard <= panels.getStock() &&
-             a * glassPerCupboard <= glass.getStock();
-    }
 
-    private int decideQuantityToProduce(FurniturePanels panels, Glass glass, Employees employees) {
-        System.out.println("Mennyi szekrényt állítsunk elő? Az üvegkészletből maximum " +
-                (glass.getStock() / glassPerCupboard)
-                + ", a bútorlapkészletből maximum " + (panels.getStock() / panelPerCupboard)
-                + " egység állítható elő. Az alkalmazottak maximum " + employees.getMaxProductsByEmployees()
-                + " egység előállítására képesek.");
-        try {
-            int a = Integer.parseInt(sc.next());
-            if (canBeProduced(a, panels, glass, employees)) {
-                return a;
-            } else {
-                System.out.println("Nincs elég erőforrás ennyihez");
-                produce(panels, glass, employees);
+    private int setMaximumProducts(FurniturePanels panels, Glass glass, Employees employees) {
+        int maxQuantityFromPanels = panels.getStock() / panelPerCupboard;
+        int maxQuantityFromGlass = glass.getStock() / glassPerCupboard;
+        int maxQuantityFromEmployees = employees.getMaxProductsByEmployees();
+
+        int[] maximums = { maxQuantityFromPanels, maxQuantityFromGlass, maxQuantityFromEmployees};
+        int max = 0;
+        for (int i = 0; i < maximums.length; i++) {
+            if(maximums[i] > max) {
+                max = maximums[i];
             }
-        } catch (InputMismatchException | NumberFormatException e) {
-            System.out.println("Pozitív egész számot írj be!");
-            decideQuantityToProduce(panels, glass, employees);
         }
-        return 1;
+        maxProducts = max;
+        return max;
     }
 
 
@@ -132,4 +122,10 @@ public class Cupboards extends Goods {
         System.out.println("Bevétel az eladott szekrényekből: " + income);
     }
 
+    public String toString() {
+        return "Előállított szekrények: " + producedPerMonth +
+                "\nSzekrény raktárkészlet: " + cupboardStock +
+                "\nSzekrény eladási ár: " + sellingPrice +
+                "\nBevétel az eladott szekrényekből: " + income;
+    }
 }
