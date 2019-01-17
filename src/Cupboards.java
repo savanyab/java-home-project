@@ -5,6 +5,9 @@ public class Cupboards extends Goods {
     private int income;
     private int maxSellingPrice;
     private int maxProducts;
+    private double sellingRate;
+
+    public double getSellingRate() { return sellingRate; }
 
 
     public int getCupboardStock() {return cupboardStock;}
@@ -55,7 +58,7 @@ public class Cupboards extends Goods {
     private double setSellingRate(Advertisement ad){
         double b = Math.random();
         double rate = b + ad.getAdCount() * 0.05;
-        double sellingRate = (rate < 1 ? rate : 1);
+        sellingRate = (rate < 1 ? rate : 1);
         System.out.println("randomszám: " + b);
         System.out.println("Eladási arány: " + sellingRate);
         return sellingRate;

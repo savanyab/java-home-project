@@ -116,7 +116,15 @@ public class CupboardsGUI extends JPanel {
             acceptSell.setEnabled(false);
             cupboards.setSoldQuantity(cupboardSellSlide.getValue(), ad);
             cupboards.reduceStock();
-
+            cupboardInfo.setText("Előállított szekrények száma: " + cupboards.producedPerMonth +
+                    "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock() +
+                    "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
+                    "\nEladási ár: " + cupboardSellingPrice.getValue() +
+                    "\n\n\n" +
+                    "Eladási arány: " + cupboards.getSellingRate() +
+                    "\nEladott szekrények száma: " + cupboards.soldPerMonth +
+                    "\nRaktáron maradt mennyiség: " + cupboards.getCupboardStock()
+            );
         });
 
         cupboardSellingPrice.setMinorTickSpacing(1000);
