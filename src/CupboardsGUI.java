@@ -6,15 +6,16 @@ public class CupboardsGUI extends JPanel {
     private Employees employees;
     private Glass glass;
     private FurniturePanels panels;
+    private Window window;
 
     private JSlider cupboardProductionSlide;
 
-    public CupboardsGUI(Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
+    public CupboardsGUI(Window window, Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
         this.cupboards = cupboards;
         this.employees = employees;
         this.glass = glass;
         this.panels = panels;
-
+        this.window = window;
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -68,6 +69,7 @@ public class CupboardsGUI extends JPanel {
         });
 
         acceptProduction.addActionListener(e -> {
+            window.increaseDecisionCount();
             cupboards.increaseStock();
             cupboards.reduceRawMaterials(cupboardProductionSlide.getValue(), panels, glass);
             cupboardInfo.setText("Előállított szekrények száma: " + cupboards.getProducedPerMonth() +
@@ -104,6 +106,8 @@ public class CupboardsGUI extends JPanel {
         });
 
         acceptSell.addActionListener(e -> {
+            window.increaseDecisionCount();
+            window.enableAcceptChanges();
             cupboardSellSlide.setEnabled(false);
             cupboardSellingPrice.setEnabled(false);
             acceptSell.setEnabled(false);

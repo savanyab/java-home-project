@@ -4,8 +4,9 @@ import java.awt.*;
 
 public class GlassGUI extends JPanel {
     private ChangeListener changeListener;
+    private Window window;
 
-    public GlassGUI(Glass glass) {
+    public GlassGUI(Window window, Glass glass) {
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -60,6 +61,7 @@ public class GlassGUI extends JPanel {
 
         acceptPurchase.setBounds(390, 200, 200, 30);
         acceptPurchase.addActionListener((e) -> {
+            window.increaseDecisionCount();
             glassQuantitySlide.setEnabled(false);
             glassPriceSlide.setEnabled(false);
             acceptPurchase.setEnabled(false);

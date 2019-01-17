@@ -2,9 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AdvertisementGUI extends JPanel {
+    private Window window;
 
-    public AdvertisementGUI(Advertisement ad) {
-
+    public AdvertisementGUI( Window window, Advertisement ad) {
+        this.window = window;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
@@ -20,6 +21,7 @@ public class AdvertisementGUI extends JPanel {
         acceptAdCount.addActionListener((e) -> {
             adCountSlide.setEnabled(false);
             acceptAdCount.setEnabled(false);
+            window.increaseDecisionCount();
         });
 
         adInfo.setBounds(390, 10, 270, 80);

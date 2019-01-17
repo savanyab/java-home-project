@@ -2,8 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EmployeeGUI extends JPanel{
+    private Window window;
 
-    public EmployeeGUI(Employees employees) {
+    public EmployeeGUI(Window window, Employees employees) {
+        this.window = window;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
         JLabel askEmployeeCount = new JLabel();
@@ -22,6 +24,7 @@ public class EmployeeGUI extends JPanel{
 
         acceptEmployeeCount.setBounds(320, 50, 60, 25);
         acceptEmployeeCount.addActionListener((e) -> {
+            window.increaseDecisionCount();
             acceptEmployeeCount.setEnabled(false);
             employeeSlide.setEnabled(false);
         });

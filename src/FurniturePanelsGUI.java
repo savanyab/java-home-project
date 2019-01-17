@@ -4,8 +4,10 @@ import java.awt.*;
 
 public class FurniturePanelsGUI extends JPanel {
     private ChangeListener changeListener;
+    private Window window;
 
-    public FurniturePanelsGUI(FurniturePanels panels) {
+    public FurniturePanelsGUI(Window window, FurniturePanels panels) {
+        this.window = window;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
@@ -66,6 +68,7 @@ public class FurniturePanelsGUI extends JPanel {
 
         acceptPurchase.setBounds(390, 200, 200, 30);
         acceptPurchase.addActionListener((e) -> {
+            window.increaseDecisionCount();
             panelsQuantitySlide.setEnabled(false);
             panelsPriceSlide.setEnabled(false);
             acceptPurchase.setEnabled(false);

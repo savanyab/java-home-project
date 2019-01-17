@@ -9,6 +9,7 @@ public class Window extends JFrame {
     private FurniturePanels panels = new FurniturePanels();
     private Cupboards cupboards = new Cupboards();
     private static int decisionCount;
+    private JButton acceptChanges;
 
     public Window() {
         setTitle("FurnitureFactory");
@@ -17,12 +18,13 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
 
-        EmployeeGUI employeeGUI = new EmployeeGUI(employees);
-        AdvertisementGUI advertisementGUI = new AdvertisementGUI(ad);
-        FurniturePanelsGUI furniturePanelsGUI = new FurniturePanelsGUI(panels);
-        GlassGUI glassGUI = new GlassGUI(glass);
-        CupboardsGUI cupboardsGUI = new CupboardsGUI(cupboards, employees, glass, panels);
+        EmployeeGUI employeeGUI = new EmployeeGUI(this, employees);
+        AdvertisementGUI advertisementGUI = new AdvertisementGUI(this, ad);
+        FurniturePanelsGUI furniturePanelsGUI = new FurniturePanelsGUI(this, panels);
+        GlassGUI glassGUI = new GlassGUI(this, glass);
+        CupboardsGUI cupboardsGUI = new CupboardsGUI(this, cupboards, employees, glass, panels);
 
+        JTextArea companyInfo = new JTextArea();
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.add("Reklám", advertisementGUI);
         tabbedPane.add("Alkalmazottak", employeeGUI);
@@ -32,16 +34,30 @@ public class Window extends JFrame {
         tabbedPane.addTab("Szekrények", cupboardsGUI);
         tabbedPane.addChangeListener(e -> {cupboardsGUI.recalculate();});
 
+        companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
+        companyInfo.setBounds(0, 350, 700, 50);
 
-        JButton acceptChanges = new JButton("Jóváhagyás");
+        acceptChanges = new JButton("Jóváhagyás");
         acceptChanges.setEnabled(false);
+
+        acceptChanges.addActionListener(e -> {
+
+        });
 
         tabbedPane.setBounds(0, 20, 700, 320);
         acceptChanges.setBounds(280, 420, 110, 25);
 
+        add(companyInfo);
         add(tabbedPane);
         add(acceptChanges);
     }
 
     public void increaseDecisionCount() { decisionCount++; }
+
+    public void enableAcceptChanges() {
+       if (decisionCount == 6) {
+           acceptChanges.setEnabled(true);
+       }
+    }
+
 }
