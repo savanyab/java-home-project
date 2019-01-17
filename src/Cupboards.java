@@ -11,7 +11,7 @@ public class Cupboards extends Goods {
 
     public int getIncome() { return income; }
 
-    public void produce(int quantity, FurniturePanels panels, Glass glass) {
+    public void produce(int quantity) {
         producedPerMonth = quantity;
         System.out.println("Előállított szekrények: " + producedPerMonth);
     }

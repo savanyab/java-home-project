@@ -8,7 +8,7 @@ public class Window extends JFrame {
     private Employees employees = new Employees();
     private FurniturePanels panels = new FurniturePanels();
     private Cupboards cupboards = new Cupboards();
-
+    private static int decisionCount;
 
     public Window() {
         setTitle("FurnitureFactory");
@@ -43,5 +43,5 @@ public class Window extends JFrame {
         add(acceptChanges);
     }
 
-
+    public void increaseDecisionCount() { decisionCount++; }
 }
