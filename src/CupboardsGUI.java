@@ -7,15 +7,17 @@ public class CupboardsGUI extends JPanel {
     private Glass glass;
     private FurniturePanels panels;
     private Window window;
+    private Advertisement ad;
 
     private JSlider cupboardProductionSlide;
 
-    public CupboardsGUI(Window window, Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
+    public CupboardsGUI(Window window, Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels, Advertisement ad) {
         this.cupboards = cupboards;
         this.employees = employees;
         this.glass = glass;
         this.panels = panels;
         this.window = window;
+        this.ad = ad;
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -99,10 +101,11 @@ public class CupboardsGUI extends JPanel {
         cupboardSellSlide.setLabelTable(cupboardSellSlide.createStandardLabels(10));
 
         cupboardSellingPrice.addChangeListener(e -> {
+            cupboards.decideSellingPrice(cupboardSellingPrice.getValue());
             cupboardInfo.setText("Előállított szekrények száma: " + cupboards.producedPerMonth +
                     "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock() +
                     "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
-                    "\nEladási ár: " + cupboardSellingPrice.getValue());
+                    "\nEladási ár: " + cupboards.sellingPrice);
         });
 
         acceptSell.addActionListener(e -> {
@@ -111,6 +114,9 @@ public class CupboardsGUI extends JPanel {
             cupboardSellSlide.setEnabled(false);
             cupboardSellingPrice.setEnabled(false);
             acceptSell.setEnabled(false);
+            cupboards.setSoldQuantity(cupboardSellSlide.getValue(), ad);
+            cupboards.reduceStock();
+
         });
 
         cupboardSellingPrice.setMinorTickSpacing(1000);

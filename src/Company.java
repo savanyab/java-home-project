@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Company {
     private int capital;
     private int income;
@@ -33,21 +31,17 @@ public class Company {
     // endregion
 
     public void nextRound() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Léphetünk a következő körre?");
-        String a = sc.next();
-        if (a.equals("y")) {
-            capital += income - expenses;
-            round++;
-        }
+        capital += income - expenses;
+        round++;
     }
 
     public String toString(Employees e, Cupboards c, FurniturePanels p, Glass g, Advertisement a) {
-        return "Tőke: " + capital
+        return round + ". hónap kezdeti fő adatai: " +
+                "\nTőke: " + capital
                 + ", alkalmazottak száma: " + e.getEmployeeCount()
                 + ", bevétel: " + income
                 + ", kiadások: " + expenses
-                + ", szekrény készlet: " + c.getCupboardStock()
+                + ",\n szekrény készlet: " + c.getCupboardStock()
                 + ", üveg készlet: " + g.getStock()
                 + ", bútorlap készlet: " + p.getStock()
                 + ", reklámok száma: " + a.getAdCount();

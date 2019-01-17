@@ -22,7 +22,7 @@ public class Window extends JFrame {
         AdvertisementGUI advertisementGUI = new AdvertisementGUI(this, ad);
         FurniturePanelsGUI furniturePanelsGUI = new FurniturePanelsGUI(this, panels);
         GlassGUI glassGUI = new GlassGUI(this, glass);
-        CupboardsGUI cupboardsGUI = new CupboardsGUI(this, cupboards, employees, glass, panels);
+        CupboardsGUI cupboardsGUI = new CupboardsGUI(this, cupboards, employees, glass, panels, ad);
 
         JTextArea companyInfo = new JTextArea();
         JTabbedPane tabbedPane = new JTabbedPane();

@@ -61,11 +61,11 @@ public class Cupboards extends Goods {
         return sellingRate;
     }
 
-    private void setSoldQuantity(int quantity, Advertisement ad) {
+    public void setSoldQuantity(int quantity, Advertisement ad) {
         soldPerMonth = (int) (quantity * setSellingRate(ad));
     }
 
-    private void decideSellingPrice(int price) {
+    public void decideSellingPrice(int price) {
        sellingPrice = price;
     }
 
@@ -77,8 +77,7 @@ public class Cupboards extends Goods {
         return maxSellingPrice;
     }
 
-    private void receiveIncomeOfSoldGoods(FurniturePanels p, Glass g) {
-        // setMaxSellingPrice(p, g);
+    private void receiveIncomeOfSoldGoods() {
         income = soldPerMonth * sellingPrice;
         System.out.println("Szekrény eladási ár: " + sellingPrice);
         System.out.println("Bevétel az eladott szekrényekből: " + income);
