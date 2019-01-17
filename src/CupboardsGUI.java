@@ -2,17 +2,28 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CupboardsGUI extends JPanel {
+    private Cupboards cupboards;
+    private Employees employees;
+    private Glass glass;
+    private FurniturePanels panels;
+
+    private JSlider cupboardProductionSlide;
 
     public CupboardsGUI(Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
+        this.cupboards = cupboards;
+        this.employees = employees;
+        this.glass = glass;
+        this.panels = panels;
+
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
+        cupboardProductionSlide = new JSlider(0, 100);
 
         JLabel askCupboardsToProduce = new JLabel("Mennyi szekrényt állítsunk elő?");
         JLabel askSellingQuantity = new JLabel("Mennyi szekrényt próbáljunk eladni?");
         JLabel askSellingPrice = new JLabel("Mennyi legyen az eladási ár?");
 
-        JSlider cupboardProductionSlide = new JSlider(0, 100);
         JSlider cupboardSellSlide = new JSlider(0, 100);
         JSlider cupboardSellingPrice = new JSlider(0, 100);
 
@@ -21,7 +32,6 @@ public class CupboardsGUI extends JPanel {
         JButton acceptSellingPrice = new JButton("OK");
 
         JTextArea cupboardInfo = new JTextArea();
-
 
         askCupboardsToProduce.setBounds(10, 10, 300, 20);
         askSellingQuantity.setBounds(10, 100, 300, 20);
@@ -53,6 +63,11 @@ public class CupboardsGUI extends JPanel {
         cupboardProductionSlide.setPaintLabels(true);
         cupboardProductionSlide.setLabelTable(cupboardProductionSlide.createStandardLabels(10));
 
+        cupboardProductionSlide.addChangeListener(e -> {
+            cupboards.produce(cupboardProductionSlide.getValue(), panels, glass);
+            cupboardInfo.setText("Előállított szekrények: " + cupboards.getProducedPerMonth());
+        });
+
         cupboardSellSlide.setMinorTickSpacing(5);
         cupboardSellSlide.setMajorTickSpacing(10);
         cupboardSellSlide.setPaintTicks(true);
@@ -80,5 +95,7 @@ public class CupboardsGUI extends JPanel {
         add(cupboardInfo);
     }
 
-
+    public void recalculate() {
+        cupboardProductionSlide.setMaximum(cupboards.setMaximumProducts(panels, glass, employees));
+    }
 }

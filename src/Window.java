@@ -28,7 +28,10 @@ public class Window extends JFrame {
         tabbedPane.add("Alkalmazottak", employeeGUI);
         tabbedPane.addTab("Bútorlapok", furniturePanelsGUI);
         tabbedPane.addTab("Üveg", glassGUI);
+
         tabbedPane.addTab("Szekrények", cupboardsGUI);
+        tabbedPane.addChangeListener(e -> {cupboardsGUI.recalculate();});
+
 
         JButton acceptChanges = new JButton("Jóváhagyás");
         acceptChanges.setEnabled(false);

@@ -15,30 +15,40 @@ public class Cupboards extends Goods {
 
     public int getIncome() { return income; }
 
-    public void produce(int a, FurniturePanels panels, Glass glass, Employees employees) {
-        cupboardStock += a;
-        producedPerMonth = a;
+    public void produce(int quantity, FurniturePanels panels, Glass glass) {
+        producedPerMonth = quantity;
         System.out.println("Előállított szekrények: " + producedPerMonth);
-        System.out.println("Szekrény raktárkészlet: " + cupboardStock);
-        panels.reducePanelStock(a, panelPerCupboard);
-        glass.reduceGlassStock(a, glassPerCupboard);
     }
 
+    public void increaseStock() {
+        cupboardStock += producedPerMonth;
+        System.out.println("Szekrény raktárkészlet: " + cupboardStock);
+    }
 
-    private int setMaximumProducts(FurniturePanels panels, Glass glass, Employees employees) {
+    public void reduceRawMaterials(int quantity, FurniturePanels panels, Glass glass) {
+        panels.reducePanelStock(quantity, panelPerCupboard);
+        glass.reduceGlassStock(quantity, glassPerCupboard);
+    }
+
+    public int getProducedPerMonth() { return producedPerMonth; }
+
+
+    public int setMaximumProducts(FurniturePanels panels, Glass glass, Employees employees) {
         int maxQuantityFromPanels = panels.getStock() / panelPerCupboard;
         int maxQuantityFromGlass = glass.getStock() / glassPerCupboard;
         int maxQuantityFromEmployees = employees.getMaxProductsByEmployees();
 
         int[] maximums = { maxQuantityFromPanels, maxQuantityFromGlass, maxQuantityFromEmployees};
-        int max = 0;
+        int max = maximums[0];
         for (int i = 0; i < maximums.length; i++) {
-            if(maximums[i] > max) {
+            if(maximums[i] < max) {
                 max = maximums[i];
+                System.out.println("panelek: " + panels.getStock() + "\nglass: " + glass.getStock() + "\nmax: " + max);
             }
         }
         maxProducts = max;
-        return max;
+        System.out.println("max szekrény: " + maxProducts);
+        return maxProducts;
     }
 
 
@@ -126,6 +136,7 @@ public class Cupboards extends Goods {
         return "Előállított szekrények: " + producedPerMonth +
                 "\nSzekrény raktárkészlet: " + cupboardStock +
                 "\nSzekrény eladási ár: " + sellingPrice +
-                "\nBevétel az eladott szekrényekből: " + income;
+                "\nBevétel az eladott szekrényekből: " + income +
+                "\nMaximum előállítható mennyiség: " + maxProducts;
     }
 }
