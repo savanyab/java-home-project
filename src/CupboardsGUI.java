@@ -68,6 +68,20 @@ public class CupboardsGUI extends JPanel {
             cupboardInfo.setText("Előállított szekrények: " + cupboards.getProducedPerMonth());
         });
 
+        acceptProduction.addActionListener(e -> {
+            cupboards.increaseStock();
+            cupboards.reduceRawMaterials(cupboardProductionSlide.getValue(), panels, glass);
+            cupboardInfo.setText("Előállított szekrények: " + cupboards.getProducedPerMonth() +
+                    "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock());
+            cupboardProductionSlide.setEnabled(false);
+            acceptProduction.setEnabled(false);
+            cupboardSellSlide.setMaximum(cupboards.getCupboardStock());
+            cupboardSellSlide.setEnabled(true);
+            acceptSellingQuantity.setEnabled(true);
+            cupboardSellingPrice.setEnabled(true);
+            acceptSellingPrice.setEnabled(true);
+        });
+
         cupboardSellSlide.setMinorTickSpacing(5);
         cupboardSellSlide.setMajorTickSpacing(10);
         cupboardSellSlide.setPaintTicks(true);
