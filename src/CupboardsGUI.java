@@ -76,6 +76,7 @@ public class CupboardsGUI extends JPanel {
             cupboardProductionSlide.setEnabled(false);
             acceptProduction.setEnabled(false);
             cupboardSellSlide.setMaximum(cupboards.getCupboardStock());
+            cupboardSellingPrice.setMaximum(cupboards.setMaxSellingPrice(panels, glass));
             cupboardSellSlide.setEnabled(true);
             acceptSellingQuantity.setEnabled(true);
             cupboardSellingPrice.setEnabled(true);
@@ -92,6 +93,9 @@ public class CupboardsGUI extends JPanel {
         cupboardSellSlide.setPaintLabels(true);
         cupboardSellSlide.setLabelTable(cupboardSellSlide.createStandardLabels(10));
 
+        cupboardSellingPrice.addChangeListener(e -> {
+            cupboardInfo.setText("Eladási ár: " + cupboardSellingPrice.getValue());
+        });
 
         cupboardSellingPrice.setMinorTickSpacing(5);
         cupboardSellingPrice.setMajorTickSpacing(10);
