@@ -41,7 +41,8 @@ public class Window extends JFrame {
         acceptChanges.setEnabled(false);
 
         acceptChanges.addActionListener(e -> {
-
+            company.nextRound(employees, ad, panels, glass, cupboards);
+            companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
         });
 
         tabbedPane.setBounds(0, 20, 700, 320);

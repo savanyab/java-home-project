@@ -80,7 +80,7 @@ public class Cupboards extends Goods {
         return maxSellingPrice;
     }
 
-    private void receiveIncomeOfSoldGoods() {
+    public void receiveIncomeOfSoldGoods() {
         income = soldPerMonth * sellingPrice;
         System.out.println("Szekrény eladási ár: " + sellingPrice);
         System.out.println("Bevétel az eladott szekrényekből: " + income);

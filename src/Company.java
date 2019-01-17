@@ -22,15 +22,19 @@ public class Company {
 
     // region Setters
 
-    public void setExpenses(int expenses) { this.expenses = expenses;}
+    private void setExpenses(int expenses) { this.expenses = expenses;}
 
-    public void setIncome(int income) {
+    private void setIncome(int income) {
         this.income = income;
     }
 
     // endregion
 
-    public void nextRound() {
+    public void nextRound(Employees employees, Advertisement ad, FurniturePanels panels, Glass glass, Cupboards cupboards) {
+        employees.payWages();
+        ad.setAdExpenses();
+        setExpenses(employees.getExpenses() + ad.getExpenses() + panels.getExpenses() + glass.getExpenses());
+        setIncome(cupboards.getIncome());
         capital += income - expenses;
         round++;
     }

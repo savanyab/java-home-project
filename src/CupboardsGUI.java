@@ -116,6 +116,7 @@ public class CupboardsGUI extends JPanel {
             acceptSell.setEnabled(false);
             cupboards.setSoldQuantity(cupboardSellSlide.getValue(), ad);
             cupboards.reduceStock();
+            cupboards.receiveIncomeOfSoldGoods();
             cupboardInfo.setText("Előállított szekrények száma: " + cupboards.producedPerMonth +
                     "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock() +
                     "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
