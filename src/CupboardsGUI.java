@@ -65,13 +65,15 @@ public class CupboardsGUI extends JPanel {
 
         cupboardProductionSlide.addChangeListener(e -> {
             cupboards.produce(cupboardProductionSlide.getValue(), panels, glass);
-            cupboardInfo.setText("Előállított szekrények: " + cupboards.getProducedPerMonth());
+            cupboardInfo.setText("Előállítandó szekrények száma: " + cupboards.getProducedPerMonth() +
+                    "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock()
+            );
         });
 
         acceptProduction.addActionListener(e -> {
             cupboards.increaseStock();
             cupboards.reduceRawMaterials(cupboardProductionSlide.getValue(), panels, glass);
-            cupboardInfo.setText("Előállított szekrények: " + cupboards.getProducedPerMonth() +
+            cupboardInfo.setText("Előállított szekrények száma: " + cupboards.getProducedPerMonth() +
                     "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock());
             cupboardProductionSlide.setEnabled(false);
             acceptProduction.setEnabled(false);
@@ -84,7 +86,12 @@ public class CupboardsGUI extends JPanel {
         });
 
         cupboardSellSlide.addChangeListener(e -> {
-            cupboardInfo.setText("Eldásra küldött mennyiség: " + cupboardSellSlide.getValue());
+
+            cupboardInfo.setText("Előállított szekrények száma: " + cupboards.producedPerMonth +
+                            "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock() +
+                            "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
+                            "\nEladási ár: " + cupboardSellingPrice.getValue()
+            );
         });
 
         cupboardSellSlide.setMinorTickSpacing(5);
@@ -94,14 +101,17 @@ public class CupboardsGUI extends JPanel {
         cupboardSellSlide.setLabelTable(cupboardSellSlide.createStandardLabels(10));
 
         cupboardSellingPrice.addChangeListener(e -> {
-            cupboardInfo.setText("Eladási ár: " + cupboardSellingPrice.getValue());
+            cupboardInfo.setText("Előállított szekrények száma: " + cupboards.producedPerMonth +
+                    "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock() +
+                    "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
+                    "\nEladási ár: " + cupboardSellingPrice.getValue());
         });
 
-        cupboardSellingPrice.setMinorTickSpacing(5);
-        cupboardSellingPrice.setMajorTickSpacing(10);
+        cupboardSellingPrice.setMinorTickSpacing(1000);
+        cupboardSellingPrice.setMajorTickSpacing(5000);
         cupboardSellingPrice.setPaintTicks(true);
         cupboardSellingPrice.setPaintLabels(true);
-        cupboardSellingPrice.setLabelTable(cupboardSellingPrice.createStandardLabels(10));
+        cupboardSellingPrice.setLabelTable(cupboardSellingPrice.createStandardLabels(5000));
         cupboardSellingPrice.setEnabled(false);
 
 
