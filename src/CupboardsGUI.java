@@ -82,6 +82,10 @@ public class CupboardsGUI extends JPanel {
             acceptSellingPrice.setEnabled(true);
         });
 
+        cupboardSellSlide.addChangeListener(e -> {
+            cupboardInfo.setText("Eldásra küldött mennyiség: " + cupboardSellSlide.getValue());
+        });
+
         cupboardSellSlide.setMinorTickSpacing(5);
         cupboardSellSlide.setMajorTickSpacing(10);
         cupboardSellSlide.setPaintTicks(true);
