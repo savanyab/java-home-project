@@ -28,10 +28,10 @@ public class Window extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.add("Reklám", advertisementGUI);
         tabbedPane.add("Alkalmazottak", employeeGUI);
-        tabbedPane.addTab("Bútorlapok", furniturePanelsGUI);
-        tabbedPane.addTab("Üveg", glassGUI);
+        tabbedPane.add("Bútorlapok", furniturePanelsGUI);
+        tabbedPane.add("Üveg", glassGUI);
 
-        tabbedPane.addTab("Szekrények", cupboardsGUI);
+        tabbedPane.add("Szekrények", cupboardsGUI);
         tabbedPane.addChangeListener(e -> {cupboardsGUI.recalculate();});
 
         companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
@@ -41,8 +41,15 @@ public class Window extends JFrame {
         acceptChanges.setEnabled(false);
 
         acceptChanges.addActionListener(e -> {
+            decisionCount = 0;
+            acceptChanges.setEnabled(false);
             company.nextRound(employees, ad, panels, glass, cupboards);
             companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
+            employeeGUI.enableDecisions();
+            cupboardsGUI.enableDecisions();
+            furniturePanelsGUI.enableDecisions();
+            glassGUI.enableDecisions();
+            advertisementGUI.enableDecisions();
         });
 
         tabbedPane.setBounds(0, 20, 700, 320);

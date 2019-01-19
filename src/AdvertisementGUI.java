@@ -3,6 +3,9 @@ import java.awt.*;
 
 public class AdvertisementGUI extends JPanel {
     private Window window;
+    private JSlider adCountSlide;
+    private JButton acceptAdCount;
+    private JTextArea adInfo;
 
     public AdvertisementGUI( Window window, Advertisement ad) {
         this.window = window;
@@ -10,9 +13,9 @@ public class AdvertisementGUI extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
         JLabel askAdCount = new JLabel();
-        JSlider adCountSlide = new JSlider(0, 20);
-        JTextArea adInfo = new JTextArea();
-        JButton acceptAdCount = new JButton("OK");
+        adCountSlide = new JSlider(0, 20);
+        adInfo = new JTextArea();
+        acceptAdCount = new JButton("OK");
 
         askAdCount.setText("Mennyi reklámot kérjünk a hónapban?");
         askAdCount.setBounds(10, 10, 300, 20);
@@ -49,6 +52,12 @@ public class AdvertisementGUI extends JPanel {
         add(adCountSlide);
         add(adInfo);
         add(acceptAdCount);
+    }
+
+    public void  enableDecisions() {
+        adCountSlide.setEnabled(true);
+        acceptAdCount.setEnabled(true);
+        adInfo.setText("");
     }
 
 }

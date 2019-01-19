@@ -10,6 +10,12 @@ public class CupboardsGUI extends JPanel {
     private Advertisement ad;
 
     private JSlider cupboardProductionSlide;
+    private JSlider cupboardSellSlide;
+    private JSlider cupboardSellingPrice;
+    private JButton acceptProduction;
+    private JButton acceptSell;
+    private JTextArea cupboardInfo;
+
 
     public CupboardsGUI(Window window, Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels, Advertisement ad) {
         this.cupboards = cupboards;
@@ -27,13 +33,13 @@ public class CupboardsGUI extends JPanel {
         JLabel askSellingQuantity = new JLabel("Mennyi szekrényt próbáljunk eladni?");
         JLabel askSellingPrice = new JLabel("Mennyi legyen az eladási ár?");
 
-        JSlider cupboardSellSlide = new JSlider(0, 100);
-        JSlider cupboardSellingPrice = new JSlider(0, 100);
+        cupboardSellSlide = new JSlider(0, 100);
+        cupboardSellingPrice = new JSlider(0, 100);
 
-        JButton acceptProduction = new JButton("OK");
-        JButton acceptSell = new JButton("OK");
+        acceptProduction = new JButton("OK");
+        acceptSell = new JButton("OK");
 
-        JTextArea cupboardInfo = new JTextArea();
+        cupboardInfo = new JTextArea();
 
         askCupboardsToProduce.setBounds(10, 10, 300, 20);
         askSellingQuantity.setBounds(10, 100, 300, 20);
@@ -132,7 +138,7 @@ public class CupboardsGUI extends JPanel {
         cupboardSellingPrice.setMajorTickSpacing(5000);
         cupboardSellingPrice.setPaintTicks(true);
         cupboardSellingPrice.setPaintLabels(true);
-        cupboardSellingPrice.setLabelTable(cupboardSellingPrice.createStandardLabels(5000));
+        cupboardSellingPrice.setLabelTable(cupboardSellingPrice.createStandardLabels(10000));
         cupboardSellingPrice.setEnabled(false);
 
 
@@ -149,5 +155,11 @@ public class CupboardsGUI extends JPanel {
 
     public void recalculate() {
         cupboardProductionSlide.setMaximum(cupboards.setMaximumProducts(panels, glass, employees));
+    }
+
+    public void enableDecisions() {
+        cupboardProductionSlide.setEnabled(true);
+        acceptProduction.setEnabled(true);
+        cupboardInfo.setText("");
     }
 }

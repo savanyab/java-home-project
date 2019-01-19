@@ -5,6 +5,11 @@ import java.awt.*;
 public class GlassGUI extends JPanel {
     private ChangeListener changeListener;
     private Window window;
+    private JSlider glassPriceSlide;
+    private JSlider glassQuantitySlide;
+    private JButton acceptPurchase;
+    private JTextArea purchaseInfo;
+
 
     public GlassGUI(Window window, Glass glass) {
 
@@ -12,11 +17,11 @@ public class GlassGUI extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
         JLabel askGlassPurchasePrice = new JLabel("Milyen áron szerezzünk be üveget?");
-        JSlider glassPriceSlide = new JSlider(2500, 5000);
+        glassPriceSlide = new JSlider(2500, 5000);
         JLabel askGlassToBuy = new JLabel("Mennyi üveget vegyünk?");
-        JSlider glassQuantitySlide = new JSlider(0, 100);
-        JTextArea purchaseInfo = new JTextArea();
-        JButton acceptPurchase = new JButton("Vásárlás jóváhagyása");
+        glassQuantitySlide = new JSlider(0, 100);
+        purchaseInfo = new JTextArea();
+        acceptPurchase = new JButton("Vásárlás jóváhagyása");
 
         glass.setPurchasePrice(glassPriceSlide.getValue());
 
@@ -83,6 +88,13 @@ public class GlassGUI extends JPanel {
 
 
 
+    }
+
+    public void enableDecisions() {
+        glassPriceSlide.setEnabled(true);
+        glassQuantitySlide.setEnabled(true);
+        acceptPurchase.setEnabled(true);
+        purchaseInfo.setText("");
     }
 
 }

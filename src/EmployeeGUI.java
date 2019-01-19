@@ -3,15 +3,18 @@ import java.awt.*;
 
 public class EmployeeGUI extends JPanel{
     private Window window;
+    private JSlider employeeSlide;
+    private JButton acceptEmployeeCount;
+    private JTextArea employeeInfo;
 
     public EmployeeGUI(Window window, Employees employees) {
         this.window = window;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
         JLabel askEmployeeCount = new JLabel();
-        JSlider employeeSlide = new JSlider(0, 20);
-        JTextArea employeeInfo = new JTextArea();
-        JButton acceptEmployeeCount = new JButton("OK");
+        employeeSlide = new JSlider(0, 20);
+        employeeInfo = new JTextArea();
+        acceptEmployeeCount = new JButton("OK");
 
         askEmployeeCount.setText("Hány alkalmazottat foglalkoztassunk a hónapban?");
         askEmployeeCount.setBounds(10, 10, 300, 20);
@@ -52,4 +55,9 @@ public class EmployeeGUI extends JPanel{
 
     }
 
+    public void enableDecisions() {
+        employeeSlide.setEnabled(true);
+        acceptEmployeeCount.setEnabled(true);
+        employeeInfo.setText("");
+    }
 }

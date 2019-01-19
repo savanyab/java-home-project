@@ -5,6 +5,10 @@ import java.awt.*;
 public class FurniturePanelsGUI extends JPanel {
     private ChangeListener changeListener;
     private Window window;
+    private JSlider panelsPriceSlide;
+    private JSlider panelsQuantitySlide;
+    private JButton acceptPurchase;
+    private JTextArea purchaseInfo;
 
     public FurniturePanelsGUI(Window window, FurniturePanels panels) {
         this.window = window;
@@ -12,11 +16,11 @@ public class FurniturePanelsGUI extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
         JLabel askPanelPurchasePrice = new JLabel();
-        JSlider panelsPriceSlide = new JSlider(3000, 6000);
+        panelsPriceSlide = new JSlider(3000, 6000);
         JLabel askPanelsToBuy = new JLabel();
-        JSlider panelsQuantitySlide = new JSlider(0, 100);
-        JTextArea purchaseInfo = new JTextArea();
-        JButton acceptPurchase = new JButton("Vásárlás jóváhagyása");
+        panelsQuantitySlide = new JSlider(0, 100);
+        purchaseInfo = new JTextArea();
+        acceptPurchase = new JButton("Vásárlás jóváhagyása");
 
         panels.setPurchasePrice(panelsPriceSlide.getValue());
 
@@ -90,5 +94,12 @@ public class FurniturePanelsGUI extends JPanel {
         add(panelsQuantitySlide);
         add(acceptPurchase);
 
+    }
+
+    public void enableDecisions() {
+        panelsPriceSlide.setEnabled(true);
+        panelsQuantitySlide.setEnabled(true);
+        acceptPurchase.setEnabled(true);
+        purchaseInfo.setText("");
     }
 }
