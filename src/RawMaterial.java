@@ -12,8 +12,4 @@ public abstract class RawMaterial {
 
     public int getPurchasedQuantity() { return purchasedQuantity; }
 
-    //public abstract void purchase(int a);
-
-
-
 }

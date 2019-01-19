@@ -10,6 +10,11 @@ public class Window extends JFrame {
     private Cupboards cupboards = new Cupboards();
     private static int decisionCount;
     private JButton acceptChanges;
+    private EmployeeGUI employeeGUI;
+    private AdvertisementGUI advertisementGUI;
+    private FurniturePanelsGUI furniturePanelsGUI;
+    private GlassGUI glassGUI;
+    private CupboardsGUI cupboardsGUI;
 
     public Window() {
         setTitle("FurnitureFactory");
@@ -18,11 +23,11 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
 
-        EmployeeGUI employeeGUI = new EmployeeGUI(this, employees);
-        AdvertisementGUI advertisementGUI = new AdvertisementGUI(this, ad);
-        FurniturePanelsGUI furniturePanelsGUI = new FurniturePanelsGUI(this, panels);
-        GlassGUI glassGUI = new GlassGUI(this, glass);
-        CupboardsGUI cupboardsGUI = new CupboardsGUI(this, cupboards, employees, glass, panels, ad);
+        employeeGUI = new EmployeeGUI(this, employees);
+        advertisementGUI = new AdvertisementGUI(this, ad);
+        furniturePanelsGUI = new FurniturePanelsGUI(this, panels);
+        glassGUI = new GlassGUI(this, glass);
+        cupboardsGUI = new CupboardsGUI(this, cupboards, employees, glass, panels, ad);
 
         JTextArea companyInfo = new JTextArea();
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -45,11 +50,11 @@ public class Window extends JFrame {
             acceptChanges.setEnabled(false);
             company.nextRound(employees, ad, panels, glass, cupboards);
             companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
-            employeeGUI.enableDecisions();
-            cupboardsGUI.enableDecisions();
-            furniturePanelsGUI.enableDecisions();
-            glassGUI.enableDecisions();
-            advertisementGUI.enableDecisions();
+            if (company.getCapital() <= 0 || company.getCapital() >= 2000000) {
+                endGame();
+            } else {
+                enableDecisions();
+            }
         });
 
         tabbedPane.setBounds(0, 20, 700, 320);
@@ -68,4 +73,34 @@ public class Window extends JFrame {
        }
     }
 
+    private void enableDecisions() {
+        employeeGUI.enableDecisions();
+        cupboardsGUI.enableDecisions();
+        furniturePanelsGUI.enableDecisions();
+        glassGUI.enableDecisions();
+        advertisementGUI.enableDecisions();
+    }
+
+    private int exitOrRestart() {
+        String[] options = {"Igen", "Nem"};
+        return JOptionPane.showOptionDialog(null,
+                "Szeretnél új játékot kezdeni?",
+                "Játék vége",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                options, null);
+    }
+
+    private void endGame() {
+        int decision = exitOrRestart();
+        if (decision == 1) {
+            dispose();
+        } else {
+            dispose();
+            Company.setRound(1);
+            Window window = new Window();
+            window.setVisible(true);
+        }
+    }
 }

@@ -21,6 +21,7 @@ public class Company {
     // endregion
 
     // region Setters
+    public static void setRound(int a) { round = a;}
 
     private void setExpenses(int expenses) { this.expenses = expenses;}
 
