@@ -22,12 +22,15 @@ public class GlassGUI extends JPanel {
         glass.setPurchasePrice(glassPriceSlide.getValue());
 
         ChangeListener changeListener = e -> {
-            glass.purchase(glassQuantitySlide.getValue());
-            glass.setGlassPurchasePrice(glassPriceSlide.getValue());
-            glass.setExpenses(glassPriceSlide.getValue() * glassQuantitySlide.getValue());
+            int decidedQuantity = glassQuantitySlide.getValue();
+            int decidedPrice = glassPriceSlide.getValue();
+            glass.purchase(decidedQuantity);
+            glass.setGlassPurchasePrice(decidedPrice);
+            glass.setExpenses(decidedPrice, decidedQuantity);
             purchaseInfo.setText("Jelenlegi üvegkészlet: " + glass.getStock() +
                     "\nBeszerzési ár: " + glass.getPurchasePrice() +
                     "\nVásárolni kívánt mennyiség: " + glassQuantitySlide.getValue() +
+                    "\nVásárlás utáni készlet:" + glass.getDecidedStock() +
                     "\nVásárlás költsége: " + glass.getExpenses());
         };
 

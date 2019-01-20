@@ -44,6 +44,7 @@ public class Window extends JFrame {
 
         acceptChanges.addActionListener(e -> {
             panels.increaseStock();
+            glass.increaseStock();
             company.nextRound(employees, ad, panels, glass, cupboards);
             companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
             if (company.getCapital() <= 0 || company.getCapital() >= 2000000) {

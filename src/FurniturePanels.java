@@ -15,8 +15,8 @@ public class FurniturePanels extends RawMaterial {
 
     public int getExpenses() { return expenses; }
 
-    public void purchase(int a) {
-        purchasedQuantity = a;
+    public void purchase(int quantity) {
+        purchasedQuantity = quantity;
         decidedStock = stock + purchasedQuantity;
         System.out.println("Bútorlap vásárolt mennyiség: " + purchasedQuantity + "\ndecidedStock: " + decidedStock + "\nstock: " + stock);
     }
