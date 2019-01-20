@@ -25,7 +25,7 @@ public class Window extends JFrame {
         employeeGUI = new EmployeeGUI(employees);
         advertisementGUI = new AdvertisementGUI(ad);
         furniturePanelsGUI = new FurniturePanelsGUI(this, panels);
-        glassGUI = new GlassGUI(this, glass);
+        glassGUI = new GlassGUI(glass);
         cupboardsGUI = new CupboardsGUI(this, cupboards, employees, glass, panels, ad);
 
         JTextArea companyInfo = new JTextArea();

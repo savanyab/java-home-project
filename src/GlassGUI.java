@@ -3,15 +3,12 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class GlassGUI extends JPanel {
-    private ChangeListener changeListener;
-    private Window window;
     private JSlider glassPriceSlide;
     private JSlider glassQuantitySlide;
-    private JButton acceptPurchase;
     private JTextArea purchaseInfo;
 
 
-    public GlassGUI(Window window, Glass glass) {
+    public GlassGUI(Glass glass) {
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -21,11 +18,10 @@ public class GlassGUI extends JPanel {
         JLabel askGlassToBuy = new JLabel("Mennyi üveget vegyünk?");
         glassQuantitySlide = new JSlider(0, 100);
         purchaseInfo = new JTextArea();
-        acceptPurchase = new JButton("Vásárlás jóváhagyása");
 
         glass.setPurchasePrice(glassPriceSlide.getValue());
 
-        changeListener = e -> {
+        ChangeListener changeListener = e -> {
             glass.purchase(glassQuantitySlide.getValue());
             glass.setGlassPurchasePrice(glassPriceSlide.getValue());
             glass.setExpenses(glassPriceSlide.getValue() * glassQuantitySlide.getValue());
@@ -64,36 +60,17 @@ public class GlassGUI extends JPanel {
 
         glassQuantitySlide.addChangeListener(changeListener);
 
-        acceptPurchase.setBounds(390, 200, 200, 30);
-        acceptPurchase.addActionListener((e) -> {
-            window.increaseDecisionCount();
-            glassQuantitySlide.setEnabled(false);
-            glassPriceSlide.setEnabled(false);
-            acceptPurchase.setEnabled(false);
-            glass.setStock();
-            purchaseInfo.setText(
-                    "Üveg készlet: " + glass.getStock() +
-                            "\nBeszerzési ár: " + glass.getPurchasePrice() +
-                            "\nVásárolt mennyiség: " + glass.getPurchasedQuantity() +
-                            "\nVásárlás költsége: " + glass.getExpenses()
-            );
-        });
-
         add(askGlassPurchasePrice);
         add(glassPriceSlide);
         add(askGlassToBuy);
         add(glassQuantitySlide);
         add(purchaseInfo);
-        add(acceptPurchase);
-
-
 
     }
 
     public void enableDecisions() {
         glassPriceSlide.setEnabled(true);
         glassQuantitySlide.setEnabled(true);
-        acceptPurchase.setEnabled(true);
         purchaseInfo.setText("");
     }
 
