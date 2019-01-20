@@ -34,6 +34,8 @@ public class GlassGUI extends JPanel {
         askGlassPurchasePrice.setBounds(10, 10, 300, 20);
         askGlassToBuy.setBounds(10, 120, 300, 40);
 
+        askGlassPurchasePrice.setToolTipText("A beszerzési ár a bútorok előállítási költségén keresztül befolyásolja a maximum eladási árat.");
+        askGlassToBuy.setToolTipText("Egy egység szekrény előállításához 1 egység üveg szükséges.");
         purchaseInfo.setText(infoText());
         purchaseInfo.setEditable(false);
         purchaseInfo.setBounds(390, 10, 270, 80);
