@@ -27,6 +27,8 @@ public class Window extends JFrame {
         glassGUI = new GlassGUI(glass);
         cupboardsGUI = new CupboardsGUI(cupboards, employees, glass, panels);
 
+        startMonth();
+
         JTextArea companyInfo = new JTextArea();
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.add("Reklám", advertisementGUI);
@@ -100,5 +102,7 @@ public class Window extends JFrame {
 
     private void startMonth() {
         employeeGUI.startMonth();
+        advertisementGUI.startMonth();
+        cupboardsGUI.startMonth();
     }
 }

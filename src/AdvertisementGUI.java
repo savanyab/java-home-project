@@ -4,8 +4,11 @@ import java.awt.*;
 public class AdvertisementGUI extends JPanel {
     private JSlider adCountSlide;
     private JTextArea adInfo;
+    private Advertisement ad;
 
     public AdvertisementGUI(Advertisement ad) {
+        this.ad = ad;
+
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
@@ -18,17 +21,12 @@ public class AdvertisementGUI extends JPanel {
 
         adInfo.setBounds(390, 10, 270, 80);
         adInfo.setEditable(false);
-        adInfo.setText("Jelenleg a reklámok száma: " + ad.getAdCount() +
-                "\nHavi reklámköltség: " + ad.getAdCount() * ad.getAdPrice() +
-                "\nAz eladási arányt maximum " + ad.getAdCount() * 5 + "%-kal növeli.");
-
 
         adCountSlide.setMinorTickSpacing(1);
         adCountSlide.setMajorTickSpacing(5);
         adCountSlide.setPaintTicks(true);
         adCountSlide.setPaintLabels(true);
         adCountSlide.setBounds(10, 50, 300, 40);
-        adCountSlide.setValue(ad.getAdCount());
 
         adCountSlide.addChangeListener((e) -> {
             ad.changeAdCount(adCountSlide.getValue());
@@ -41,6 +39,13 @@ public class AdvertisementGUI extends JPanel {
         add(askAdCount);
         add(adCountSlide);
         add(adInfo);
+    }
+
+    public void startMonth() {
+        adCountSlide.setValue(ad.getAdCount());
+        adInfo.setText("Jelenleg a reklámok száma: " + ad.getAdCount() +
+                "\nHavi reklámköltség: " + ad.getAdCount() * ad.getAdPrice() +
+                "\nAz eladási arányt maximum " + ad.getAdCount() * 5 + "%-kal növeli.");
     }
 
 }

@@ -44,11 +44,6 @@ public class CupboardsGUI extends JPanel {
         cupboardInfo.setBounds(390, 40, 270, 200);
         cupboardInfo.setEditable(false);
 
-        cupboardSellingPrice.setValue(0);
-
-        cupboardProductionSlide.setValue(0);
-        cupboardSellSlide.setValue(0);
-
         cupboardProductionSlide.setMinorTickSpacing(5);
         cupboardProductionSlide.setMajorTickSpacing(10);
         cupboardProductionSlide.setPaintTicks(true);
@@ -58,18 +53,11 @@ public class CupboardsGUI extends JPanel {
         cupboardProductionSlide.addChangeListener(e -> {
             cupboardSellSlide.setMaximum(cupboards.setMaxSellableQuantity());
             cupboards.produce(cupboardProductionSlide.getValue());
-            cupboardInfo.setText("Előállítandó szekrények száma: " + cupboards.getProducedPerMonth() +
-                    "\nSzekrény raktárkészlet: " + cupboards.getDecidedStock()
-            );
+            cupboardInfo.setText(infoText());
         });
 
         cupboardSellSlide.addChangeListener(e -> {
-
-            cupboardInfo.setText("Előállított szekrények száma: " + cupboards.producedPerMonth +
-                            "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock() +
-                            "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
-                            "\nEladási ár: " + cupboardSellingPrice.getValue()
-            );
+            cupboardInfo.setText(infoText());
         });
 
         cupboardSellSlide.setMinorTickSpacing(5);
@@ -80,10 +68,7 @@ public class CupboardsGUI extends JPanel {
 
         cupboardSellingPrice.addChangeListener(e -> {
             cupboards.decideSellingPrice(cupboardSellingPrice.getValue());
-            cupboardInfo.setText("Előállított szekrények száma: " + cupboards.producedPerMonth +
-                    "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock() +
-                    "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
-                    "\nEladási ár: " + cupboards.sellingPrice);
+            cupboardInfo.setText(infoText());
         });
 
         cupboardSellingPrice.setMinorTickSpacing(1000);
@@ -109,4 +94,18 @@ public class CupboardsGUI extends JPanel {
     }
 
     public int getSellingQuantity() { return cupboardSellSlide.getValue(); }
+
+    public void startMonth() {
+        cupboardProductionSlide.setValue(0);
+        cupboardSellSlide.setValue(0);
+        cupboardSellingPrice.setValue(0);
+        cupboardInfo.setText(infoText());
+    }
+
+    private String infoText() {
+        return "Előállított szekrények száma: " + cupboards.producedPerMonth +
+                "\nSzekrény raktárkészlet: " + cupboards.getDecidedStock() +
+                "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
+                "\nEladási ár: " + cupboards.sellingPrice;
+    }
 }

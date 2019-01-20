@@ -9,8 +9,6 @@ public class EmployeeGUI extends JPanel{
     public EmployeeGUI(Employees employees) {
         this.employees = employees;
 
-        startMonth();
-
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
         JLabel askEmployeeCount = new JLabel();
