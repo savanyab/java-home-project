@@ -37,6 +37,10 @@ public class CupboardsGUI extends JPanel {
         askSellingQuantity.setBounds(10, 100, 300, 20);
         askSellingPrice.setBounds(10, 190, 300, 20);
 
+        askCupboardsToProduce.setToolTipText("Az alkalmazottak számától és a nyersanyagok mennyiségétől függ a maximum előállítható mennyiség.");
+        askSellingQuantity.setToolTipText("Az aktuális hónapban előállított mennyiségen túl a régebbi készlet is árulható.");
+        askSellingPrice.setToolTipText("Maximum eladási ár az előállítási költség 250%-a.");
+
         cupboardProductionSlide.setBounds(10, 35, 300, 40);
         cupboardSellSlide.setBounds(10, 130, 300, 40);
         cupboardSellingPrice.setBounds(10, 220, 300, 40);
