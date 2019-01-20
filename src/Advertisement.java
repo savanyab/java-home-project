@@ -1,23 +1,23 @@
-public class Advertisement {
+class Advertisement {
     private int adPrice;
     private int adCount;
     private int adExpenses;
 
-    public Advertisement() {
+    Advertisement() {
         adPrice = 5000;
     }
 
-    public int getAdCount() {
+    int getAdCount() {
         return adCount;
     }
 
-    public int getExpenses() { return adExpenses; }
+    int getExpenses() { return adExpenses; }
 
-    public int getAdPrice() { return adPrice; }
+    int getAdPrice() { return adPrice; }
 
-    public void setAdExpenses() {adExpenses = adCount * adPrice;}
+    void setAdExpenses() {adExpenses = adCount * adPrice;}
 
-    public void changeAdCount(int i){
+    void changeAdCount(int i){
         adCount = i;
         System.out.println("Reklámok száma: " + adCount);
     }

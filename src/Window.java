@@ -8,7 +8,6 @@ public class Window extends JFrame {
     private Employees employees = new Employees();
     private FurniturePanels panels = new FurniturePanels();
     private Cupboards cupboards = new Cupboards();
-    private static int decisionCount;
     private JButton acceptChanges;
     private EmployeeGUI employeeGUI;
     private AdvertisementGUI advertisementGUI;
@@ -24,7 +23,7 @@ public class Window extends JFrame {
         setLayout(null);
 
         employeeGUI = new EmployeeGUI(this, employees);
-        advertisementGUI = new AdvertisementGUI(this, ad);
+        advertisementGUI = new AdvertisementGUI(ad);
         furniturePanelsGUI = new FurniturePanelsGUI(this, panels);
         glassGUI = new GlassGUI(this, glass);
         cupboardsGUI = new CupboardsGUI(this, cupboards, employees, glass, panels, ad);
@@ -46,7 +45,6 @@ public class Window extends JFrame {
         acceptChanges.setEnabled(false);
 
         acceptChanges.addActionListener(e -> {
-            decisionCount = 0;
             acceptChanges.setEnabled(false);
             company.nextRound(employees, ad, panels, glass, cupboards);
             companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
@@ -63,14 +61,6 @@ public class Window extends JFrame {
         add(companyInfo);
         add(tabbedPane);
         add(acceptChanges);
-    }
-
-    public void increaseDecisionCount() { decisionCount++; }
-
-    public void enableAcceptChanges() {
-       if (decisionCount == 6) {
-           acceptChanges.setEnabled(true);
-       }
     }
 
     private void enableDecisions() {
