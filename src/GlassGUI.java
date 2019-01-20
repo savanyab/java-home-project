@@ -6,10 +6,10 @@ public class GlassGUI extends JPanel {
     private JSlider glassPriceSlide;
     private JSlider glassQuantitySlide;
     private JTextArea purchaseInfo;
-
+    private Glass glass;
 
     public GlassGUI(Glass glass) {
-
+        this.glass = glass;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
@@ -27,21 +27,13 @@ public class GlassGUI extends JPanel {
             glass.purchase(decidedQuantity);
             glass.setGlassPurchasePrice(decidedPrice);
             glass.setExpenses(decidedPrice, decidedQuantity);
-            purchaseInfo.setText("Jelenlegi üvegkészlet: " + glass.getStock() +
-                    "\nBeszerzési ár: " + glass.getPurchasePrice() +
-                    "\nVásárolni kívánt mennyiség: " + glassQuantitySlide.getValue() +
-                    "\nVásárlás utáni készlet:" + glass.getDecidedStock() +
-                    "\nVásárlás költsége: " + glass.getExpenses());
+            purchaseInfo.setText(infoText());
         };
 
-        glassQuantitySlide.setValue(0);
         askGlassPurchasePrice.setBounds(10, 10, 300, 20);
         askGlassToBuy.setBounds(10, 120, 300, 40);
 
-        purchaseInfo.setText("Jelenlegi üvegkészlet: " + glass.getStock() +
-                "\nBeszerzési ár: " + glassPriceSlide.getValue() +
-                "\nVásárolni kívánt mennyiség: " + glassQuantitySlide.getValue() +
-                "\nVásárlás költsége: " + (glass.getExpenses()));
+        purchaseInfo.setText(infoText());
         purchaseInfo.setEditable(false);
         purchaseInfo.setBounds(390, 10, 270, 80);
 
@@ -71,4 +63,17 @@ public class GlassGUI extends JPanel {
 
     }
 
+    private String infoText() {
+        return "Jelenlegi üvegkészlet: " + glass.getStock() +
+                "\nBeszerzési ár: " + glass.getPurchasePrice() +
+                "\nVásárolni kívánt mennyiség: " + glassQuantitySlide.getValue() +
+                "\nVásárlás utáni készlet:" + glass.getDecidedStock() +
+                "\nVásárlás költsége: " + glass.getExpenses();
+    }
+
+    public void startMonth() {
+        glassQuantitySlide.setValue(0);
+        glassPriceSlide.setValue(0);
+        purchaseInfo.setText(infoText());
+    }
 }
