@@ -21,8 +21,8 @@ public class CupboardsGUI extends JPanel {
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
-        //int maxProducts = cupboards.setMaximumProducts();
-        cupboardProductionSlide = new JSlider(0, 100);
+        int maxProducts = cupboards.setMaximumProducts(panels, glass, employees);
+        cupboardProductionSlide = new JSlider(0, maxProducts);
 
         JLabel askCupboardsToProduce = new JLabel("Mennyi szekrényt állítsunk elő?");
         JLabel askSellingQuantity = new JLabel("Mennyi szekrényt próbáljunk eladni?");
@@ -56,9 +56,10 @@ public class CupboardsGUI extends JPanel {
         cupboardProductionSlide.setLabelTable(cupboardProductionSlide.createStandardLabels(10));
 
         cupboardProductionSlide.addChangeListener(e -> {
+            cupboardSellSlide.setMaximum(cupboards.setMaxSellableQuantity());
             cupboards.produce(cupboardProductionSlide.getValue());
             cupboardInfo.setText("Előállítandó szekrények száma: " + cupboards.getProducedPerMonth() +
-                    "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock()
+                    "\nSzekrény raktárkészlet: " + cupboards.getDecidedStock()
             );
         });
 
@@ -103,6 +104,8 @@ public class CupboardsGUI extends JPanel {
 
     public void recalculate() {
         cupboardProductionSlide.setMaximum(cupboards.setMaximumProducts(panels, glass, employees));
+        cupboardSellingPrice.setMaximum(cupboards.setMaxSellingPrice(panels, glass));
+        cupboardSellSlide.setMaximum(cupboards.setMaxSellableQuantity());
     }
 
     public void enableDecisions() {

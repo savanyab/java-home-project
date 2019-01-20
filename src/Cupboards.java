@@ -5,21 +5,25 @@ public class Cupboards extends Goods {
     private int income;
     private int maxProducts;
     private double sellingRate;
+    private int decidedStock;
 
     public double getSellingRate() { return sellingRate; }
 
 
     public int getCupboardStock() {return cupboardStock;}
 
+    public int getDecidedStock() { return decidedStock; }
+
     public int getIncome() { return income; }
 
     public void produce(int quantity) {
         producedPerMonth = quantity;
+        decidedStock = cupboardStock + producedPerMonth;
         System.out.println("Előállított szekrények: " + producedPerMonth);
     }
 
     public void increaseStock() {
-        cupboardStock += producedPerMonth;
+        cupboardStock = decidedStock;
         System.out.println("Szekrény raktárkészlet: " + cupboardStock);
     }
 
@@ -32,8 +36,8 @@ public class Cupboards extends Goods {
 
 
     public int setMaximumProducts(FurniturePanels panels, Glass glass, Employees employees) {
-        int maxQuantityFromPanels = panels.getStock() / panelPerCupboard;
-        int maxQuantityFromGlass = glass.getStock() / glassPerCupboard;
+        int maxQuantityFromPanels = panels.getDecidedStock() / panelPerCupboard;
+        int maxQuantityFromGlass = glass.getDecidedStock() / glassPerCupboard;
         int maxQuantityFromEmployees = employees.getMaxProductsByEmployees();
 
         int[] maximums = { maxQuantityFromPanels, maxQuantityFromGlass, maxQuantityFromEmployees};
@@ -41,7 +45,7 @@ public class Cupboards extends Goods {
         for (int i = 0; i < maximums.length; i++) {
             if(maximums[i] < max) {
                 max = maximums[i];
-                System.out.println("panelek: " + panels.getStock() + "\nglass: " + glass.getStock() + "\nmax: " + max);
+                System.out.println("panelek: " + panels.getDecidedStock() + "\nglass: " + glass.getDecidedStock() + "\nmax: " + max);
             }
         }
         maxProducts = max;
@@ -71,12 +75,16 @@ public class Cupboards extends Goods {
        sellingPrice = price;
     }
 
-    public int setMaxSellingPrice(FurniturePanels p, Glass g) {
-        int costOfGlass = g.getPurchasePrice() * glassPerCupboard;
-        int costOfPanels = p.getPurchasePrice() * panelPerCupboard;
+    public int setMaxSellingPrice(FurniturePanels panels, Glass glass) {
+        int costOfGlass = glass.getPurchasePrice() * glassPerCupboard;
+        int costOfPanels = panels.getPurchasePrice() * panelPerCupboard;
         productionCost =  costOfGlass + costOfPanels;
         int maxSellingPrice = (int) (productionCost * 2.5);
         return maxSellingPrice;
+    }
+
+    public int setMaxSellableQuantity() {
+        return decidedStock;
     }
 
     public void receiveIncomeOfSoldGoods() {
