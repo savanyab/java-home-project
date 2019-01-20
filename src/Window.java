@@ -43,19 +43,15 @@ public class Window extends JFrame {
         JButton acceptChanges = new JButton("Jóváhagyás");
 
         acceptChanges.addActionListener(e -> {
-            panels.increaseStock();
-            glass.increaseStock();
-            cupboards.increaseStock();
-            cupboards.setSoldQuantity(cupboardsGUI.getSellingQuantity(), ad);
-            cupboards.reduceStock();
+            increaseStocks();
+            reduceStocks();
             cupboards.receiveIncomeOfSoldGoods();
-            cupboards.reduceRawMaterials(cupboards.producedPerMonth, panels, glass);
             company.nextRound(employees, ad, panels, glass, cupboards);
             companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
             if (company.getCapital() <= 0 || company.getCapital() >= 2000000) {
                 endGame();
             } else {
-                enableDecisions();
+                startMonth();
             }
         });
 
@@ -65,14 +61,6 @@ public class Window extends JFrame {
         add(companyInfo);
         add(tabbedPane);
         add(acceptChanges);
-    }
-
-    private void enableDecisions() {
-        employeeGUI.enableDecisions();
-        cupboardsGUI.enableDecisions();
-        furniturePanelsGUI.enableDecisions();
-        glassGUI.enableDecisions();
-        advertisementGUI.enableDecisions();
     }
 
     private int exitOrRestart() {
@@ -96,5 +84,21 @@ public class Window extends JFrame {
             Window window = new Window();
             window.setVisible(true);
         }
+    }
+
+    private void increaseStocks() {
+        panels.increaseStock();
+        glass.increaseStock();
+        cupboards.increaseStock();
+    }
+
+    private void reduceStocks() {
+        cupboards.setSoldQuantity(cupboardsGUI.getSellingQuantity(), ad);
+        cupboards.reduceStock();
+        cupboards.reduceRawMaterials(cupboards.producedPerMonth, panels, glass);
+    }
+
+    private void startMonth() {
+        employeeGUI.startMonth();
     }
 }

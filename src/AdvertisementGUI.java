@@ -43,9 +43,4 @@ public class AdvertisementGUI extends JPanel {
         add(adInfo);
     }
 
-    public void  enableDecisions() {
-        adCountSlide.setEnabled(true);
-        adInfo.setText("");
-    }
-
 }

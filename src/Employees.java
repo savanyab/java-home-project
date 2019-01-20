@@ -1,6 +1,3 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Employees {
     private final int WAGE = 50000;
     private int employeeCount;

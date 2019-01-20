@@ -4,8 +4,13 @@ import java.awt.*;
 public class EmployeeGUI extends JPanel{
     private JSlider employeeSlide;
     private JTextArea employeeInfo;
+    private Employees employees;
 
     public EmployeeGUI(Employees employees) {
+        this.employees = employees;
+
+        startMonth();
+
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
         JLabel askEmployeeCount = new JLabel();
@@ -17,9 +22,6 @@ public class EmployeeGUI extends JPanel{
 
         employeeInfo.setBounds(390, 10, 270, 80);
         employeeInfo.setEditable(false);
-        employeeInfo.setText("Jelenleg alkalmazottak száma: " + employees.getEmployeeCount() +
-                "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() +
-                "\nMaximum termelékenység: " + employees.getMaxProductsByEmployees());
 
         employeeSlide.setMinorTickSpacing(1);
         employeeSlide.setMajorTickSpacing(5);
@@ -27,7 +29,6 @@ public class EmployeeGUI extends JPanel{
         employeeSlide.setPaintLabels(true);
         employeeSlide.setLabelTable(employeeSlide.createStandardLabels(5));
         employeeSlide.setBounds(10, 50, 300, 40);
-        employeeSlide.setValue(employees.getEmployeeCount());
 
         employeeSlide.addChangeListener((e) -> {
             employees.changeEmployeeCount(employeeSlide.getValue());
@@ -43,8 +44,10 @@ public class EmployeeGUI extends JPanel{
 
     }
 
-    public void enableDecisions() {
-        employeeSlide.setEnabled(true);
-        employeeInfo.setText("");
+    public void startMonth() {
+        employeeSlide.setValue(employees.getEmployeeCount());
+        employeeInfo.setText("Jelenleg alkalmazottak száma: " + employees.getEmployeeCount() +
+                "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() +
+                "\nMaximum termelékenység: " + employees.getMaxProductsByEmployees());
     }
 }

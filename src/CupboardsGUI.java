@@ -108,10 +108,5 @@ public class CupboardsGUI extends JPanel {
         cupboardSellSlide.setMaximum(cupboards.setMaxSellableQuantity());
     }
 
-    public void enableDecisions() {
-        cupboardProductionSlide.setEnabled(true);
-        cupboardInfo.setText("");
-    }
-
     public int getSellingQuantity() { return cupboardSellSlide.getValue(); }
 }

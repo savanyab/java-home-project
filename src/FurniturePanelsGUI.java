@@ -76,10 +76,4 @@ public class FurniturePanelsGUI extends JPanel {
         add(panelsQuantitySlide);
 
     }
-
-    public void enableDecisions() {
-        panelsPriceSlide.setEnabled(true);
-        panelsQuantitySlide.setEnabled(true);
-        purchaseInfo.setText("");
-    }
 }

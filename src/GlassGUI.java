@@ -71,10 +71,4 @@ public class GlassGUI extends JPanel {
 
     }
 
-    public void enableDecisions() {
-        glassPriceSlide.setEnabled(true);
-        glassQuantitySlide.setEnabled(true);
-        purchaseInfo.setText("");
-    }
-
 }
