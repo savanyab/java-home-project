@@ -6,24 +6,18 @@ public class CupboardsGUI extends JPanel {
     private Employees employees;
     private Glass glass;
     private FurniturePanels panels;
-    private Window window;
-    private Advertisement ad;
 
     private JSlider cupboardProductionSlide;
     private JSlider cupboardSellSlide;
     private JSlider cupboardSellingPrice;
-    private JButton acceptProduction;
-    private JButton acceptSell;
     private JTextArea cupboardInfo;
 
 
-    public CupboardsGUI(Window window, Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels, Advertisement ad) {
+    public CupboardsGUI(Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels, Advertisement ad) {
         this.cupboards = cupboards;
         this.employees = employees;
         this.glass = glass;
         this.panels = panels;
-        this.window = window;
-        this.ad = ad;
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -36,9 +30,6 @@ public class CupboardsGUI extends JPanel {
         cupboardSellSlide = new JSlider(0, 100);
         cupboardSellingPrice = new JSlider(0, 100);
 
-        acceptProduction = new JButton("OK");
-        acceptSell = new JButton("OK");
-
         cupboardInfo = new JTextArea();
 
         askCupboardsToProduce.setBounds(10, 10, 300, 20);
@@ -49,16 +40,10 @@ public class CupboardsGUI extends JPanel {
         cupboardSellSlide.setBounds(10, 130, 300, 40);
         cupboardSellingPrice.setBounds(10, 220, 300, 40);
 
-        acceptProduction.setBounds(320, 37, 60, 25);
-        acceptSell.setBounds(320, 220, 60, 25);
-
         cupboardInfo.setBounds(390, 40, 270, 200);
         cupboardInfo.setEditable(false);
 
         cupboardSellingPrice.setValue(0);
-
-        acceptSell.setEnabled(false);
-        cupboardSellSlide.setEnabled(false);
 
         cupboardProductionSlide.setValue(0);
         cupboardSellSlide.setValue(0);
@@ -74,21 +59,6 @@ public class CupboardsGUI extends JPanel {
             cupboardInfo.setText("Előállítandó szekrények száma: " + cupboards.getProducedPerMonth() +
                     "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock()
             );
-        });
-
-        acceptProduction.addActionListener(e -> {
-            window.increaseDecisionCount();
-            cupboards.increaseStock();
-            cupboards.reduceRawMaterials(cupboardProductionSlide.getValue(), panels, glass);
-            cupboardInfo.setText("Előállított szekrények száma: " + cupboards.getProducedPerMonth() +
-                    "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock());
-            cupboardProductionSlide.setEnabled(false);
-            acceptProduction.setEnabled(false);
-            cupboardSellSlide.setMaximum(cupboards.getCupboardStock());
-            cupboardSellingPrice.setMaximum(cupboards.setMaxSellingPrice(panels, glass));
-            cupboardSellSlide.setEnabled(true);
-            cupboardSellingPrice.setEnabled(true);
-            acceptSell.setEnabled(true);
         });
 
         cupboardSellSlide.addChangeListener(e -> {
@@ -114,26 +84,6 @@ public class CupboardsGUI extends JPanel {
                     "\nEladási ár: " + cupboards.sellingPrice);
         });
 
-        acceptSell.addActionListener(e -> {
-            window.increaseDecisionCount();
-            window.enableAcceptChanges();
-            cupboardSellSlide.setEnabled(false);
-            cupboardSellingPrice.setEnabled(false);
-            acceptSell.setEnabled(false);
-            cupboards.setSoldQuantity(cupboardSellSlide.getValue(), ad);
-            cupboards.reduceStock();
-            cupboards.receiveIncomeOfSoldGoods();
-            cupboardInfo.setText("Előállított szekrények száma: " + cupboards.producedPerMonth +
-                    "\nSzekrény raktárkészlet: " + cupboards.getCupboardStock() +
-                    "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
-                    "\nEladási ár: " + cupboardSellingPrice.getValue() +
-                    "\n\n\n" +
-                    "Eladási arány: " + cupboards.getSellingRate() +
-                    "\nEladott szekrények száma: " + cupboards.soldPerMonth +
-                    "\nRaktáron maradt mennyiség: " + cupboards.getCupboardStock()
-            );
-        });
-
         cupboardSellingPrice.setMinorTickSpacing(1000);
         cupboardSellingPrice.setMajorTickSpacing(5000);
         cupboardSellingPrice.setPaintTicks(true);
@@ -148,8 +98,6 @@ public class CupboardsGUI extends JPanel {
         add(cupboardSellSlide);
         add(askSellingPrice);
         add(cupboardSellingPrice);
-        add(acceptProduction);
-        add(acceptSell);
         add(cupboardInfo);
     }
 
@@ -159,7 +107,6 @@ public class CupboardsGUI extends JPanel {
 
     public void enableDecisions() {
         cupboardProductionSlide.setEnabled(true);
-        acceptProduction.setEnabled(true);
         cupboardInfo.setText("");
     }
 }
