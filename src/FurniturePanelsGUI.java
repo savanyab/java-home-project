@@ -3,15 +3,11 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class FurniturePanelsGUI extends JPanel {
-    private ChangeListener changeListener;
-    private Window window;
     private JSlider panelsPriceSlide;
     private JSlider panelsQuantitySlide;
-    private JButton acceptPurchase;
     private JTextArea purchaseInfo;
 
-    public FurniturePanelsGUI(Window window, FurniturePanels panels) {
-        this.window = window;
+    public FurniturePanelsGUI(FurniturePanels panels) {
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
@@ -20,7 +16,6 @@ public class FurniturePanelsGUI extends JPanel {
         JLabel askPanelsToBuy = new JLabel();
         panelsQuantitySlide = new JSlider(0, 100);
         purchaseInfo = new JTextArea();
-        acceptPurchase = new JButton("Vásárlás jóváhagyása");
 
         panels.setPurchasePrice(panelsPriceSlide.getValue());
 
@@ -37,7 +32,7 @@ public class FurniturePanelsGUI extends JPanel {
         purchaseInfo.setEditable(false);
         purchaseInfo.setBounds(390, 10, 270, 80);
         
-        changeListener = e -> {
+        ChangeListener changeListener = e -> {
             panels.purchase(panelsQuantitySlide.getValue());
             panels.setPurchasePrice(panelsPriceSlide.getValue());
             panels.setExpenses(panelsPriceSlide.getValue() * panelsQuantitySlide.getValue());
@@ -70,36 +65,18 @@ public class FurniturePanelsGUI extends JPanel {
 
         panelsQuantitySlide.addChangeListener(changeListener);
 
-        acceptPurchase.setBounds(390, 200, 200, 30);
-        acceptPurchase.addActionListener((e) -> {
-            window.increaseDecisionCount();
-            panelsQuantitySlide.setEnabled(false);
-            panelsPriceSlide.setEnabled(false);
-            acceptPurchase.setEnabled(false);
-            panels.setStock();
-            purchaseInfo.setText(
-                    "Bútorlap készlet: " + panels.getStock() +
-                            "\nBeszerzési ár: " + panels.getPurchasePrice() +
-                    "\nVásárolt mennyiség: " + panels.getPurchasedQuantity() +
-                    "\nVásárlás költsége: " + panels.getExpenses()
-            );
-        });
-
-
 
         add(askPanelPurchasePrice);
         add(panelsPriceSlide);
         add(purchaseInfo);
         add(askPanelsToBuy);
         add(panelsQuantitySlide);
-        add(acceptPurchase);
 
     }
 
     public void enableDecisions() {
         panelsPriceSlide.setEnabled(true);
         panelsQuantitySlide.setEnabled(true);
-        acceptPurchase.setEnabled(true);
         purchaseInfo.setText("");
     }
 }
