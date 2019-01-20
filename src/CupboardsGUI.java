@@ -13,7 +13,7 @@ public class CupboardsGUI extends JPanel {
     private JTextArea cupboardInfo;
 
 
-    public CupboardsGUI(Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels, Advertisement ad) {
+    public CupboardsGUI(Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
         this.cupboards = cupboards;
         this.employees = employees;
         this.glass = glass;
@@ -112,4 +112,6 @@ public class CupboardsGUI extends JPanel {
         cupboardProductionSlide.setEnabled(true);
         cupboardInfo.setText("");
     }
+
+    public int getSellingQuantity() { return cupboardSellSlide.getValue(); }
 }

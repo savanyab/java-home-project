@@ -25,7 +25,7 @@ public class Window extends JFrame {
         advertisementGUI = new AdvertisementGUI(ad);
         furniturePanelsGUI = new FurniturePanelsGUI(panels);
         glassGUI = new GlassGUI(glass);
-        cupboardsGUI = new CupboardsGUI(cupboards, employees, glass, panels, ad);
+        cupboardsGUI = new CupboardsGUI(cupboards, employees, glass, panels);
 
         JTextArea companyInfo = new JTextArea();
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -46,6 +46,10 @@ public class Window extends JFrame {
             panels.increaseStock();
             glass.increaseStock();
             cupboards.increaseStock();
+            cupboards.setSoldQuantity(cupboardsGUI.getSellingQuantity(), ad);
+            cupboards.reduceStock();
+            cupboards.receiveIncomeOfSoldGoods();
+            cupboards.reduceRawMaterials(cupboards.producedPerMonth, panels, glass);
             company.nextRound(employees, ad, panels, glass, cupboards);
             companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
             if (company.getCapital() <= 0 || company.getCapital() >= 2000000) {
