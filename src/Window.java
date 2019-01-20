@@ -22,7 +22,7 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
 
-        employeeGUI = new EmployeeGUI(this, employees);
+        employeeGUI = new EmployeeGUI(employees);
         advertisementGUI = new AdvertisementGUI(ad);
         furniturePanelsGUI = new FurniturePanelsGUI(this, panels);
         glassGUI = new GlassGUI(this, glass);
