@@ -5,11 +5,9 @@ public class EmployeeGUI extends JPanel{
     private JSlider employeeSlide;
     private JTextArea employeeInfo;
     private Employees employees;
-    private Window window;
 
     public EmployeeGUI(Window window, Employees employees) {
         this.employees = employees;
-        this.window = window;
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));

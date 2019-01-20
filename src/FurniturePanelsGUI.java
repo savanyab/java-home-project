@@ -24,6 +24,7 @@ public class FurniturePanelsGUI extends JPanel {
 
         askPanelPurchasePrice.setText("Milyen áron szerezzük be a bútorlapokat?");
         askPanelPurchasePrice.setBounds(10, 10, 300, 20);
+        askPanelPurchasePrice.setToolTipText("A beszerzési ár a bútorok előállítási költségén keresztül befolyásolja a maximum eladási árat.");
 
         panelsQuantitySlide.setValue(0);
 
@@ -57,6 +58,7 @@ public class FurniturePanelsGUI extends JPanel {
 
         askPanelsToBuy.setText("Mennyi bútorlapot vegyünk?");
         askPanelsToBuy.setBounds(10, 120, 300, 40);
+        askPanelsToBuy.setToolTipText("Egy egység szekrény előállításához 2 egység bútorlap szükséges.");
 
         panelsQuantitySlide.setMinorTickSpacing(100);
         panelsQuantitySlide.setMajorTickSpacing(500);
