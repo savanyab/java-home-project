@@ -3,7 +3,6 @@ import java.awt.*;
 
 public class AdvertisementGUI extends JPanel {
     private JSlider adCountSlide;
-    private JButton acceptAdCount;
     private JTextArea adInfo;
 
     public AdvertisementGUI(Advertisement ad) {
@@ -13,16 +12,9 @@ public class AdvertisementGUI extends JPanel {
         JLabel askAdCount = new JLabel();
         adCountSlide = new JSlider(0, 20);
         adInfo = new JTextArea();
-        acceptAdCount = new JButton("OK");
 
         askAdCount.setText("Mennyi reklámot kérjünk a hónapban?");
         askAdCount.setBounds(10, 10, 300, 20);
-
-        acceptAdCount.setBounds(320, 50, 60, 25);
-        acceptAdCount.addActionListener((e) -> {
-            adCountSlide.setEnabled(false);
-            acceptAdCount.setEnabled(false);
-        });
 
         adInfo.setBounds(390, 10, 270, 80);
         adInfo.setEditable(false);
@@ -37,6 +29,7 @@ public class AdvertisementGUI extends JPanel {
         adCountSlide.setPaintLabels(true);
         adCountSlide.setBounds(10, 50, 300, 40);
         adCountSlide.setValue(ad.getAdCount());
+
         adCountSlide.addChangeListener((e) -> {
             ad.changeAdCount(adCountSlide.getValue());
             adInfo.setText("Reklámok száma: " + ad.getAdCount() +
@@ -48,12 +41,10 @@ public class AdvertisementGUI extends JPanel {
         add(askAdCount);
         add(adCountSlide);
         add(adInfo);
-        add(acceptAdCount);
     }
 
     public void  enableDecisions() {
         adCountSlide.setEnabled(true);
-        acceptAdCount.setEnabled(true);
         adInfo.setText("");
     }
 

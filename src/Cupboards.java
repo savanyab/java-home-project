@@ -3,7 +3,6 @@ public class Cupboards extends Goods {
     private int glassPerCupboard = 1;
     private int panelPerCupboard = 2;
     private int income;
-    private int maxSellingPrice;
     private int maxProducts;
     private double sellingRate;
 
@@ -76,7 +75,7 @@ public class Cupboards extends Goods {
         int costOfGlass = g.getPurchasePrice() * glassPerCupboard;
         int costOfPanels = p.getPurchasePrice() * panelPerCupboard;
         productionCost =  costOfGlass + costOfPanels;
-        maxSellingPrice = (int) (productionCost * 2.5);
+        int maxSellingPrice = (int) (productionCost * 2.5);
         return maxSellingPrice;
     }
 

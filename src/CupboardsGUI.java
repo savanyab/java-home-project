@@ -21,6 +21,7 @@ public class CupboardsGUI extends JPanel {
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
+        //int maxProducts = cupboards.setMaximumProducts();
         cupboardProductionSlide = new JSlider(0, 100);
 
         JLabel askCupboardsToProduce = new JLabel("Mennyi szekrényt állítsunk elő?");
@@ -89,7 +90,6 @@ public class CupboardsGUI extends JPanel {
         cupboardSellingPrice.setPaintTicks(true);
         cupboardSellingPrice.setPaintLabels(true);
         cupboardSellingPrice.setLabelTable(cupboardSellingPrice.createStandardLabels(10000));
-        cupboardSellingPrice.setEnabled(false);
 
 
         add(askCupboardsToProduce);

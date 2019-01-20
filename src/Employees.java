@@ -31,6 +31,6 @@ public class Employees {
 
     public void payWages() {
         employeeExpenses = employeeCount * WAGE;
-        System.out.println("alkalmazottak expenses: " + employeeExpenses);
+        System.out.println("bérköltség: " + employeeExpenses);
     }
 }

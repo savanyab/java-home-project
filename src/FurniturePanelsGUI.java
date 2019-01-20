@@ -33,12 +33,15 @@ public class FurniturePanelsGUI extends JPanel {
         purchaseInfo.setBounds(390, 10, 270, 80);
         
         ChangeListener changeListener = e -> {
-            panels.purchase(panelsQuantitySlide.getValue());
-            panels.setPurchasePrice(panelsPriceSlide.getValue());
-            panels.setExpenses(panelsPriceSlide.getValue() * panelsQuantitySlide.getValue());
+            int decidedQuantity = panelsQuantitySlide.getValue();
+            int decidedPrice = panelsPriceSlide.getValue();
+            panels.purchase(decidedQuantity);
+            panels.setPurchasePrice(decidedPrice);
+            panels.setExpenses(decidedPrice, decidedQuantity);
             purchaseInfo.setText("Jelenlegi bútorlapkészlet: " + panels.getStock() +
                     "\nBeszerzési ár: " + panels.getPurchasePrice() +
                     "\nVásárolni kívánt mennyiség: " + panelsQuantitySlide.getValue() +
+                    "\nVásárlás utáni készlet:" + panels.getDecidedStock() +
                     "\nVásárlás költsége: " + panels.getExpenses());
         };
 

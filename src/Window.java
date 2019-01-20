@@ -8,7 +8,6 @@ public class Window extends JFrame {
     private Employees employees = new Employees();
     private FurniturePanels panels = new FurniturePanels();
     private Cupboards cupboards = new Cupboards();
-    private JButton acceptChanges;
     private EmployeeGUI employeeGUI;
     private AdvertisementGUI advertisementGUI;
     private FurniturePanelsGUI furniturePanelsGUI;
@@ -26,7 +25,7 @@ public class Window extends JFrame {
         advertisementGUI = new AdvertisementGUI(ad);
         furniturePanelsGUI = new FurniturePanelsGUI(panels);
         glassGUI = new GlassGUI(glass);
-        cupboardsGUI = new CupboardsGUI(this, cupboards, employees, glass, panels, ad);
+        cupboardsGUI = new CupboardsGUI(cupboards, employees, glass, panels, ad);
 
         JTextArea companyInfo = new JTextArea();
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -41,11 +40,10 @@ public class Window extends JFrame {
         companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
         companyInfo.setBounds(0, 350, 700, 50);
 
-        acceptChanges = new JButton("Jóváhagyás");
-        acceptChanges.setEnabled(false);
+        JButton acceptChanges = new JButton("Jóváhagyás");
 
         acceptChanges.addActionListener(e -> {
-            acceptChanges.setEnabled(false);
+            panels.increaseStock();
             company.nextRound(employees, ad, panels, glass, cupboards);
             companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
             if (company.getCapital() <= 0 || company.getCapital() >= 2000000) {
