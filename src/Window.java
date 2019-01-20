@@ -30,7 +30,8 @@ public class Window extends JFrame {
 
         startMonth();
 
-        allInfos.setBounds(715, 40, 205, 360);
+        allInfos.setBounds(715, 40, 205, 300);
+        allInfos.setEditable(false);
 
         JTextArea companyInfo = new JTextArea();
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -62,12 +63,12 @@ public class Window extends JFrame {
         });
 
         tabbedPane.setBounds(0, 20, 700, 320);
-        acceptChanges.setBounds(280, 420, 110, 25);
+        acceptChanges.setBounds(760, 370, 110, 25);
 
         add(companyInfo);
         add(tabbedPane);
-        add(acceptChanges);
         add(allInfos);
+        add(acceptChanges);
     }
 
     private int exitOrRestart() {

@@ -18,6 +18,7 @@ public class AdvertisementGUI extends JPanel {
 
         askAdCount.setText("Mennyi reklámot kérjünk a hónapban?");
         askAdCount.setBounds(10, 10, 300, 20);
+        askAdCount.setToolTipText("Minden reklám 5%-kal növeli a havi eladási arányt. Ára: " + ad.getAdPrice() + "/db.");
 
         adInfo.setBounds(390, 10, 270, 80);
         adInfo.setEditable(false);
