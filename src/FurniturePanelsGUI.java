@@ -6,8 +6,10 @@ public class FurniturePanelsGUI extends JPanel {
     private JSlider panelsPriceSlide;
     private JSlider panelsQuantitySlide;
     private JTextArea purchaseInfo;
+    private FurniturePanels panels;
 
     public FurniturePanelsGUI(FurniturePanels panels) {
+        this.panels = panels;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
 
@@ -38,11 +40,7 @@ public class FurniturePanelsGUI extends JPanel {
             panels.purchase(decidedQuantity);
             panels.setPurchasePrice(decidedPrice);
             panels.setExpenses(decidedPrice, decidedQuantity);
-            purchaseInfo.setText("Jelenlegi bútorlapkészlet: " + panels.getStock() +
-                    "\nBeszerzési ár: " + panels.getPurchasePrice() +
-                    "\nVásárolni kívánt mennyiség: " + panelsQuantitySlide.getValue() +
-                    "\nVásárlás utáni készlet:" + panels.getDecidedStock() +
-                    "\nVásárlás költsége: " + panels.getExpenses());
+            purchaseInfo.setText(infoText());
         };
 
 
@@ -75,5 +73,19 @@ public class FurniturePanelsGUI extends JPanel {
         add(askPanelsToBuy);
         add(panelsQuantitySlide);
 
+    }
+
+    private String infoText() {
+        return "Jelenlegi bútorlapkészlet: " + panels.getStock() +
+                "\nBeszerzési ár: " + panels.getPurchasePrice() +
+                "\nVásárolni kívánt mennyiség: " + panelsQuantitySlide.getValue() +
+                "\nVásárlás utáni készlet:" + panels.getDecidedStock() +
+                "\nVásárlás költsége: " + panels.getExpenses();
+    }
+
+    public void startMonth() {
+        panelsPriceSlide.setValue(0);
+        panelsQuantitySlide.setValue(0);
+        purchaseInfo.setText(infoText());
     }
 }

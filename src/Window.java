@@ -105,5 +105,6 @@ public class Window extends JFrame {
         advertisementGUI.startMonth();
         cupboardsGUI.startMonth();
         glassGUI.startMonth();
+        furniturePanelsGUI.startMonth();
     }
 }
