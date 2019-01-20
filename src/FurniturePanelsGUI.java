@@ -16,7 +16,7 @@ public class FurniturePanelsGUI extends JPanel {
         JLabel askPanelPurchasePrice = new JLabel();
         panelsPriceSlide = new JSlider(3000, 6000);
         JLabel askPanelsToBuy = new JLabel();
-        panelsQuantitySlide = new JSlider(0, 100);
+        panelsQuantitySlide = new JSlider(0, 1000);
         purchaseInfo = new JTextArea();
 
         panels.setPurchasePrice(panelsPriceSlide.getValue());
@@ -57,11 +57,11 @@ public class FurniturePanelsGUI extends JPanel {
         askPanelsToBuy.setText("Mennyi bútorlapot vegyünk?");
         askPanelsToBuy.setBounds(10, 120, 300, 40);
 
-        panelsQuantitySlide.setMinorTickSpacing(5);
-        panelsQuantitySlide.setMajorTickSpacing(10);
+        panelsQuantitySlide.setMinorTickSpacing(100);
+        panelsQuantitySlide.setMajorTickSpacing(500);
         panelsQuantitySlide.setPaintTicks(true);
         panelsQuantitySlide.setPaintLabels(true);
-        panelsQuantitySlide.setLabelTable(panelsQuantitySlide.createStandardLabels(10));
+        panelsQuantitySlide.setLabelTable(panelsQuantitySlide.createStandardLabels(100));
         panelsQuantitySlide.setBounds(10, 180, 300, 40);
 
         panelsQuantitySlide.addChangeListener(changeListener);

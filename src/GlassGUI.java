@@ -16,7 +16,7 @@ public class GlassGUI extends JPanel {
         JLabel askGlassPurchasePrice = new JLabel("Milyen áron szerezzünk be üveget?");
         glassPriceSlide = new JSlider(2500, 5000);
         JLabel askGlassToBuy = new JLabel("Mennyi üveget vegyünk?");
-        glassQuantitySlide = new JSlider(0, 100);
+        glassQuantitySlide = new JSlider(0, 1000);
         purchaseInfo = new JTextArea();
 
         glass.setPurchasePrice(glassPriceSlide.getValue());
@@ -46,11 +46,11 @@ public class GlassGUI extends JPanel {
 
         glassPriceSlide.addChangeListener(changeListener);
 
-        glassQuantitySlide.setMinorTickSpacing(5);
-        glassQuantitySlide.setMajorTickSpacing(10);
+        glassQuantitySlide.setMinorTickSpacing(100);
+        glassQuantitySlide.setMajorTickSpacing(500);
         glassQuantitySlide.setPaintTicks(true);
         glassQuantitySlide.setPaintLabels(true);
-        glassQuantitySlide.setLabelTable(glassQuantitySlide.createStandardLabels(10));
+        glassQuantitySlide.setLabelTable(glassQuantitySlide.createStandardLabels(100));
         glassQuantitySlide.setBounds(10, 180, 300, 40);
 
         glassQuantitySlide.addChangeListener(changeListener);
