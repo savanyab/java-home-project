@@ -5,9 +5,11 @@ public class EmployeeGUI extends JPanel{
     private JSlider employeeSlide;
     private JTextArea employeeInfo;
     private Employees employees;
+    private Window window;
 
-    public EmployeeGUI(Employees employees) {
+    public EmployeeGUI(Window window, Employees employees) {
         this.employees = employees;
+        this.window = window;
 
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -29,6 +31,7 @@ public class EmployeeGUI extends JPanel{
         employeeSlide.setBounds(10, 50, 300, 40);
 
         employeeSlide.addChangeListener((e) -> {
+            window.setAllInfos();
             employees.changeEmployeeCount(employeeSlide.getValue());
             employees.setMaxProductByEmployees();
             employeeInfo.setText("Alkalmazottak száma: " + employees.getEmployeeCount() +

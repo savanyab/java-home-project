@@ -6,7 +6,7 @@ public class AdvertisementGUI extends JPanel {
     private JTextArea adInfo;
     private Advertisement ad;
 
-    public AdvertisementGUI(Advertisement ad) {
+    public AdvertisementGUI(Window window, Advertisement ad) {
         this.ad = ad;
 
         setLayout(null);
@@ -29,6 +29,7 @@ public class AdvertisementGUI extends JPanel {
         adCountSlide.setBounds(10, 50, 300, 40);
 
         adCountSlide.addChangeListener((e) -> {
+            window.setAllInfos();
             ad.changeAdCount(adCountSlide.getValue());
             adInfo.setText("Reklámok száma: " + ad.getAdCount() +
                     "\nHavi reklámköltség: " + ad.getAdCount() * ad.getAdPrice() +

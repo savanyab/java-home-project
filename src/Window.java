@@ -13,21 +13,24 @@ public class Window extends JFrame {
     private FurniturePanelsGUI furniturePanelsGUI;
     private GlassGUI glassGUI;
     private CupboardsGUI cupboardsGUI;
+    private JTextArea allInfos = new JTextArea();
 
     public Window() {
         setTitle("FurnitureFactory");
-        setSize(700, 500);
+        setSize(950, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
 
-        employeeGUI = new EmployeeGUI(employees);
-        advertisementGUI = new AdvertisementGUI(ad);
+        employeeGUI = new EmployeeGUI(this, employees);
+        advertisementGUI = new AdvertisementGUI(this, ad);
         furniturePanelsGUI = new FurniturePanelsGUI(panels);
         glassGUI = new GlassGUI(glass);
         cupboardsGUI = new CupboardsGUI(cupboards, employees, glass, panels);
 
         startMonth();
+
+        allInfos.setBounds(715, 40, 205, 360);
 
         JTextArea companyInfo = new JTextArea();
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -41,6 +44,7 @@ public class Window extends JFrame {
 
         companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
         companyInfo.setBounds(0, 350, 700, 50);
+        companyInfo.setEditable(false);
 
         JButton acceptChanges = new JButton("Jóváhagyás");
 
@@ -63,6 +67,7 @@ public class Window extends JFrame {
         add(companyInfo);
         add(tabbedPane);
         add(acceptChanges);
+        add(allInfos);
     }
 
     private int exitOrRestart() {
@@ -106,5 +111,11 @@ public class Window extends JFrame {
         cupboardsGUI.startMonth();
         glassGUI.startMonth();
         furniturePanelsGUI.startMonth();
+    }
+
+    public void setAllInfos() {
+        allInfos.setText("Döntések alapján várható költségek:" +
+                "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() +
+                "\nReklámköltség: " + ad.getAdCount() * ad.getAdPrice());
     }
 }
