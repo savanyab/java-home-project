@@ -24,9 +24,9 @@ public class Window extends JFrame {
 
         employeeGUI = new EmployeeGUI(this, employees);
         advertisementGUI = new AdvertisementGUI(this, ad);
-        furniturePanelsGUI = new FurniturePanelsGUI(panels);
-        glassGUI = new GlassGUI(glass);
-        cupboardsGUI = new CupboardsGUI(cupboards, employees, glass, panels);
+        furniturePanelsGUI = new FurniturePanelsGUI(this, panels);
+        glassGUI = new GlassGUI(this, glass);
+        cupboardsGUI = new CupboardsGUI(this, cupboards, employees, glass, panels);
 
         startMonth();
 
@@ -114,8 +114,16 @@ public class Window extends JFrame {
     }
 
     public void setAllInfos() {
+        int employeeExpenses = employees.getWAGE() * employees.getEmployeeCount();
+        int adExpenses = ad.getAdCount() * ad.getAdPrice();
+        int panelsExpenses = panels.getExpenses();
+        int glassExpenses = glass.getExpenses();
         allInfos.setText("Döntések alapján várható költségek:" +
-                "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() +
-                "\nReklámköltség: " + ad.getAdCount() * ad.getAdPrice());
+                "\n\nBérköltség: " +  + employeeExpenses +
+                "\nReklámköltség: " + adExpenses +
+                "\nBútorlap vásárlás: " + panelsExpenses +
+                "\nÜveg vásárlás: " + glassExpenses +
+                "\n\nÖsszesen: " + (employeeExpenses + adExpenses + panelsExpenses + glassExpenses) +
+                "\n\n\nMaximum bevétel: " + cupboardsGUI.showMaximumIncome());
     }
 }

@@ -13,7 +13,7 @@ public class CupboardsGUI extends JPanel {
     private JTextArea cupboardInfo;
 
 
-    public CupboardsGUI(Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
+    public CupboardsGUI(Window window, Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
         this.cupboards = cupboards;
         this.employees = employees;
         this.glass = glass;
@@ -57,6 +57,7 @@ public class CupboardsGUI extends JPanel {
         });
 
         cupboardSellSlide.addChangeListener(e -> {
+            window.setAllInfos();
             cupboardInfo.setText(infoText());
         });
 
@@ -67,6 +68,7 @@ public class CupboardsGUI extends JPanel {
         cupboardSellSlide.setLabelTable(cupboardSellSlide.createStandardLabels(10));
 
         cupboardSellingPrice.addChangeListener(e -> {
+            window.setAllInfos();
             cupboards.decideSellingPrice(cupboardSellingPrice.getValue());
             cupboardInfo.setText(infoText());
         });
@@ -107,5 +109,9 @@ public class CupboardsGUI extends JPanel {
                 "\nSzekrény raktárkészlet: " + cupboards.getDecidedStock() +
                 "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
                 "\nEladási ár: " + cupboards.sellingPrice;
+    }
+
+    public int showMaximumIncome() {
+        return cupboardSellSlide.getValue() * cupboardSellingPrice.getValue();
     }
 }

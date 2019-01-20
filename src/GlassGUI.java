@@ -8,7 +8,7 @@ public class GlassGUI extends JPanel {
     private JTextArea purchaseInfo;
     private Glass glass;
 
-    public GlassGUI(Glass glass) {
+    public GlassGUI(Window window, Glass glass) {
         this.glass = glass;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -22,6 +22,7 @@ public class GlassGUI extends JPanel {
         glass.setPurchasePrice(glassPriceSlide.getValue());
 
         ChangeListener changeListener = e -> {
+            window.setAllInfos();
             int decidedQuantity = glassQuantitySlide.getValue();
             int decidedPrice = glassPriceSlide.getValue();
             glass.purchase(decidedQuantity);

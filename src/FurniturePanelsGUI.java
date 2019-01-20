@@ -8,7 +8,7 @@ public class FurniturePanelsGUI extends JPanel {
     private JTextArea purchaseInfo;
     private FurniturePanels panels;
 
-    public FurniturePanelsGUI(FurniturePanels panels) {
+    public FurniturePanelsGUI(Window window, FurniturePanels panels) {
         this.panels = panels;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -35,6 +35,7 @@ public class FurniturePanelsGUI extends JPanel {
         purchaseInfo.setBounds(390, 10, 270, 80);
         
         ChangeListener changeListener = e -> {
+            window.setAllInfos();
             int decidedQuantity = panelsQuantitySlide.getValue();
             int decidedPrice = panelsPriceSlide.getValue();
             panels.purchase(decidedQuantity);
