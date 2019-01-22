@@ -67,11 +67,16 @@ public class GlassGUI extends JPanel {
     }
 
     private String infoText() {
-        return "Jelenlegi üvegkészlet: " + glass.getStock() +
-                "\nBeszerzési ár: " + glass.getPurchasePrice() +
-                "\nVásárolni kívánt mennyiség: " + glassQuantitySlide.getValue() +
-                "\nVásárlás utáni készlet:" + glass.getDecidedStock() +
-                "\nVásárlás költsége: " + glass.getExpenses();
+        return String.format("Jelenlegi üvegkészlet: %,4d" +
+                "\nBeszerzési ár: %,5d" +
+                "\nVásárolni kívánt mennyiség: %,4d" +
+                "\nVásárlás utáni készlet: %,4d" +
+                "\nVásárlás költsége: %,5d",
+                glass.getStock(),
+                glass.getPurchasePrice(),
+                glassQuantitySlide.getValue(),
+                glass.getDecidedStock(),
+                glass.getExpenses());
     }
 
     public void startMonth() {
