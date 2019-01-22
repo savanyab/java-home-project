@@ -19,7 +19,6 @@ class Advertisement {
 
     void changeAdCount(int i){
         adCount = i;
-        System.out.println("Reklámok száma: " + adCount);
     }
 
 

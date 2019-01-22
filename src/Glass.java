@@ -10,14 +10,12 @@ public class Glass extends RawMaterial {
 
     public void setExpenses(int price, int quantity) {
         expenses = price * quantity;
-        System.out.println("Üveg vásárlás költsége: " + expenses);
     }
 
     public void setGlassPurchasePrice(int a) { glassPurchasePrice = a; }
 
     public void increaseStock() {
         stock = decidedStock;
-        System.out.println("Üveg mennyiség: " + stock);
     }
 
     public void purchase(int quantity) {
@@ -27,7 +25,6 @@ public class Glass extends RawMaterial {
 
     public void reduceGlassStock(int productQuantity, int glassPerProduct) {
         stock -= (productQuantity * glassPerProduct);
-        System.out.println("Üveg készlet: " + stock);
     }
 
 }
