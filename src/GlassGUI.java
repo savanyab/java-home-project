@@ -26,7 +26,7 @@ public class GlassGUI extends JPanel {
             int decidedQuantity = glassQuantitySlide.getValue();
             int decidedPrice = glassPriceSlide.getValue();
             glass.purchase(decidedQuantity);
-            glass.setGlassPurchasePrice(decidedPrice);
+            glass.setPurchasePrice(decidedPrice);
             glass.setExpenses(decidedPrice, decidedQuantity);
             purchaseInfo.setText(infoText());
         };
