@@ -32,12 +32,7 @@ public class AdvertisementGUI extends JPanel {
         adCountSlide.addChangeListener((e) -> {
             window.setAllInfos();
             ad.changeAdCount(adCountSlide.getValue());
-            adInfo.setText(String.format("Reklámok száma: %,2d"  +
-                    "\nHavi reklámköltség: %,6d"  +
-                    "\nAz eladási arányt maximum %,2d",
-                    ad.getAdCount(),
-                    ad.getAdCount() * ad.getAdPrice(),
-                    ad.getAdCount() * 5) +"%-kal növeli.");
+            adInfo.setText(infoText());
         });
 
 
@@ -48,12 +43,16 @@ public class AdvertisementGUI extends JPanel {
 
     public void startMonth() {
         adCountSlide.setValue(ad.getAdCount());
-        adInfo.setText(String.format("Reklámok száma: %,2d"  +
+        adInfo.setText(infoText());
+    }
+
+    public String infoText() {
+        return String.format("Reklámok száma: %,2d"  +
                         "\nHavi reklámköltség: %,6d"  +
                         "\nAz eladási arányt maximum %,2d",
                 ad.getAdCount(),
                 ad.getAdCount() * ad.getAdPrice(),
-                ad.getAdCount() * 5) +"%-kal növeli.");
+                ad.getAdCount() * 5) +"%-kal növeli.";
     }
 
 }
