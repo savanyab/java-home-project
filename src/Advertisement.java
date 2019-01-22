@@ -1,24 +1,24 @@
-class Advertisement {
-    private int adPrice;
-    private int adCount;
-    private int adExpenses;
+public class Advertisement {
+    private int price;
+    private int count;
+    private int expenses;
 
-    Advertisement() {
-        adPrice = 5000;
+    public Advertisement() {
+        price = 50000;
     }
 
-    int getAdCount() {
-        return adCount;
+    public int getAdCount() {
+        return count;
     }
 
-    int getExpenses() { return adExpenses; }
+    public int getExpenses() { return expenses; }
 
-    int getAdPrice() { return adPrice; }
+    public int getAdPrice() { return price; }
 
-    void setAdExpenses() {adExpenses = adCount * adPrice;}
+    public void setAdExpenses() {expenses = count * price;}
 
-    void changeAdCount(int i){
-        adCount = i;
+    public void changeAdCount(int i){
+        count = i;
     }
 
 
