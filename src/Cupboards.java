@@ -1,18 +1,19 @@
 public class Cupboards extends Goods {
     private int cupboardStock;
-    private int glassPerCupboard = 1;
-    private int panelPerCupboard = 2;
+    private int glassPerCupboard;
+    private int panelPerCupboard;
     private int income;
-    private int maxProducts;
     private double sellingRate;
     private int decidedStock;
 
+    public Cupboards() {
+        this.glassPerCupboard = 1;
+        this.panelPerCupboard = 2;
+    }
+
     public double getSellingRate() { return sellingRate; }
 
-
     public int getCupboardStock() {return cupboardStock;}
-
-    public int getDecidedStock() { return decidedStock; }
 
     public int getIncome() { return income; }
 
@@ -30,9 +31,6 @@ public class Cupboards extends Goods {
         glass.reduceGlassStock(quantity, glassPerCupboard);
     }
 
-    public int getProducedPerMonth() { return producedPerMonth; }
-
-
     public int setMaximumProducts(FurniturePanels panels, Glass glass, Employees employees) {
         int maxQuantityFromPanels = panels.getDecidedStock() / panelPerCupboard;
         int maxQuantityFromGlass = glass.getDecidedStock() / glassPerCupboard;
@@ -40,13 +38,12 @@ public class Cupboards extends Goods {
 
         int[] maximums = { maxQuantityFromPanels, maxQuantityFromGlass, maxQuantityFromEmployees};
         int max = maximums[0];
-        for (int i = 0; i < maximums.length; i++) {
-            if(maximums[i] < max) {
-                max = maximums[i];
+        for (int maximum : maximums) {
+            if (maximum < max) {
+                max = maximum;
             }
         }
-        maxProducts = max;
-        return maxProducts;
+        return max;
     }
 
     public void reduceStock() {
@@ -73,8 +70,7 @@ public class Cupboards extends Goods {
         int costOfGlass = glass.getPurchasePrice() * glassPerCupboard;
         int costOfPanels = panels.getPurchasePrice() * panelPerCupboard;
         productionCost =  costOfGlass + costOfPanels;
-        int maxSellingPrice = (int) (productionCost * 2.5);
-        return maxSellingPrice;
+        return (int) (productionCost * 2.5);
     }
 
     public int setMaxSellableQuantity() {
@@ -85,11 +81,11 @@ public class Cupboards extends Goods {
         income = soldPerMonth * sellingPrice;
     }
 
-    public String toString() {
-        return "Előállított szekrények: " + producedPerMonth +
-                "\nSzekrény raktárkészlet: " + cupboardStock +
-                "\nSzekrény eladási ár: " + sellingPrice +
-                "\nBevétel az eladott szekrényekből: " + income +
-                "\nMaximum előállítható mennyiség: " + maxProducts;
+    public String toString(int decision) {
+        return String.format("Előállított szekrények száma: %,4d" +
+                        "\nSzekrény raktárkészlet: %,5d"  +
+                        "\nEladásra küldendő mennyiség: %,5d"  +
+                        "\nEladási ár: %,5d",
+                producedPerMonth, decidedStock, decision, sellingPrice);
     }
 }
