@@ -34,9 +34,12 @@ public class EmployeeGUI extends JPanel{
             window.setAllInfos();
             employees.changeEmployeeCount(employeeSlide.getValue());
             employees.setMaxProductByEmployees();
-            employeeInfo.setText("Alkalmazottak száma: " + employees.getEmployeeCount() +
-                    "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() +
-                    "\nMaximum termelékenység: " + employees.getMaxProductsByEmployees());
+            employeeInfo.setText(String.format("Alkalmazottak száma: %,2d" +
+                    "\nBérköltség: %,8d" +
+                    "\nMaximum termelékenység: %,2d",
+                    employees.getEmployeeCount(),
+                    employees.getWAGE() * employees.getEmployeeCount(),
+                    employees.getMaxProductsByEmployees()));
         });
 
         add(employeeInfo);
@@ -47,8 +50,11 @@ public class EmployeeGUI extends JPanel{
 
     public void startMonth() {
         employeeSlide.setValue(employees.getEmployeeCount());
-        employeeInfo.setText("Jelenleg alkalmazottak száma: " + employees.getEmployeeCount() +
-                "\nBérköltség: " + employees.getWAGE() * employees.getEmployeeCount() +
-                "\nMaximum termelékenység: " + employees.getMaxProductsByEmployees());
+        employeeInfo.setText(String.format("Jelenleg alkalmazottak száma: %,2d"  +
+                "\nBérköltség: %,8d" +
+                "\nMaximum termelékenység: %,2d",
+                employees.getEmployeeCount(),
+                employees.getWAGE() * employees.getEmployeeCount(),
+                employees.getMaxProductsByEmployees()));
     }
 }
