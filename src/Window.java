@@ -8,11 +8,13 @@ public class Window extends JFrame {
     private Employees employees = new Employees();
     private FurniturePanels panels = new FurniturePanels();
     private Cupboards cupboards = new Cupboards();
+
     private EmployeeGUI employeeGUI;
     private AdvertisementGUI advertisementGUI;
     private FurniturePanelsGUI furniturePanelsGUI;
     private GlassGUI glassGUI;
     private CupboardsGUI cupboardsGUI;
+
     private JTextArea allInfos = new JTextArea();
     private ShowSellingInfo sellingInfo;
 
@@ -129,13 +131,19 @@ public class Window extends JFrame {
         int adExpenses = ad.getAdCount() * ad.getAdPrice();
         int panelsExpenses = panels.getExpenses();
         int glassExpenses = glass.getExpenses();
-        allInfos.setText("Döntések alapján várható költségek:" +
-                "\n\nBérköltség: " +  + employeeExpenses +
-                "\nReklámköltség: " + adExpenses +
-                "\nBútorlap vásárlás: " + panelsExpenses +
-                "\nÜveg vásárlás: " + glassExpenses +
-                "\n\nÖsszesen: " + (employeeExpenses + adExpenses + panelsExpenses + glassExpenses) +
-                "\n\n\nMaximum bevétel: " + cupboardsGUI.showMaximumIncome());
+        allInfos.setText(String.format("Döntések alapján várható költségek:" +
+                "\n\nBérköltség: %,8d%n" +
+                "\nReklámköltség: %,8d%n" +
+                "\nBútorlap vásárlás: %,8d%n" +
+                "\nÜveg vásárlás: %,8d%n" +
+                "\n\nÖsszesen: %,8d%n"  +
+                "\n\n\nMaximum bevétel: %,8d%n",
+                employeeExpenses,
+                adExpenses,
+                panelsExpenses,
+                glassExpenses,
+                (employeeExpenses + adExpenses + panelsExpenses + glassExpenses),
+                cupboardsGUI.showMaximumIncome()));
     }
 
 }
