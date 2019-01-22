@@ -109,10 +109,11 @@ public class CupboardsGUI extends JPanel {
     }
 
     private String infoText() {
-        return "Előállított szekrények száma: " + cupboards.producedPerMonth +
-                "\nSzekrény raktárkészlet: " + cupboards.getDecidedStock() +
-                "\nEladásra küldendő mennyiség: " + cupboardSellSlide.getValue() +
-                "\nEladási ár: " + cupboards.sellingPrice;
+        return String.format("Előállított szekrények száma: %,4d" +
+                "\nSzekrény raktárkészlet: %,5d"  +
+                "\nEladásra küldendő mennyiség: %,5d"  +
+                "\nEladási ár: %,5d",
+                cupboards.producedPerMonth, cupboards.getDecidedStock(), cupboardSellSlide.getValue(), cupboards.sellingPrice);
     }
 
     public int showMaximumIncome() {
