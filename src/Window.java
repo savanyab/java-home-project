@@ -14,6 +14,7 @@ public class Window extends JFrame {
     private GlassGUI glassGUI;
     private CupboardsGUI cupboardsGUI;
     private JTextArea allInfos = new JTextArea();
+    private ShowSellingInfo sellingInfo;
 
     public Window() {
         setTitle("FurnitureFactory");
@@ -54,6 +55,7 @@ public class Window extends JFrame {
             reduceStocks();
             cupboards.receiveIncomeOfSoldGoods();
             company.nextRound(employees, ad, panels, glass, cupboards);
+            sellingInfo = new ShowSellingInfo(company, cupboards);
             companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
             if (company.getCapital() <= 0 || company.getCapital() >= 2000000) {
                 endGame();
@@ -84,6 +86,7 @@ public class Window extends JFrame {
 
     private void endGame() {
         int decision = exitOrRestart();
+        sellingInfo.dispose();
         if (decision == 1) {
             dispose();
         } else {
@@ -134,4 +137,5 @@ public class Window extends JFrame {
                 "\n\nÖsszesen: " + (employeeExpenses + adExpenses + panelsExpenses + glassExpenses) +
                 "\n\n\nMaximum bevétel: " + cupboardsGUI.showMaximumIncome());
     }
+
 }
