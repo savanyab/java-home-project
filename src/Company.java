@@ -41,15 +41,19 @@ public class Company {
     }
 
     public String toString(Employees e, Cupboards c, FurniturePanels p, Glass g, Advertisement a) {
-        return round + ". hónap kezdeti fő adatai: " +
-                "\nTőke: " + capital
-                + ", alkalmazottak száma: " + e.getEmployeeCount()
-                + ", bevétel: " + income
-                + ", kiadások: " + expenses
-                + ",\n szekrény készlet: " + c.getCupboardStock()
-                + ", üveg készlet: " + g.getStock()
-                + ", bútorlap készlet: " + p.getStock()
-                + ", reklámok száma: " + a.getAdCount();
+        return String.format(round + ". hónap kezdeti fő adatai: " +
+                "\nTőke: %,8d alkalmazottak száma: %,2d  bevétel: %,8d kiadások: %,8d%n szekrény készlet: %,4d"
+                + ", üveg készlet: %,4d"
+                + ", bútorlap készlet: %,5d"
+                + ", reklámok száma: %,2d",
+                capital,
+                e.getEmployeeCount(),
+                income,
+                expenses,
+                c.getCupboardStock(),
+                g.getStock(),
+                p.getStock(),
+                a.getAdCount());
     }
 
 
