@@ -48,11 +48,11 @@ public class CupboardsGUI extends JPanel {
         cupboardInfo.setBounds(390, 40, 270, 200);
         cupboardInfo.setEditable(false);
 
-        cupboardProductionSlide.setMinorTickSpacing(5);
-        cupboardProductionSlide.setMajorTickSpacing(10);
+        cupboardProductionSlide.setMinorTickSpacing(10);
+        cupboardProductionSlide.setMajorTickSpacing(50);
         cupboardProductionSlide.setPaintTicks(true);
         cupboardProductionSlide.setPaintLabels(true);
-        cupboardProductionSlide.setLabelTable(cupboardProductionSlide.createStandardLabels(10));
+        cupboardProductionSlide.setLabelTable(cupboardProductionSlide.createStandardLabels(50));
 
         cupboardProductionSlide.addChangeListener(e -> {
             cupboardSellSlide.setMaximum(cupboards.setMaxSellableQuantity());
@@ -65,11 +65,11 @@ public class CupboardsGUI extends JPanel {
             cupboardInfo.setText(infoText());
         });
 
-        cupboardSellSlide.setMinorTickSpacing(5);
-        cupboardSellSlide.setMajorTickSpacing(10);
+        cupboardSellSlide.setMinorTickSpacing(10);
+        cupboardSellSlide.setMajorTickSpacing(50);
         cupboardSellSlide.setPaintTicks(true);
         cupboardSellSlide.setPaintLabels(true);
-        cupboardSellSlide.setLabelTable(cupboardSellSlide.createStandardLabels(10));
+        cupboardSellSlide.setLabelTable(cupboardSellSlide.createStandardLabels(50));
 
         cupboardSellingPrice.addChangeListener(e -> {
             window.setAllInfos();
