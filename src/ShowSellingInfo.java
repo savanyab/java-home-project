@@ -27,10 +27,10 @@ public class ShowSellingInfo extends JDialog {
         panel.add(textarea);
         panel.add(button);
 
-        textarea.setText(company.getRound()-1 + ". hónap vége: \nEladási arány: " + cupboards.getSellingRate() +
+        textarea.setText(String.format(company.getRound()-1 + ". hónap vége: \nEladási arány: %.2f"  +
                 "\nEladott szekrények száma: " + cupboards.soldPerMonth +
-                "\nBevétel az eladás után: " + cupboards.getIncome() +
-                "\nTőke: " + company.getCapital());
+                "\nBevétel az eladás után: %,8d%n"  +
+                "\nTőke: %,8d%n", cupboards.getSellingRate(), cupboards.getIncome(), company.getCapital()));
 
         setVisible(true);
     }
