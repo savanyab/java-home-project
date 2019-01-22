@@ -33,7 +33,7 @@ public class Company {
 
     public void nextRound(Employees employees, Advertisement ad, FurniturePanels panels, Glass glass, Cupboards cupboards) {
         employees.payWages();
-        ad.setAdExpenses();
+        ad.setExpenses();
         setExpenses(employees.getExpenses() + ad.getExpenses() + panels.getExpenses() + glass.getExpenses());
         setIncome(cupboards.getIncome());
         capital += income - expenses;

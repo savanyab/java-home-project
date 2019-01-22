@@ -15,7 +15,7 @@ public class Advertisement {
 
     public int getAdPrice() { return price; }
 
-    public void setAdExpenses() {expenses = count * price;}
+    public void setExpenses() {expenses = count * price;}
 
     public void changeAdCount(int i){
         count = i;
