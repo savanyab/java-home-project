@@ -18,16 +18,13 @@ public class Employees {
 
     public void changeEmployeeCount(int i) {
         employeeCount = i;
-        System.out.println("Alkalmazottak száma: " + employeeCount);
     }
 
     public void setMaxProductByEmployees() {
         maxProductsByEmployees = employeeCount * 30;
-        System.out.println("Maximum " + maxProductsByEmployees + " egység terméket tudnak előállítani a hónapban.");
     }
 
     public void payWages() {
         employeeExpenses = employeeCount * WAGE;
-        System.out.println("bérköltség: " + employeeExpenses);
     }
 }
