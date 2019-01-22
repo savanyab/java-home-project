@@ -17,6 +17,7 @@ public class Window extends JFrame {
 
     private JTextArea allInfos = new JTextArea();
     private ShowSellingInfo sellingInfo;
+    private Rules gameRules;
 
     public Window() {
         setTitle("FurnitureFactory");
@@ -25,6 +26,7 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
 
+        JButton rules = new JButton("Játékszabályok");
         employeeGUI = new EmployeeGUI(this, employees);
         advertisementGUI = new AdvertisementGUI(this, ad);
         furniturePanelsGUI = new FurniturePanelsGUI(this, panels);
@@ -66,6 +68,11 @@ public class Window extends JFrame {
             }
         });
 
+        rules.addActionListener(e -> {
+           gameRules = new Rules();
+        });
+
+        rules.setBounds(790, 5, 130, 20);
         tabbedPane.setBounds(0, 20, 700, 320);
         acceptChanges.setBounds(760, 370, 110, 25);
 
@@ -73,6 +80,7 @@ public class Window extends JFrame {
         add(tabbedPane);
         add(allInfos);
         add(acceptChanges);
+        add(rules);
     }
 
     private int exitOrRestart() {
