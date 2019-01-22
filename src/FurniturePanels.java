@@ -1,50 +1,29 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class FurniturePanels extends RawMaterial {
     private int panelPurchasePrice;
-    private Scanner sc = new Scanner(System.in);
+    private int decidedStock;
 
     public int getPurchasePrice() {return panelPurchasePrice;}
 
-    private void decidePanelPurchasePrice() {
-        System.out.println("Milyen áron vegyünk bútorlapot? A piacon 3000 és 6000 Ft között érhető el.");
-        try {
-            int a = Integer.parseInt(sc.next());
-            if (a >= 3000 && a <= 6000) {
-                panelPurchasePrice = a;
-            } else {
-                System.out.println("3000 és 6000 Ft közti összeget adj meg!");
-                decidePanelPurchasePrice();
-            }
-        } catch (InputMismatchException | NumberFormatException e) {
-            System.out.println("Pozitív egész számot vagy nullát írj be!");
-            decidePanelPurchasePrice();
-        }
+    public void setPurchasePrice(int purchasePrice) { panelPurchasePrice = purchasePrice; }
+
+    public void setExpenses(int price, int quantity) {
+        expenses = price * quantity;
     }
 
-    public void purchase() {
-        decidePanelPurchasePrice();
-        System.out.println("Mennyi bútorlapot vegyünk? (" + stock + " van raktáron. Ára " + panelPurchasePrice + " Ft/egység. Egy egység szekrényhez 2 egység bútorlap szükséges.)");
-        try {
-            int a = Integer.parseInt(sc.next());
+    public int getDecidedStock() { return decidedStock; }
 
-            if (a >= 0) {
-                stock += a;
-                expenses = a * panelPurchasePrice;
-                System.out.println("Bútorlap mennyiség: " + stock);
-                System.out.println("Bútorlap vásárlás költsége: " + expenses);
-            } else {
-                System.out.println("A vásárolt mennyiség nem lehet negatív");
-                purchase();
-            }
-        } catch (InputMismatchException | NumberFormatException e) {
-            System.out.println("Pozitív egész számot vagy nullát írj be!");
-        }
+    public int getExpenses() { return expenses; }
+
+    public void purchase(int quantity) {
+        purchasedQuantity = quantity;
+        decidedStock = stock + purchasedQuantity;
+    }
+
+    public void increaseStock() {
+        stock = decidedStock;
     }
 
     public void reducePanelStock(int productQuantity, int panelPerProduct) {
         stock -= (productQuantity * panelPerProduct);
-        System.out.println("Bútorlap készlet: " + stock);
     }
 }

@@ -2,6 +2,7 @@ public abstract class RawMaterial {
 
     protected int stock;
     protected int expenses;
+    protected int purchasedQuantity;
 
     public int getStock() {
         return stock;
@@ -9,8 +10,6 @@ public abstract class RawMaterial {
 
     public int getExpenses() { return expenses; }
 
-    public abstract void purchase();
-
-
+    public int getPurchasedQuantity() { return purchasedQuantity; }
 
 }

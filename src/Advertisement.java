@@ -1,39 +1,24 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Advertisement {
-    private int adPrice;
-    private int adCount;
-    private int adExpenses;
+    private int price;
+    private int count;
+    private int expenses;
 
     public Advertisement() {
-        adPrice = 5000;
+        price = 50000;
     }
 
     public int getAdCount() {
-        return adCount;
+        return count;
     }
 
-    public int getExpenses() { return adExpenses; }
+    public int getExpenses() { return expenses; }
 
-    public void changeAdCount(){
-        System.out.println("Jelenleg " + adCount + " reklámunk van. Hogyan változzon a számuk?");
-        Scanner sc = new Scanner(System.in);
-        try {
-            int i = Integer.parseInt(sc.next());
-            if (adCount + i < 0){
-                System.out.println("Reklámok száma: " + adCount + ". Többet nem lehet lemondani.");
-                changeAdCount();
-            }else  {
-                adCount += i;
-                adExpenses = adCount * adPrice;
-                System.out.println("Havi reklámköltség: " + adExpenses);
-            }
-        } catch(InputMismatchException | NumberFormatException e) {
-            System.out.println("Egész számot írj be!");
-            changeAdCount();
-        }
+    public int getAdPrice() { return price; }
 
+    public void setAdExpenses() {expenses = count * price;}
+
+    public void changeAdCount(int i){
+        count = i;
     }
 
 

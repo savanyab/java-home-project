@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Company {
     private int capital;
     private int income;
@@ -23,39 +21,39 @@ public class Company {
     // endregion
 
     // region Setters
+    public static void setRound(int a) { round = a;}
 
-    public void setExpenses(Employees e, FurniturePanels p, Glass g, Advertisement a) {
-        expenses = e.getExpenses() + p.getExpenses() + g.getExpenses() + a.getExpenses();
-    }
+    private void setExpenses(int expenses) { this.expenses = expenses;}
 
-    public void setIncome(Cupboards c) {
-        income = c.getIncome();
+    private void setIncome(int income) {
+        this.income = income;
     }
 
     // endregion
 
-    public void nextRound() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Léphetünk a következő körre?");
-        String a = sc.next();
-        if (!a.equals("nem")) {
-            round++;
-        }
-    }
-
-    public void changeCapital() {
+    public void nextRound(Employees employees, Advertisement ad, FurniturePanels panels, Glass glass, Cupboards cupboards) {
+        employees.payWages();
+        ad.setAdExpenses();
+        setExpenses(employees.getExpenses() + ad.getExpenses() + panels.getExpenses() + glass.getExpenses());
+        setIncome(cupboards.getIncome());
         capital += income - expenses;
+        round++;
     }
 
     public String toString(Employees e, Cupboards c, FurniturePanels p, Glass g, Advertisement a) {
-        return "Tőke: " + capital
-                + ", alkalmazottak száma: " + e.getEmployeeCount()
-                + ", havi bevétel: " + income
-                + ", havi kiadások: " + expenses
-                + ", szekrény készlet: " + c.getCupboardStock()
-                + ", üveg készlet: " + g.getStock()
-                + ", bútorlap készlet: " + p.getStock()
-                + ", reklámok száma: " + a.getAdCount();
+        return String.format(round + ". hónap kezdeti fő adatai: " +
+                "\nTőke: %,8d alkalmazottak száma: %,2d  bevétel: %,8d kiadások: %,8d%n szekrény készlet: %,4d"
+                + ", üveg készlet: %,4d"
+                + ", bútorlap készlet: %,5d"
+                + ", reklámok száma: %,2d",
+                capital,
+                e.getEmployeeCount(),
+                income,
+                expenses,
+                c.getCupboardStock(),
+                g.getStock(),
+                p.getStock(),
+                a.getAdCount());
     }
 
 
