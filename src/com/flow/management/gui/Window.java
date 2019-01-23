@@ -25,7 +25,7 @@ public class Window extends JFrame {
 
     public Window() {
         setTitle("FurnitureFactory");
-        setSize(950, 470);
+        setSize(950, 440);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -128,18 +128,7 @@ public class Window extends JFrame {
         cupboardsGUI.startMonth();
         glassGUI.startMonth();
         furniturePanelsGUI.startMonth();
-        allInfos.setText(String.format("Döntések alapján várható költségek:" +
-                "\n\nBérköltség: %,8d%n" +
-                "\nReklámköltség: %,8d%n" +
-                "\nBútorlap vásárlás: 0\n" +
-                "\nÜveg vásárlás: 0\n" +
-                "\n\nÖsszesen: %,8d%n" +
-                "\n\nMaximum bevétel: %,8d%n",
-                employees.getWAGE() * employees.getEmployeeCount(),
-                ad.getCount() * ad.getPrice(),
-                (employees.getWAGE() * employees.getEmployeeCount() + ad.getCount() * ad.getPrice()),
-                cupboardsGUI.showMaximumIncome())
-        );
+        setAllInfos();
     }
 
     void setAllInfos() {
@@ -148,12 +137,12 @@ public class Window extends JFrame {
         int panelsExpenses = panels.getExpenses();
         int glassExpenses = glass.getExpenses();
         allInfos.setText(String.format("Döntések alapján várható költségek:" +
-                "\n\nBérköltség: %,8d%n" +
-                "\nReklámköltség: %,8d%n" +
-                "\nBútorlap vásárlás: %,8d%n" +
-                "\nÜveg vásárlás: %,8d%n" +
-                "\n\nÖsszesen: %,8d%n"  +
-                "\n\n\nMaximum bevétel: %,8d%n",
+                "\n\nBérköltség: %,32d%n" +
+                "\nReklámköltség: %,24d%n" +
+                "\nBútorlap vásárlás: %,20d%n" +
+                "\nÜveg vásárlás: %,26d%n" +
+                "\n\nÖsszesen: %,33d%n"  +
+                "\n\n\nMaximum bevétel: %,20d%n",
                 employeeExpenses,
                 adExpenses,
                 panelsExpenses,
