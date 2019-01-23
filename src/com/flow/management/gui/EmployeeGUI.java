@@ -5,12 +5,12 @@ import com.flow.management.Employees;
 import javax.swing.*;
 import java.awt.*;
 
-public class EmployeeGUI extends JPanel{
+class EmployeeGUI extends JPanel{
     private JSlider employeeSlide;
     private JTextArea employeeInfo;
     private Employees employees;
 
-    public EmployeeGUI(Window window, Employees employees) {
+    EmployeeGUI(Window window, Employees employees) {
         this.employees = employees;
 
         setLayout(null);
@@ -47,7 +47,7 @@ public class EmployeeGUI extends JPanel{
 
     }
 
-    public void startMonth() {
+    void startMonth() {
         employeeSlide.setValue(employees.getEmployeeCount());
         employeeInfo.setText(employees.toString());
     }

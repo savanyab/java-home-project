@@ -141,7 +141,7 @@ public class Window extends JFrame {
         );
     }
 
-    public void setAllInfos() {
+    void setAllInfos() {
         int employeeExpenses = employees.getWAGE() * employees.getEmployeeCount();
         int adExpenses = ad.getCount() * ad.getPrice();
         int panelsExpenses = panels.getExpenses();

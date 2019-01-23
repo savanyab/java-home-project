@@ -8,7 +8,7 @@ import com.flow.management.Glass;
 import javax.swing.*;
 import java.awt.*;
 
-public class CupboardsGUI extends JPanel {
+class CupboardsGUI extends JPanel {
     private Cupboards cupboards;
     private Employees employees;
     private Glass glass;
@@ -20,7 +20,7 @@ public class CupboardsGUI extends JPanel {
     private JTextArea cupboardInfo;
 
 
-    public CupboardsGUI(Window window, Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
+    CupboardsGUI(Window window, Cupboards cupboards, Employees employees, Glass glass, FurniturePanels panels) {
         this.cupboards = cupboards;
         this.employees = employees;
         this.glass = glass;
@@ -100,15 +100,15 @@ public class CupboardsGUI extends JPanel {
         add(cupboardInfo);
     }
 
-    public void recalculate() {
+    void recalculate() {
         cupboardProductionSlide.setMaximum(cupboards.setMaximumProducts(panels, glass, employees));
         cupboardSellingPrice.setMaximum(cupboards.setMaxSellingPrice(panels, glass));
         cupboardSellSlide.setMaximum(cupboards.setMaxSellableQuantity());
     }
 
-    public int getSellingQuantity() { return cupboardSellSlide.getValue(); }
+    int getSellingQuantity() { return cupboardSellSlide.getValue(); }
 
-    public void startMonth() {
+    void startMonth() {
         cupboardProductionSlide.setValue(0);
         cupboardSellSlide.setValue(0);
         cupboardSellingPrice.setValue(0);
@@ -119,7 +119,7 @@ public class CupboardsGUI extends JPanel {
         return cupboards.toString(cupboardSellSlide.getValue());
     }
 
-    public int showMaximumIncome() {
+    int showMaximumIncome() {
         return cupboardSellSlide.getValue() * cupboardSellingPrice.getValue();
     }
 }

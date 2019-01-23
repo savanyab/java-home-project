@@ -6,13 +6,13 @@ import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 
-public class GlassGUI extends JPanel {
+class GlassGUI extends JPanel {
     private JSlider glassPriceSlide;
     private JSlider glassQuantitySlide;
     private JTextArea purchaseInfo;
     private Glass glass;
 
-    public GlassGUI(Window window, Glass glass) {
+    GlassGUI(Window window, Glass glass) {
         this.glass = glass;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -70,7 +70,7 @@ public class GlassGUI extends JPanel {
 
     }
 
-    public void startMonth() {
+    void startMonth() {
         glassQuantitySlide.setValue(0);
         glassPriceSlide.setValue(0);
         purchaseInfo.setText(glass.toString(glassQuantitySlide.getValue()));

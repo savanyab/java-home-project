@@ -6,13 +6,13 @@ import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 
-public class FurniturePanelsGUI extends JPanel {
+class FurniturePanelsGUI extends JPanel {
     private JSlider panelsPriceSlide;
     private JSlider panelsQuantitySlide;
     private JTextArea purchaseInfo;
     private FurniturePanels panels;
 
-    public FurniturePanelsGUI(Window window, FurniturePanels panels) {
+    FurniturePanelsGUI(Window window, FurniturePanels panels) {
         this.panels = panels;
         setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.gray));
@@ -80,7 +80,7 @@ public class FurniturePanelsGUI extends JPanel {
 
     }
 
-    public void startMonth() {
+    void startMonth() {
         panelsPriceSlide.setValue(0);
         panelsQuantitySlide.setValue(0);
         purchaseInfo.setText(panels.toString(panelsQuantitySlide.getValue()));

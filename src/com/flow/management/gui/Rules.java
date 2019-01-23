@@ -3,9 +3,9 @@ package com.flow.management.gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class Rules extends JFrame {
+class Rules extends JFrame {
 
-    public Rules() {
+    Rules() {
         setSize(620, 400);
         setLocationRelativeTo(null);
         setVisible(true);

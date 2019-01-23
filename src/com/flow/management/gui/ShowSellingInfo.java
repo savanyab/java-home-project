@@ -5,9 +5,9 @@ import com.flow.management.Cupboards;
 
 import javax.swing.*;
 
-public class ShowSellingInfo extends JDialog {
+class ShowSellingInfo extends JDialog {
 
-    public ShowSellingInfo(Company company, Cupboards cupboards) {
+    ShowSellingInfo(Company company, Cupboards cupboards) {
         JPanel panel = new JPanel();
         JTextArea textarea = new JTextArea();
         JButton button = new JButton("OK");

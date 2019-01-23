@@ -5,12 +5,12 @@ import com.flow.management.Advertisement;
 import javax.swing.*;
 import java.awt.*;
 
-public class AdvertisementGUI extends JPanel {
+class AdvertisementGUI extends JPanel {
     private JSlider adCountSlide;
     private JTextArea adInfo;
     private Advertisement ad;
 
-    public AdvertisementGUI(Window window, Advertisement ad) {
+    AdvertisementGUI(Window window, Advertisement ad) {
         this.ad = ad;
 
         setLayout(null);
@@ -45,7 +45,7 @@ public class AdvertisementGUI extends JPanel {
         add(adInfo);
     }
 
-    public void startMonth() {
+    void startMonth() {
         adCountSlide.setValue(ad.getCount());
         adInfo.setText(ad.toString());
     }
