@@ -29,4 +29,13 @@ public class Employees {
     public void payWages() {
         employeeExpenses = employeeCount * WAGE;
     }
+
+    public String toString() {
+        return String.format("Jelenleg alkalmazottak száma: %,2d"  +
+                        "\nBérköltség: %,8d" +
+                        "\nMaximum termelékenység: %,2d",
+                employeeCount,
+                WAGE * employeeCount,
+                maxProductsByEmployees);
+    }
 }
