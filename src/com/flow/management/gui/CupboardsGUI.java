@@ -64,12 +64,12 @@ class CupboardsGUI extends JPanel {
         cupboardProductionSlide.addChangeListener(e -> {
             cupboardSellSlide.setMaximum(cupboards.setMaxSellableQuantity());
             cupboards.produce(cupboardProductionSlide.getValue());
-            cupboardInfo.setText(infoText());
+            cupboardInfo.setText(cupboards.toString(cupboardSellSlide.getValue()));
         });
 
         cupboardSellSlide.addChangeListener(e -> {
             window.setAllInfos();
-            cupboardInfo.setText(infoText());
+            cupboardInfo.setText(cupboards.toString(cupboardSellSlide.getValue()));
         });
 
         cupboardSellSlide.setMinorTickSpacing(10);
@@ -81,7 +81,7 @@ class CupboardsGUI extends JPanel {
         cupboardSellingPrice.addChangeListener(e -> {
             window.setAllInfos();
             cupboards.decideSellingPrice(cupboardSellingPrice.getValue());
-            cupboardInfo.setText(infoText());
+            cupboardInfo.setText(cupboards.toString(cupboardSellSlide.getValue()));
         });
 
         cupboardSellingPrice.setMinorTickSpacing(1000);
@@ -112,11 +112,7 @@ class CupboardsGUI extends JPanel {
         cupboardProductionSlide.setValue(0);
         cupboardSellSlide.setValue(0);
         cupboardSellingPrice.setValue(0);
-        cupboardInfo.setText(infoText());
-    }
-
-    private String infoText() {
-        return cupboards.toString(cupboardSellSlide.getValue());
+        cupboardInfo.setText(cupboards.toString(cupboardSellSlide.getValue()));
     }
 
     int showMaximumIncome() {
