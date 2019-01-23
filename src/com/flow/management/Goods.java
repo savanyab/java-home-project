@@ -8,4 +8,6 @@ public abstract class Goods {
 
     public int getProducedPerMonth() { return producedPerMonth; }
 
+    public int getSoldPerMonth() { return soldPerMonth; }
+
 }

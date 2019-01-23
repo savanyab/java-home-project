@@ -1,4 +1,7 @@
-package com.flow.management;
+package com.flow.management.gui;
+
+import com.flow.management.Company;
+import com.flow.management.Cupboards;
 
 import javax.swing.*;
 
@@ -28,7 +31,7 @@ public class ShowSellingInfo extends JDialog {
         panel.add(button);
 
         textarea.setText(String.format(company.getRound()-1 + ". hónap vége: \nEladási arány: %.2f"  +
-                "\nEladott szekrények száma: " + cupboards.soldPerMonth +
+                "\nEladott szekrények száma: " + cupboards.getSoldPerMonth() +
                 "\nBevétel az eladás után: %,8d%n"  +
                 "\nTőke: %,8d%n", cupboards.getSellingRate(), cupboards.getIncome(), company.getCapital()));
 

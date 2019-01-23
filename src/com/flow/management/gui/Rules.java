@@ -1,4 +1,4 @@
-package com.flow.management;
+package com.flow.management.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +36,6 @@ public class Rules extends JFrame {
         JScrollPane scrollPane = new JScrollPane(textArea);
         setPreferredSize(new Dimension(500, 400));
 
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         add(scrollPane, BorderLayout.CENTER);
