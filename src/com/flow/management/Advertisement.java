@@ -23,5 +23,12 @@ public class Advertisement {
         count = i;
     }
 
-
+    public String toString() {
+        return String.format("Reklámok száma: %,2d"  +
+                        "\nHavi reklámköltség: %,6d"  +
+                        "\nAz eladási arányt maximum %,2d",
+                count,
+                count * price,
+                count * 5) +"%-kal növeli.";
+    }
 }
