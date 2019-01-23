@@ -32,7 +32,7 @@ public class GlassGUI extends JPanel {
             glass.purchase(decidedQuantity);
             glass.setPurchasePrice(decidedPrice);
             glass.setExpenses(decidedPrice, decidedQuantity);
-            purchaseInfo.setText(infoText());
+            purchaseInfo.setText(glass.toString(glassQuantitySlide.getValue()));
         };
 
         askGlassPurchasePrice.setBounds(10, 10, 300, 20);
@@ -40,7 +40,7 @@ public class GlassGUI extends JPanel {
 
         askGlassPurchasePrice.setToolTipText("A beszerzési ár a bútorok előállítási költségén keresztül befolyásolja a maximum eladási árat.");
         askGlassToBuy.setToolTipText("Egy egység szekrény előállításához 1 egység üveg szükséges.");
-        purchaseInfo.setText(infoText());
+        purchaseInfo.setText(glass.toString(glassQuantitySlide.getValue()));
         purchaseInfo.setEditable(false);
         purchaseInfo.setBounds(390, 10, 270, 80);
 
@@ -70,22 +70,9 @@ public class GlassGUI extends JPanel {
 
     }
 
-    private String infoText() {
-        return String.format("Jelenlegi üvegkészlet: %,4d" +
-                "\nBeszerzési ár: %,5d" +
-                "\nVásárolni kívánt mennyiség: %,4d" +
-                "\nVásárlás utáni készlet: %,4d" +
-                "\nVásárlás költsége: %,5d",
-                glass.getStock(),
-                glass.getPurchasePrice(),
-                glassQuantitySlide.getValue(),
-                glass.getDecidedStock(),
-                glass.getExpenses());
-    }
-
     public void startMonth() {
         glassQuantitySlide.setValue(0);
         glassPriceSlide.setValue(0);
-        purchaseInfo.setText(infoText());
+        purchaseInfo.setText(glass.toString(glassQuantitySlide.getValue()));
     }
 }

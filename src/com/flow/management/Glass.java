@@ -15,4 +15,17 @@ public class Glass extends RawMaterial {
         stock -= (productQuantity * glassPerProduct);
     }
 
+    public String toString(int decision) {
+        return String.format("Jelenlegi üvegkészlet: %,4d" +
+                        "\nBeszerzési ár: %,5d" +
+                        "\nVásárolni kívánt mennyiség: %,4d" +
+                        "\nVásárlás utáni készlet: %,4d" +
+                        "\nVásárlás költsége: %,5d",
+                stock,
+                purchasePrice,
+                decision,
+                decidedStock,
+                expenses);
+    }
+
 }
