@@ -71,7 +71,7 @@ class FurniturePanelsGUI extends JPanel {
 
         panelsQuantitySlide.addChangeListener(changeListener);
 
-        JLabel imgLabel = new JLabel(new ImageIcon("E:\\Flow\\java\\management\\rsz_panels.jpg"));
+        JLabel imgLabel = new JLabel(new ImageIcon("E:\\Flow\\java\\management\\src\\com\\flow\\management\\pictures\\rsz_panels.jpg"));
         imgLabel.setBounds(390, 100, 270, 120);
         imgLabel.setOpaque(false);
 

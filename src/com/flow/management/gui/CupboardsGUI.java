@@ -90,7 +90,7 @@ class CupboardsGUI extends JPanel {
         cupboardSellingPrice.setPaintLabels(true);
         cupboardSellingPrice.setLabelTable(cupboardSellingPrice.createStandardLabels(10000));
 
-        JLabel imgLabel = new JLabel(new ImageIcon("E:\\Flow\\java\\management\\rsz_1cupboard.jpg"));
+        JLabel imgLabel = new JLabel(new ImageIcon("E:\\Flow\\java\\management\\src\\com\\flow\\management\\pictures\\rsz_1cupboard.jpg"));
         imgLabel.setBounds(390, 100, 270, 160);
         imgLabel.setOpaque(false);
 

@@ -41,7 +41,7 @@ class EmployeeGUI extends JPanel{
             employeeInfo.setText(employees.toString());
         });
 
-        JLabel imgLabel = new JLabel(new ImageIcon("E:\\Flow\\java\\management\\rsz_employees.png"));
+        JLabel imgLabel = new JLabel(new ImageIcon("E:\\Flow\\java\\management\\src\\com\\flow\\management\\pictures\\rsz_1employees.png"));
         imgLabel.setBounds(10, 100, 650, 180);
         imgLabel.setOpaque(false);
 

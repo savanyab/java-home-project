@@ -39,10 +39,14 @@ class AdvertisementGUI extends JPanel {
             adInfo.setText(ad.toString());
         });
 
+        JLabel imgLabel = new JLabel(new ImageIcon("E:\\Flow\\java\\management\\src\\com\\flow\\management\\pictures\\rsz_advertisement.png"));
+        imgLabel.setBounds(10, 130, 650, 120);
+        imgLabel.setOpaque(false);
 
         add(askAdCount);
         add(adCountSlide);
         add(adInfo);
+        add(imgLabel);
     }
 
     void startMonth() {
