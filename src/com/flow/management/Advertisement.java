@@ -24,8 +24,8 @@ public class Advertisement {
     }
 
     public String toString() {
-        return String.format("Reklámok száma: %,2d"  +
-                        "\nHavi reklámköltség: %,6d"  +
+        return String.format("Reklámok száma: %,33d"  +
+                        "\nHavi reklámköltség: %,30d"  +
                         "\nAz eladási arányt maximum %,2d",
                         count,
                         count * price,

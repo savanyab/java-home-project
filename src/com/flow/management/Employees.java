@@ -31,9 +31,9 @@ public class Employees {
     }
 
     public String toString() {
-        return String.format("Jelenleg alkalmazottak száma: %,2d"  +
-                        "\nBérköltség: %,8d" +
-                        "\nMaximum termelékenység: %,2d",
+        return String.format("Jelenleg alkalmazottak száma: %,10d"  +
+                        "\nBérköltség: %,40d" +
+                        "\nMaximum termelékenység: %,16d",
                 employeeCount,
                 WAGE * employeeCount,
                 maxProductsByEmployees);
