@@ -62,11 +62,16 @@ class GlassGUI extends JPanel {
 
         glassQuantitySlide.addChangeListener(changeListener);
 
+        JLabel imgLabel = new JLabel(new ImageIcon("E:\\Flow\\java\\management\\rsz_glass.jpg"));
+        imgLabel.setBounds(390, 100, 270, 120);
+        imgLabel.setOpaque(false);
+
         add(askGlassPurchasePrice);
         add(glassPriceSlide);
         add(askGlassToBuy);
         add(glassQuantitySlide);
         add(purchaseInfo);
+        add(imgLabel);
 
     }
 
