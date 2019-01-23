@@ -9,17 +9,17 @@ public class Advertisement {
         price = 50000;
     }
 
-    public int getAdCount() {
+    public int getCount() {
         return count;
     }
 
     public int getExpenses() { return expenses; }
 
-    public int getAdPrice() { return price; }
+    public int getPrice() { return price; }
 
     public void setExpenses() {expenses = count * price;}
 
-    public void changeAdCount(int i){
+    public void changeCount(int i){
         count = i;
     }
 

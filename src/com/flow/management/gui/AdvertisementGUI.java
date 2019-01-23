@@ -22,7 +22,7 @@ public class AdvertisementGUI extends JPanel {
 
         askAdCount.setText("Mennyi reklámot kérjünk a hónapban?");
         askAdCount.setBounds(10, 10, 300, 20);
-        askAdCount.setToolTipText("Minden reklám 5%-kal növeli a havi eladási arányt. Ára: " + ad.getAdPrice() + "/db.");
+        askAdCount.setToolTipText("Minden reklám 5%-kal növeli a havi eladási arányt. Ára: " + ad.getPrice() + "/db.");
 
         adInfo.setBounds(390, 10, 270, 80);
         adInfo.setEditable(false);
@@ -35,7 +35,7 @@ public class AdvertisementGUI extends JPanel {
 
         adCountSlide.addChangeListener((e) -> {
             window.setAllInfos();
-            ad.changeAdCount(adCountSlide.getValue());
+            ad.changeCount(adCountSlide.getValue());
             adInfo.setText(ad.toString());
         });
 
@@ -46,7 +46,7 @@ public class AdvertisementGUI extends JPanel {
     }
 
     public void startMonth() {
-        adCountSlide.setValue(ad.getAdCount());
+        adCountSlide.setValue(ad.getCount());
         adInfo.setText(ad.toString());
     }
 

@@ -135,15 +135,15 @@ public class Window extends JFrame {
                 "\n\nÖsszesen: %,8d%n" +
                 "\n\nMaximum bevétel: %,8d%n",
                 employees.getWAGE() * employees.getEmployeeCount(),
-                ad.getAdCount() * ad.getAdPrice(),
-                (employees.getWAGE() * employees.getEmployeeCount() + ad.getAdCount() * ad.getAdPrice()),
+                ad.getCount() * ad.getPrice(),
+                (employees.getWAGE() * employees.getEmployeeCount() + ad.getCount() * ad.getPrice()),
                 cupboardsGUI.showMaximumIncome())
         );
     }
 
     public void setAllInfos() {
         int employeeExpenses = employees.getWAGE() * employees.getEmployeeCount();
-        int adExpenses = ad.getAdCount() * ad.getAdPrice();
+        int adExpenses = ad.getCount() * ad.getPrice();
         int panelsExpenses = panels.getExpenses();
         int glassExpenses = glass.getExpenses();
         allInfos.setText(String.format("Döntések alapján várható költségek:" +
