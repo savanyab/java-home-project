@@ -25,10 +25,11 @@ public class Window extends JFrame {
 
     public Window() {
         setTitle("FurnitureFactory");
-        setSize(950, 500);
+        setSize(950, 470);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
+        setResizable(false);
 
         JButton rules = new JButton("Játékszabályok");
         employeeGUI = new EmployeeGUI(this, employees);
@@ -39,7 +40,7 @@ public class Window extends JFrame {
 
         startMonth();
 
-        allInfos.setBounds(715, 40, 205, 300);
+        allInfos.setBounds(725, 30, 205, 300);
         allInfos.setEditable(false);
 
         JTextArea companyInfo = new JTextArea();
@@ -53,7 +54,7 @@ public class Window extends JFrame {
         tabbedPane.addChangeListener(e -> cupboardsGUI.recalculate());
 
         companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
-        companyInfo.setBounds(0, 350, 700, 50);
+        companyInfo.setBounds(10, 340, 700, 50);
         companyInfo.setEditable(false);
 
         JButton acceptChanges = new JButton("Jóváhagyás");
@@ -74,9 +75,9 @@ public class Window extends JFrame {
 
         rules.addActionListener(e -> gameRules = new Rules());
 
-        rules.setBounds(790, 5, 130, 20);
-        tabbedPane.setBounds(0, 20, 700, 320);
-        acceptChanges.setBounds(760, 370, 110, 25);
+        rules.setBounds(800, 5, 130, 20);
+        tabbedPane.setBounds(10, 10, 700, 320);
+        acceptChanges.setBounds(760, 350, 130, 35);
 
         add(companyInfo);
         add(tabbedPane);
