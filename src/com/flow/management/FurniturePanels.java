@@ -14,4 +14,17 @@ public class FurniturePanels extends RawMaterial {
     public void reducePanelStock(int productQuantity, int panelPerProduct) {
         stock -= (productQuantity * panelPerProduct);
     }
+
+    public String toString(int decision) {
+        return String.format("Jelenlegi bútorlapkészlet: %,5d" +
+                        "\nBeszerzési ár: %,6d" +
+                        "\nVásárolni kívánt mennyiség: %,5d" +
+                        "\nVásárlás utáni készlet: %,5d" +
+                        "\nVásárlás költsége: %,6d",
+                        stock,
+                        purchasePrice,
+                        decision,
+                        decidedStock,
+                        expenses);
+    }
 }
