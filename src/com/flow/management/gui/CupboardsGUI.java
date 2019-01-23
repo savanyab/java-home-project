@@ -52,7 +52,7 @@ class CupboardsGUI extends JPanel {
         cupboardSellSlide.setBounds(10, 130, 300, 40);
         cupboardSellingPrice.setBounds(10, 220, 300, 40);
 
-        cupboardInfo.setBounds(390, 40, 270, 200);
+        cupboardInfo.setBounds(390, 10, 270, 80);
         cupboardInfo.setEditable(false);
 
         cupboardProductionSlide.setMinorTickSpacing(10);
