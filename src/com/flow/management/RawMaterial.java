@@ -2,17 +2,17 @@ package com.flow.management;
 
 public abstract class RawMaterial {
 
-    protected int stock;
-    protected int expenses;
-    protected int purchasedQuantity;
-    protected int purchasePrice;
-    protected int decidedStock;
+    int stock;
+    int expenses;
+    int purchasedQuantity;
+    int purchasePrice;
+    int decidedStock;
 
-    public int getPurchasePrice() {return purchasePrice;}
+    int getPurchasePrice() {return purchasePrice;}
 
-    public int getDecidedStock() { return decidedStock; }
+    int getDecidedStock() { return decidedStock; }
 
-    public int getStock() { return stock; }
+    int getStock() { return stock; }
 
     public int getExpenses() { return expenses; }
 

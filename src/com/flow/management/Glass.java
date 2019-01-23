@@ -11,7 +11,7 @@ public class Glass extends RawMaterial {
         decidedStock = stock + quantity;
     }
 
-    public void reduceGlassStock(int productQuantity, int glassPerProduct) {
+    void reduceGlassStock(int productQuantity, int glassPerProduct) {
         stock -= (productQuantity * glassPerProduct);
     }
 

@@ -15,7 +15,7 @@ public class Cupboards extends Goods {
 
     public double getSellingRate() { return sellingRate; }
 
-    public int getCupboardStock() {return cupboardStock;}
+    int getCupboardStock() {return cupboardStock;}
 
     public int getIncome() { return income; }
 

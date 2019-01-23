@@ -13,22 +13,22 @@ public class Advertisement {
         return count;
     }
 
-    public int getExpenses() { return expenses; }
+    int getExpenses() { return expenses; }
 
     public int getPrice() { return price; }
 
-    public void setExpenses() {expenses = count * price;}
+    void setExpenses() {expenses = count * price;}
 
-    public void changeCount(int i){
-        count = i;
+    public void changeCount(int count){
+        this.count = count;
     }
 
     public String toString() {
         return String.format("Reklámok száma: %,2d"  +
                         "\nHavi reklámköltség: %,6d"  +
                         "\nAz eladási arányt maximum %,2d",
-                count,
-                count * price,
-                count * 5) +"%-kal növeli.";
+                        count,
+                        count * price,
+                        count * 5) +"%-kal növeli.";
     }
 }

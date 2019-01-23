@@ -7,9 +7,9 @@ public class Employees {
     private int maxProductsByEmployees;
 
     // region Getters
-    public int getExpenses() { return employeeExpenses; }
+    int getExpenses() { return employeeExpenses; }
 
-    public int getMaxProductsByEmployees() { return maxProductsByEmployees; }
+    int getMaxProductsByEmployees() { return maxProductsByEmployees; }
 
     public int getEmployeeCount() {
         return employeeCount;
@@ -26,7 +26,7 @@ public class Employees {
         maxProductsByEmployees = employeeCount * 30;
     }
 
-    public void payWages() {
+    void payWages() {
         employeeExpenses = employeeCount * WAGE;
     }
 

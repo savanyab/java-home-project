@@ -11,7 +11,7 @@ public class FurniturePanels extends RawMaterial {
         stock = decidedStock;
     }
 
-    public void reducePanelStock(int productQuantity, int panelPerProduct) {
+    void reducePanelStock(int productQuantity, int panelPerProduct) {
         stock -= (productQuantity * panelPerProduct);
     }
 
