@@ -55,7 +55,7 @@ public class Cupboards extends Goods {
 
     private double setSellingRate(Advertisement ad){
         double b = Math.random();
-        double rate = b + ad.getAdCount() * 0.05;
+        double rate = b + ad.getCount() * 0.05;
         sellingRate = (rate < 1 ? rate : 1);
         System.out.println("randomszám: " + b);
         return sellingRate;
