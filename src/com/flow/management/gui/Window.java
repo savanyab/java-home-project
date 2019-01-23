@@ -127,13 +127,18 @@ public class Window extends JFrame {
         cupboardsGUI.startMonth();
         glassGUI.startMonth();
         furniturePanelsGUI.startMonth();
-        allInfos.setText("Döntések alapján várható költségek:" +
-                "\n\nBérköltség: " +  employees.getWAGE() * employees.getEmployeeCount() +
-                "\nReklámköltség: " + ad.getAdCount() * ad.getAdPrice() +
-                "\nBútorlap vásárlás: " + 0 +
-                "\nÜveg vásárlás: " + 0 +
-                "\n\nÖsszesen: " + (employees.getWAGE() * employees.getEmployeeCount() + ad.getAdCount() * ad.getAdPrice()) +
-                "\n\n\nMaximum bevétel: " + cupboardsGUI.showMaximumIncome());
+        allInfos.setText(String.format("Döntések alapján várható költségek:" +
+                "\n\nBérköltség: %,8d%n" +
+                "\nReklámköltség: %,8d%n" +
+                "\nBútorlap vásárlás: 0\n" +
+                "\nÜveg vásárlás: 0\n" +
+                "\n\nÖsszesen: %,8d%n" +
+                "\n\nMaximum bevétel: %,8d%n",
+                employees.getWAGE() * employees.getEmployeeCount(),
+                ad.getAdCount() * ad.getAdPrice(),
+                (employees.getWAGE() * employees.getEmployeeCount() + ad.getAdCount() * ad.getAdPrice()),
+                cupboardsGUI.showMaximumIncome())
+        );
     }
 
     public void setAllInfos() {
