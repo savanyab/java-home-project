@@ -1,3 +1,10 @@
+package com.flow.management.gui;
+
+import com.flow.management.Cupboards;
+import com.flow.management.Employees;
+import com.flow.management.FurniturePanels;
+import com.flow.management.Glass;
+
 import javax.swing.*;
 import java.awt.*;
 

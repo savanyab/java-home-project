@@ -1,3 +1,7 @@
+package com.flow.management.gui;
+
+import com.flow.management.*;
+
 import javax.swing.*;
 
 public class Window extends JFrame {
@@ -46,7 +50,7 @@ public class Window extends JFrame {
         tabbedPane.add("Üveg", glassGUI);
 
         tabbedPane.add("Szekrények", cupboardsGUI);
-        tabbedPane.addChangeListener(e -> {cupboardsGUI.recalculate();});
+        tabbedPane.addChangeListener(e -> cupboardsGUI.recalculate());
 
         companyInfo.setText(company.toString(employees, cupboards, panels, glass, ad));
         companyInfo.setBounds(0, 350, 700, 50);
@@ -68,9 +72,7 @@ public class Window extends JFrame {
             }
         });
 
-        rules.addActionListener(e -> {
-           gameRules = new Rules();
-        });
+        rules.addActionListener(e -> gameRules = new Rules());
 
         rules.setBounds(790, 5, 130, 20);
         tabbedPane.setBounds(0, 20, 700, 320);
@@ -116,7 +118,7 @@ public class Window extends JFrame {
     private void reduceStocks() {
         cupboards.setSoldQuantity(cupboardsGUI.getSellingQuantity(), ad);
         cupboards.reduceStock();
-        cupboards.reduceRawMaterials(cupboards.producedPerMonth, panels, glass);
+        cupboards.reduceRawMaterials(cupboards.getProducedPerMonth(), panels, glass);
     }
 
     private void startMonth() {

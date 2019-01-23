@@ -1,3 +1,5 @@
+package com.flow.management;
+
 public class Employees {
     private final int WAGE = 50000;
     private int employeeCount;

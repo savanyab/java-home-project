@@ -1,3 +1,5 @@
+package com.flow.management;
+
 public class Glass extends RawMaterial {
 
     public void increaseStock() {

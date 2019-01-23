@@ -1,3 +1,5 @@
+package com.flow.management;
+
 import javax.swing.*;
 
 public class ShowSellingInfo extends JDialog {
@@ -19,9 +21,7 @@ public class ShowSellingInfo extends JDialog {
 
         textarea.setEditable(false);
 
-        button.addActionListener(e -> {
-            dispose();
-        });
+        button.addActionListener(e -> dispose());
 
         add(panel);
         panel.add(textarea);

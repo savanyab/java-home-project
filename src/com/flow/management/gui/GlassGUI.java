@@ -1,3 +1,7 @@
+package com.flow.management.gui;
+
+import com.flow.management.Glass;
+
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;

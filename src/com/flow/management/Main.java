@@ -1,3 +1,7 @@
+package com.flow.management;
+
+import com.flow.management.gui.Window;
+
 import java.awt.*;
 
 public class Main {
@@ -5,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         EventQueue.invokeLater(() -> {
-            Window window = new Window();
+            com.flow.management.gui.Window window = new Window();
             window.setVisible(true);
         });
     }

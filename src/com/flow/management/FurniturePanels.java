@@ -1,3 +1,5 @@
+package com.flow.management;
+
 public class FurniturePanels extends RawMaterial {
 
     public void purchase(int quantity) {

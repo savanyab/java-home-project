@@ -1,3 +1,5 @@
+package com.flow.management;
+
 public class Company {
     private int capital;
     private int income;

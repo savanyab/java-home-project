@@ -1,3 +1,7 @@
+package com.flow.management.gui;
+
+import com.flow.management.Advertisement;
+
 import javax.swing.*;
 import java.awt.*;
 

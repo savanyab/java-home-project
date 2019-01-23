@@ -1,3 +1,5 @@
+package com.flow.management;
+
 public class Advertisement {
     private int price;
     private int count;

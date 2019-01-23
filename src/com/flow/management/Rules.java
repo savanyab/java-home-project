@@ -1,3 +1,5 @@
+package com.flow.management;
+
 import javax.swing.*;
 import java.awt.*;
 

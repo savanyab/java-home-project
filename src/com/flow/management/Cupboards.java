@@ -1,3 +1,5 @@
+package com.flow.management;
+
 public class Cupboards extends Goods {
     private int cupboardStock;
     private int glassPerCupboard;
@@ -16,6 +18,7 @@ public class Cupboards extends Goods {
     public int getCupboardStock() {return cupboardStock;}
 
     public int getIncome() { return income; }
+
 
     public void produce(int quantity) {
         producedPerMonth = quantity;

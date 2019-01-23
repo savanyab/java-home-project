@@ -1,3 +1,5 @@
+package com.flow.management;
+
 public abstract class RawMaterial {
 
     protected int stock;
