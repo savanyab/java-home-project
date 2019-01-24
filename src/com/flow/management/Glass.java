@@ -16,11 +16,11 @@ public class Glass extends RawMaterial {
     }
 
     public String toString(int decision) {
-        return String.format("Jelenlegi üvegkészlet: %,4d" +
-                        "\nBeszerzési ár: %,5d" +
-                        "\nVásárolni kívánt mennyiség: %,4d" +
-                        "\nVásárlás utáni készlet: %,4d" +
-                        "\nVásárlás költsége: %,5d",
+        return String.format("Jelenlegi üvegkészlet: %,22d" +
+                        "\nBeszerzési ár: %,35d" +
+                        "\nVásárolni kívánt mennyiség: %,12d" +
+                        "\nVásárlás utáni készlet: %,22d" +
+                        "\nVásárlás költsége: %,25d",
                 stock,
                 purchasePrice,
                 decision,

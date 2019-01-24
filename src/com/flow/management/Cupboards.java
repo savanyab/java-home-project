@@ -85,10 +85,10 @@ public class Cupboards extends Goods {
     }
 
     public String toString(int decision) {
-        return String.format("Előállított szekrények száma: %,4d" +
-                        "\nSzekrény raktárkészlet: %,5d"  +
-                        "\nEladásra küldendő mennyiség: %,5d"  +
-                        "\nEladási ár: %,5d",
+        return String.format("Előállított szekrények száma: %,17d" +
+                        "\nSzekrény raktárkészlet: %,28d"  +
+                        "\nEladásra küldendő mennyiség: %,12d"  +
+                        "\nEladási ár: %,46d",
                 producedPerMonth, decidedStock, decision, sellingPrice);
     }
 }
